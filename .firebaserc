@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "indiatoursandcabs": {
+      "hosting": {
+        "ItcAdminPanel": [
+          "indiatoursandcabs"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "indiatoursandcabs"
+  }
+}
