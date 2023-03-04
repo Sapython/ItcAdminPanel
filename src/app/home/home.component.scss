@@ -11,9 +11,10 @@ main {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   header {
     display: none;
+    position: fixed;
     width: 100%;
     box-sizing: border-box;
-    height: 10vh;
+    height: 60px;
     align-items: center;
     justify-content: space-between;
     box-sizing: border-box;
@@ -188,6 +189,7 @@ main {
   flex-direction: column;
   height: fit-content;
   position: relative;
+  box-sizing: border-box;/////added
   left: 0;
   top: 10vh;
 
@@ -201,7 +203,7 @@ main {
   width: 250px;
   height: 100%;
   position: fixed;
-
+  box-sizing: border-box;
   top: 0;
   left: 0;
   padding: 5em .3em;
@@ -209,6 +211,7 @@ main {
 }
 #container {
     position: absolute;
+    box-sizing: border-box;
     right:0;
     top: 0;
     width: calc(100% - 250px);
@@ -252,7 +255,7 @@ main {
 
 .sidebar-li {
   margin-bottom: 0.5em;
-  color: #000;
+  color: #404b69;
 }
 
 .sidebar-icon {
@@ -283,7 +286,7 @@ main {
 .sidebar-li-a:hover,
 .active {
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  background-color: #579540;
+  background-color: #404b69;
   color: white;
 }
 
@@ -332,3 +335,4 @@ main {
     // margin-right: 0.5em;
   }
 }
+

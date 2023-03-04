@@ -1,20 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { DashboardRoutingModule } from './dashboard-routing.module';
-import { DashboardComponent } from './dashboard.component';
+import { BookingRoutingModule } from './booking-routing.module';
+import { BookingComponent } from './booking.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
-    DashboardComponent
+    BookingComponent
   ],
   imports: [
     CommonModule,
-    DashboardRoutingModule,
+    BookingRoutingModule,
     MatIconModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatTabsModule
   ]
 })
-export class DashboardModule { }
+export class BookingModule { }
