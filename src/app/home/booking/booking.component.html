@@ -1,9 +1,23 @@
-<p>booking works!</p>
-<div style="height: 100%;">
 
+<div class="header">
+  <div class="w-100 d-flex justify-content-end my-3">
+    <button class="mx-3" mat-stroked-button>
+      <mat-icon>refresh</mat-icon>Refresh
+    </button>
+    <button class="mx-3" mat-stroked-button>
+      <mat-icon>filter</mat-icon>Clear Filter
+    </button>
+    <button mat-stroked-button>
+      Enter the date Range<mat-icon>date_range</mat-icon>
+    </button>
+  </div>
+</div>
+<div>
   <mat-tab-group>
-    <mat-tab label="First"> Content 1 </mat-tab>
-    <mat-tab label="Second"> Content 2 </mat-tab>
-    <mat-tab label="Third"> Content 3 </mat-tab>
+    <mat-tab label="All Booking"> <app-allbooking></app-allbooking></mat-tab>
+    <mat-tab label="Ride-Rental"> <app-ride-rental></app-ride-rental></mat-tab>
+    <mat-tab label="Outstations"> <app-outstations></app-outstations></mat-tab>
+    <mat-tab label="Tour"> <app-tours></app-tours></mat-tab>
+    <mat-tab label="Guide"> <app-guide></app-guide></mat-tab>
   </mat-tab-group>
 </div>
