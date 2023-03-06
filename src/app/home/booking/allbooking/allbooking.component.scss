@@ -26,8 +26,7 @@
 
     .card-detail-child {
       height: 40px;
-      background-color: rgba(255, 255, 255, 0.8);
-      // border: 1px solid rgba(0, 0, 0, 0.8);
+      border: 1px solid #fbb0fd;
       padding: 10px;
       margin: 10px;
       font-size: 30px;
@@ -35,7 +34,7 @@
       display: flex;
       justify-content: space-between;
       border-radius: 8px;
-      background-color: #fedeff;
+      // background-color: #fedeff;
 
       .card-detail-sec {
         // background: green;
@@ -49,7 +48,8 @@
         }
 
         .card-detail-img {
-          background: rgb(230, 212, 212);
+          // background: rgb(230, 212, 212);
+          border: 1px solid #fdc7ff;
           width: 40px;
           border-radius: 55px;
         }
@@ -99,7 +99,7 @@
             border-radius: 8px;
             color: #4b87dd;
             border: 1px solid #4b87dd;
-            background-color: #fedeff;
+            // background-color: #fedeff;
           }
 
           p {
@@ -182,8 +182,8 @@
   padding: 10px;
 }
 .grid-item-cancel {
-  background-color: #fcb1bb;
-  // border: 1px solid rgba(0, 0, 0, 0.8);
+  // background-color: #fcb1bb;
+  border: 1px solid rgba(128, 68, 68, 0.8);
   // padding: 10px;
   margin: 5px 10px;
   font-size: 30px;
@@ -217,7 +217,8 @@
       }
 
       .card-detail-img {
-        background: rgb(150, 162, 187);
+        // background: rgb(150, 162, 187);
+        border: 1px solid rgb(247, 174, 174);
         width: 40px;
         border-radius: 55px;
       }
@@ -264,10 +265,10 @@
           font-size: small;
           // margin: 0;
           padding: 2px 8px;
-          border-radius: 8px;
+          border-radius: 4px;
           color: #f46152;
           border: 1px solid #f46152;
-          background-color: #fedeff;
+          background-color: #ffffff;
         }
 
         p {
@@ -290,7 +291,7 @@
     padding: 0 10px;
     margin: 0;
     p{
-      font-size: 14px;
+      font-size: 12px;
       font-weight: 300;
       margin: 0;
       padding: 0;

@@ -1,0 +1,107 @@
+.cab-container{
+  box-sizing: border-box;
+  margin-top: 5px;
+  padding: 15px;
+  height: 350px;
+  border: 1px solid rgb(201, 199, 199);
+  border-radius: 8px;
+  .heading p{
+    color: black;
+    font-weight: 500;
+  }
+  // background-color: green;
+  .search-addnew{
+    display: flex;
+    justify-content: space-between;
+    input{
+      width: 300px;
+      padding: 7px 7px 7px 25px;
+      border-radius: 4px;
+      border: none;
+      border: 1px solid #d7d7d7 ;
+    }
+    i{
+      position: absolute;
+      font-size: 12px;
+      margin: 8px ;
+    }
+    .btn{
+      width: 135px;
+      padding: 5px;
+      border-radius: 4px;
+      border: none;
+      display: flex;
+      justify-content: space-between;
+      color: #404b69;
+      border: 1px solid #404b69;
+      background-color: #fff;
+      p{
+        margin: 0;
+        padding:0 ;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #404b69;
+      }
+      i{
+        // position: absolute;
+        margin: 2px 8px 2px 2px;
+        font-size: 12px;
+        color: #404b69;
+      }
+    }
+  }
+  .card-parent{
+    height: 80%;
+    // background-color: red;
+    position: relative;
+    .grid-container {
+      display: grid;
+      grid-template-columns: 49% 49% ;
+      // background-color: #2196F3;
+      justify-content: space-between;
+    }
+    .grid-item {
+      // background-color: rgba(255, 255, 255, 0.8);
+      border: 1px solid #d7d7d7;
+      padding: 10px;
+      font-size: 30px;
+      margin: 7px 0;
+      text-align: center;
+      border-radius: 4px;
+      height: 40px;
+      display: flex;
+      justify-content: space-between;
+      .ctns{
+        text-align: left;
+
+        h4,h5{
+          margin: 0;
+          padding: 0;
+          font-weight: 500;
+        }
+        h4{
+          color: #444444;
+        }
+        h5{
+          color: #7d7d7d;
+        }
+      }.btns{
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 150px;
+        #edit{
+          color: #404b69;
+        }
+        #trash{
+          color:#ff3b30 ;
+        }
+        i{
+          font-size: 22px;
+        }
+      }
+    }
+  }
+}
