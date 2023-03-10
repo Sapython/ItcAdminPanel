@@ -182,7 +182,7 @@
   padding: 10px;
 }
 .grid-item-cancel {
-  // background-color: #fcb1bb;
+  // background-color: #ffcad1;
   border: 1px solid rgba(128, 68, 68, 0.8);
   // padding: 10px;
   margin: 5px 10px;
@@ -292,9 +292,10 @@
     margin: 0;
     p{
       font-size: 12px;
-      font-weight: 300;
+      font-weight: 400;
       margin: 0;
       padding: 0;
+      color: #444444;
     }
   }
   .driver-guide{
@@ -305,6 +306,7 @@
       font-size: small;
       margin: 0;
       padding: 0;
+      color: #444444;
     }
   }
 }

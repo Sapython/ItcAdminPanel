@@ -1,0 +1,47 @@
+<mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+  <mat-tab label="Ledger">
+    <div class="head-btn">
+      <div class="hd-btn">
+        <div class="green-button"><button class="green-button"><i class="fa-solid fa-arrow-up"></i><p>Add Debit</p> </button></div>
+        <div class="darkblue-button"><button class="darkblue-button"><i class="fa-solid fa-arrow-down"></i><p>Add Credit</p> </button></div>
+      </div>
+      <div class="hd-btn">
+            <button class="outline-btn-blue" mat-stroked-button>
+              <i class="fa-solid fa-retweet"></i><p>Refresh</p>
+            </button>
+            <button class="outline-btn-blue"mat-stroked-button>
+              <i class="ri-filter-2-line"></i><p>Clear Filter</p>
+            </button>
+            <button class="fill-btn-blue" mat-stroked-button>
+             <p> Enter the date Range</p><i class="fa-solid fa-calendar-days"></i>
+            </button>
+      </div>
+    </div>
+    <div class="main">
+        <div class="submain">
+          <div class="date-pick">
+            <mat-form-field appearance="fill" class="example-form-field">
+              <mat-label>Choose a date</mat-label>
+              <input matInput [matDatepicker]="datepicker">
+              <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
+              <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
+              <mat-datepicker #datepicker>
+                <mat-datepicker-actions>
+                  <button mat-button matDatepickerCancel>Cancel</button>
+                  <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+                </mat-datepicker-actions>
+              </mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div class="bgt">
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+        <div class="submain"></div>
+    </div>
+  </mat-tab>
+
+  <mat-tab label="Pending">Content 2</mat-tab>
+</mat-tab-group>

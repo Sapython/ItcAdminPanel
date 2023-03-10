@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./rental.component.scss']
 })
 export class RentalComponent {
-
+  isChecked:boolean=true;
 }
