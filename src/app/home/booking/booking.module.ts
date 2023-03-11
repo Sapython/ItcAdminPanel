@@ -12,6 +12,9 @@ import { RideRentalComponent } from './ride-rental/ride-rental.component';
 import { OutstationsComponent } from './outstations/outstations.component';
 import { ToursComponent } from './tours/tours.component';
 import { GuideComponent } from './guide/guide.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { MatConfirmDialogComponent } from './dialogs/mat-confirm-dialog/mat-confirm-dialog.component';
+import { BookingDialogComponent } from './dialogs/booking-dialog/booking-dialog.component';
 
 
 @NgModule({
@@ -21,7 +24,9 @@ import { GuideComponent } from './guide/guide.component';
     RideRentalComponent,
     OutstationsComponent,
     ToursComponent,
-    GuideComponent
+    GuideComponent,
+    MatConfirmDialogComponent,
+    BookingDialogComponent
   ],
   imports: [
     CommonModule,
@@ -29,7 +34,8 @@ import { GuideComponent } from './guide/guide.component';
     MatIconModule,
     MatExpansionModule,
     MatTabsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDialogModule
   ]
 })
 export class BookingModule { }

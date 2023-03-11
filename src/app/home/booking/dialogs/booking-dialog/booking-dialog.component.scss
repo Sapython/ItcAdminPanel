@@ -1,0 +1,55 @@
+.dialog-container{
+  padding: 20px;
+  width: 700px;
+  h2{
+    margin-bottom: 6px;
+  }
+  hr{
+    margin: 6px 0;
+  }
+  .customer-div{
+    padding: 5px 0;
+    h3{
+      margin: 0;
+      font-weight: 500;
+    }
+    .customer{
+      display: flex;
+      height: 60px;
+      .cst-dtl{
+        // background-color: red;
+        padding: 0 10px;
+        h4{
+          font-size: 15px;
+          margin: 0;
+          padding: 2px;
+          font-weight: 400;
+        }
+      }
+      .icon{
+        width: 100px;
+       text-align: right;
+
+        i{
+          padding: 0 5px;
+          font-size: 15px;
+          color: #404b69;
+          // float: right;
+        }
+      }
+      .customer-img{
+        width: 60px;
+
+        display: flex;
+        align-items: center;
+          img{
+            height: 50px;
+            width: 50px;
+            border-radius: 40px;
+          }
+        }
+      }
+  }
+
+  }
+
