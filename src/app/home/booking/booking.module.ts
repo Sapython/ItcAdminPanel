@@ -15,6 +15,8 @@ import { GuideComponent } from './guide/guide.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { MatConfirmDialogComponent } from './dialogs/mat-confirm-dialog/mat-confirm-dialog.component';
 import { BookingDialogComponent } from './dialogs/booking-dialog/booking-dialog.component';
+import { AssignDriverDialogComponent } from './dialogs/assign-driver-dialog/assign-driver-dialog.component';
+import { AssignGuideDialogComponent } from './dialogs/assign-guide-dialog/assign-guide-dialog.component';
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import { BookingDialogComponent } from './dialogs/booking-dialog/booking-dialog.
     ToursComponent,
     GuideComponent,
     MatConfirmDialogComponent,
-    BookingDialogComponent
+    BookingDialogComponent,
+    AssignDriverDialogComponent,
+    AssignGuideDialogComponent
   ],
   imports: [
     CommonModule,
