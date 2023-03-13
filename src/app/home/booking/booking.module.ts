@@ -17,6 +17,12 @@ import { MatConfirmDialogComponent } from './dialogs/mat-confirm-dialog/mat-conf
 import { BookingDialogComponent } from './dialogs/booking-dialog/booking-dialog.component';
 import { AssignDriverDialogComponent } from './dialogs/assign-driver-dialog/assign-driver-dialog.component';
 import { AssignGuideDialogComponent } from './dialogs/assign-guide-dialog/assign-guide-dialog.component';
+import { BookingDetailOfRentalComponent } from './dialogs/booking-detail-of-rental/booking-detail-of-rental.component';
+import { CompleteInfoBdrDialogComponent } from './dialogs/complete-info-bdr-dialog/complete-info-bdr-dialog.component';
+import { BookingDetailsOfOutstationComponent } from './dialogs/booking-details-of-outstation/booking-details-of-outstation.component';
+import { OutstaionCompleteInfoComponent } from './dialogs/outstaion-complete-info/outstaion-complete-info.component';
+import { TourCompleteInfoComponent } from './dialogs/tour-complete-info/tour-complete-info.component';
+import { TourwiseBookingInfoComponent } from './dialogs/tourwise-booking-info/tourwise-booking-info.component';
 
 
 @NgModule({
@@ -30,7 +36,13 @@ import { AssignGuideDialogComponent } from './dialogs/assign-guide-dialog/assign
     MatConfirmDialogComponent,
     BookingDialogComponent,
     AssignDriverDialogComponent,
-    AssignGuideDialogComponent
+    AssignGuideDialogComponent,
+    BookingDetailOfRentalComponent,
+    CompleteInfoBdrDialogComponent,
+    BookingDetailsOfOutstationComponent,
+    OutstaionCompleteInfoComponent,
+    TourCompleteInfoComponent,
+    TourwiseBookingInfoComponent
   ],
   imports: [
     CommonModule,

@@ -24,7 +24,7 @@
           <td>
             <button class="scs-btn"><i class="fa-solid fa-check"></i></button>
             <button class="can-btn" (click)="onDelete()"><i class="fa-solid fa-xmark"></i></button>
-            <button class="info-btn" (click)="onInfo()"><i class="fa-solid fa-circle-info"></i></button>
+            <button class="info-btn" (click)="onInfo()"><i class="ri-information-line"></i></button>
           </td>
         </tr>
         <tr>
@@ -36,8 +36,8 @@
           <td><button class="green-button">₹1502</button></td>
           <td>
             <button class="scs-btn"><i class="fa-solid fa-check"></i></button>
-            <button class="can-btn" ><i class="fa-solid fa-xmark"></i></button>
-            <button class="info-btn"><i class="fa-solid fa-circle-info"></i></button>
+            <button (click)="onDelete()" class="can-btn" ><i class="fa-solid fa-xmark"></i></button>
+            <button (click)="onInfo()" class="info-btn"><i class="ri-information-line"></i></button>
           </td>
         </tr>
         <tr>
@@ -49,8 +49,8 @@
           <td><button class="green-button">₹1502</button></td>
           <td>
             <button class="scs-btn"><i class="fa-solid fa-check"></i></button>
-            <button class="can-btn"><i class="fa-solid fa-xmark"></i></button>
-            <button class="info-btn"><i class="fa-solid fa-circle-info"></i></button>
+            <button (click)="onDelete()" class="can-btn"><i class="fa-solid fa-xmark"></i></button>
+            <button (click)="onInfo()" class="info-btn"><i class="ri-information-line"></i></button>
           </td>
         </tr>
       </table>
@@ -136,7 +136,7 @@
           <td><button class="green-button">₹1502</button></td>
           <td>Abhijeet</td>
           <td>
-            <button class="info-btn"><i class="fa-solid fa-circle-info"></i></button>
+            <button (click)="completedBookingInfo()" class="info-btn"><i class="ri-information-line"></i></button>
           </td>
         </tr>
         <tr>
@@ -148,7 +148,7 @@
           <td><button class="green-button">₹1502</button></td>
           <td>Abhijeet</td>
           <td>
-            <button class="info-btn"><i class="fa-solid fa-circle-info"></i></button>
+            <button (click)="completedBookingInfo()" class="info-btn"><i class="ri-information-line"></i></button>
           </td>
         </tr>
         <tr>
@@ -160,7 +160,7 @@
           <td><button class="green-button">₹1502</button></td>
           <td>Abhijeet</td>
           <td>
-            <button class="info-btn"><i class="fa-solid fa-circle-info"></i></button>
+            <button (click)="completedBookingInfo()" class="info-btn"><i class="ri-information-line"></i></button>
           </td>
         </tr>
       </table>
@@ -180,7 +180,6 @@
           <th>Start Time</th>
           <th>Trip Fair</th>
           <th>Driver</th>
-          <th>Actions</th>
         </tr>
         <tr>
           <td>#ITC25</td>
@@ -190,9 +189,7 @@
           <td>09 Jan 23 <br />10:50 am</td>
           <td><button class="green-button">₹1502</button></td>
           <td>Abhijeet</td>
-          <td>
-            <button class="info-btn"><i class="fa-solid fa-circle-info"></i></button>
-          </td>
+
         </tr>
         <tr>
           <td>#ITC25</td>
@@ -202,9 +199,7 @@
           <td>09 Jan 23 <br />10:50 am</td>
           <td><button class="green-button">₹1502</button></td>
           <td>Abhijeet</td>
-          <td>
-            <button class="info-btn"><i class="fa-solid fa-circle-info"></i></button>
-          </td>
+
         </tr>
         <tr>
           <td>#ITC25</td>
@@ -214,9 +209,7 @@
           <td>09 Jan 23 <br />10:50 am</td>
           <td><button class="green-button">₹1502</button></td>
           <td>Abhijeet</td>
-          <td>
-            <button class="info-btn"><i class="fa-solid fa-circle-info"></i></button>
-          </td>
+
         </tr>
       </table>
     </div>
@@ -350,7 +343,25 @@
         <td>124</td>
         <td>GJ 12 GB 1231</td>
         <td><button class="orange-button">4.2</button></td>
-        <td><button class="blue-button">Marks as Present</button></td>
+        <!-- <td><button class="blue-button">Marks as Present</button></td> -->
+        <td>
+          <div >
+          <button class="blue-button">
+
+            <mat-accordion>
+              <mat-expansion-panel hideToggle>
+              </mat-expansion-panel>
+              <mat-expansion-panel (opened)="panelOpenState = true"
+                                   (closed)="panelOpenState = false">
+                <mat-expansion-panel-header>
+                  <p>Mark as Present</p>
+                </mat-expansion-panel-header>
+                <p>Mark as Absent</p>
+              </mat-expansion-panel>
+            </mat-accordion>
+          </button>
+        </div>
+        </td>
       </tr>
       <tr>
         <td>#ITC25</td>

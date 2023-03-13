@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./guide.component.scss']
 })
 export class GuideComponent {
-
+  panelOpenState:boolean=false;
 }
