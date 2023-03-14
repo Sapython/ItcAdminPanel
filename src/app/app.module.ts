@@ -1,3 +1,4 @@
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -12,10 +13,15 @@ import { provideFunctions,getFunctions } from '@angular/fire/functions';
 import { providePerformance,getPerformance } from '@angular/fire/performance';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DataProvider } from './providers/data.provider';
+import { AlertsAndNotificationsService } from './services/alerts-and-notification/alerts-and-notifications.service';
+import { AuthenticationService } from './services/auth/authentication.service';
+import { DatabaseService } from './services/database/database.service';
+import { UserDataService } from './services/user/user-data.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,10 +33,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     provideFunctions(() => getFunctions()),
     providePerformance(() => getPerformance()),
     provideStorage(() => getStorage()),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatSnackBarModule,
   ],
   providers: [
-    ScreenTrackingService,UserTrackingService
+    ScreenTrackingService,UserTrackingService,DataProvider,AuthenticationService,DatabaseService,AlertsAndNotificationsService,UserDataService
   ],
   bootstrap: [AppComponent]
 })
