@@ -52,6 +52,9 @@ import { TourwiseBookingInfoComponent } from './dialogs/tourwise-booking-info/to
     MatTabsModule,
     MatButtonModule,
     MatDialogModule
+  ],
+  exports:[
+    
   ]
 })
 export class BookingModule { }

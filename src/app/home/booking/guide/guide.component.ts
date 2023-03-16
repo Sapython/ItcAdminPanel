@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class GuideComponent {
   panelOpenState:boolean=false;
+  onDelete(){
+  }
+  onInfo(){
+  }
+  completedBookingInfo(){
+  }
 }

@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./ledger.component.scss']
 })
 export class LedgerComponent {
-
+  panelOpenState:boolean=true;
+  price='2200';
 }

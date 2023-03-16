@@ -72,3 +72,167 @@
     }
   }
 }
+.submain{
+  margin-top: 25px;
+}
+
+
+// mat-expandable
+.mat-mdc-form-field + .mat-mdc-form-field {
+  margin-left: 8px;
+}
+mat-panel-title{
+  i{
+    font-size: 20px;
+    padding-right: 10px;
+  }
+}
+
+// cards
+.card-div{
+  display: flex;
+  .debit, .balance{
+    border: 1.4px solid #4CAF50;
+    color: #4CAF50;
+  }
+  .credit{
+    border: 1.4px solid #404B69;
+    color: #404B69;
+  }
+}
+.balance-card{
+  margin-top: 10px;
+  margin-right: 15px;
+  border-radius: 8px;
+  width: 160px;
+  .balance-card-content{
+    display: flex;
+    margin: 5% 8%;
+    margin-left: 3%;
+    i{
+      padding: 10px 5px;
+      font-size: 37px;
+    }
+    .balance-card-data{
+      padding-left: 5px;
+      .card-number{
+        font-size: 19px;
+      } 
+    }
+  }
+}
+
+// Tables
+.table-div{
+    margin-top: 20px;
+    display: flex;
+    .table-div-data{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        .table-center-div{
+          width: 100%;
+        }
+        table{
+          border-collapse: collapse;
+          margin-right: 20px;
+          tr{
+              text-align: center;
+              background: #FFFFFF;
+              border: 1px solid #d7d7d7;
+              border-radius: 6px;
+        
+            th{
+              font-size: 12px;
+              font-weight: 500;
+              padding: 11px 10px;
+            }
+            td{
+              font-size: 12px;
+              font-weight: 500;
+              margin: 5px;
+              text-align: center;
+              padding: 5px;
+                .voilet-div{
+                    background: rgba(64, 75, 105, 0.1);
+                    border: 1px solid #404B69;
+                    border-radius: 8px;
+                    width: fit-content;
+                    margin: auto;
+                    padding: 2px 8px;
+                    p{
+                      color: #404B69;
+                      margin: 0;
+                    }
+                }
+                .green-div{
+                  background: rgba(229, 255, 219, 0.8);
+                  border: 1px solid #4CAF50;
+                  border-radius: 8px;
+                  margin: auto;
+                  width: fit-content;
+                  p{
+                    color: #4CAF50;
+                    margin: 0;
+                    padding: 2px 8px;
+                  }
+              }
+              .red-div{
+                background: rgba(201, 65, 65, 0.1);
+                border: 1px solid #C94141;
+                border-radius: 8px;
+                margin: auto;
+                width: fit-content;
+                p{
+                  color: #C94141;
+                  margin: 0;
+                  padding: 2px 8px;
+                }
+              }
+              .voilet-button-div{
+                button{
+                    background: #404B69;
+                    border-radius: 5px;
+                    color: #FFFFFF;
+                    border: none;
+                    padding: 6px 12px;
+                }
+              }
+              .yellow-div{
+                background: #FFEFD8;
+                border: 1px solid #DA8700;
+                border-radius: 8px;
+                width: fit-content;
+                margin: auto;
+                padding: 2px 8px;
+                p{
+                  color: #DA8700;
+                  margin: 0;
+                }
+              }
+              .yellow-error-div{
+                margin-top: 3px;
+                i{
+                    font-size: 25px;
+                    color: #FF9114;;
+                }
+              }
+              .phone{
+                  color:#404B69;
+                  font-size: 10px;
+                  margin-right: 1px;
+
+              }
+            }
+          }
+          .head-row{
+              margin-bottom: 10px;
+              color: #444444
+          }
+        }
+    }
+}
+
+
+
+
