@@ -14,6 +14,12 @@ import { MatIconModule } from '@angular/material/icon';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
+import { AddVehicleCategoryComponent } from './dialog/add-vehicle-category/add-vehicle-category.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { DeleteWarnComponent } from './dialog/delete-warn/delete-warn.component';
+import { EditVehicleCategoryComponent } from './dialog/edit-vehicle-category/edit-vehicle-category.component';
+import { EditPackageComponent } from './dialog/edit-package/edit-package.component';
+
 @NgModule({
   declarations: [
     ServiceComponent,
@@ -22,6 +28,10 @@ import { FormsModule } from '@angular/forms';
     OutstationComponent,
     TourComponent,
     GuideComponent,
+    AddVehicleCategoryComponent,
+    DeleteWarnComponent,
+    EditVehicleCategoryComponent,
+    EditPackageComponent,
 
   ],
   imports: [
@@ -32,7 +42,8 @@ import { FormsModule } from '@angular/forms';
     MatIconModule,
     MatSlideToggleModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatDialogModule
   ]
 })
 export class ServiceModule { }

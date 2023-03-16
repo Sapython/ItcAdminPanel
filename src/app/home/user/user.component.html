@@ -1,0 +1,25 @@
+
+<div class="header">
+  <div >
+    <button class="mx-3" mat-stroked-button>
+      <i class="ri-restart-line"></i>Refresh
+    </button>
+    <button class="mx-3" mat-stroked-button>
+      <i class="fa-solid fa-plus"></i>Add New Guide
+    </button>
+    <button class="mx-3" mat-stroked-button>
+      <i class="ri-filter-line"></i>Clear Filter
+    </button>
+    <button class="solid-darkblue-button" mat-stroked-button>
+      Enter the date Range<i class="ri-calendar-2-line"></i>
+    </button>
+  </div>
+</div>
+<div>
+  <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+    <mat-tab label="Customer"> <app-customer></app-customer></mat-tab>
+    <mat-tab label="Drivers"> <app-driver></app-driver></mat-tab>
+    <mat-tab label="Guide"> <app-guide></app-guide></mat-tab>
+    <mat-tab label="Tour Agent"> <app-touragent></app-touragent></mat-tab>
+  </mat-tab-group>
+</div>

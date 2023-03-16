@@ -32,6 +32,13 @@ const routes: Routes = [
         loadChildren: () =>
           import('./ledger/ledger.module').then((m) => m.LedgerModule),
       },
+      {
+        path: 'user',
+        loadChildren: () =>
+          import('./user/user.module').then((m) => m.UserModule),
+      },
+      { path: 'content', loadChildren: () => import('./content/content.module').then(m => m.ContentModule) },
+
     ],
   },
 ];
