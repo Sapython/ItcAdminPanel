@@ -1,0 +1,154 @@
+<div class="header">
+  <div mat-dialog-close>
+    <i class="ri-arrow-left-line arrow-icon"></i>
+  </div>
+  <div >
+    <button class="mx-3" mat-stroked-button>
+      <i class="ri-restart-line"></i>Refresh
+    </button>
+    <button class="mx-3" mat-stroked-button>
+      <i class="ri-filter-line"></i>Clear Filter
+    </button>
+    <button class="solid-darkblue-button" mat-stroked-button>
+      Enter the date Range<i class="ri-calendar-2-line"></i>
+    </button>
+  </div>
+</div>
+<br>
+<div class="dialog-container">
+
+  <div class="customer-div">
+    <div class="customer">
+      <div class="cst-dtl cst-dtl-img">
+        <img
+          src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cGVyc29ufGVufDB8fDB8fA%3D%3D&w=1000&q=80"
+          alt=""
+        />
+        <div>
+          <h4>Name: Arun Arora</h4>
+          <h4>Example@gmail.com</h4>
+        </div>
+      </div>
+      <div class="cst-dtl">
+        <h4><i class="ri-map-pin-fill"></i> Robert Robertson, 1234 NW Bobcat Lane</h4>
+        <div class="cst-dtl-child">
+
+          <h4>Phone: 9995566633, </h4>
+          <h4> Total Unsettle Amount: <button class="orange-button">Rs 5,000</button></h4>
+        </div>
+      </div>
+      <div class="cst-dtl icon">
+        <div class="cst-dtl-icon-child">
+          <div> <h4>Rating: 4.5/5 (101)</h4></div>
+          <div> <i class="ri-phone-fill"></i>
+            <i class="fa-solid fa-caret-down"></i>
+          </div>
+        </div>
+        <div>
+            <h4>Total Settle Amount: <button class="green-button">Rs 46,000</button></h4>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="grid-table">
+    <div class="table-header">
+      <h2>Bookings</h2>
+    </div>
+    <table>
+      <thead>
+        <tr class="table-heading">
+          <th>Booking#</th>
+          <th>Service</th>
+          <th>Start Location</th>
+          <th>Destination</th>
+          <th>Start Time</th>
+          <th>Unsettle Amount</th>
+          <th>Settle Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>#ITC252</td>
+          <td>Rental</td>
+          <td>Rampur</td>
+          <td>Jaipur</td>
+          <td>12 April, 12:00 PM</td>
+          <td><button class="orange-button">Rs 460</button></td>
+          <td><button class="green-button">Rs 460</button></td>
+        </tr>
+        <tr>
+          <td>#ITC252</td>
+          <td>Ride Booking</td>
+          <td>Rampur</td>
+          <td>Jaipur</td>
+          <td>12 April, 12:00 PM</td>
+          <td><button class="orange-button">Rs 460</button></td>
+          <td><button class="green-button">Rs 460</button></td>
+        </tr>
+        <tr>
+          <td>#ITC252</td>
+          <td>Outstation</td>
+          <td>Rampur</td>
+          <td>Jaipur</td>
+          <td>12 April, 12:00 PM</td>
+          <td><button class="orange-button">Rs 460</button></td>
+          <td><button class="green-button">Rs 460</button></td>
+        </tr>
+        <tr>
+          <td>#ITC252</td>
+          <td>Ride Booking</td>
+          <td>Rampur</td>
+          <td>Jaipur</td>
+          <td>12 April, 12:00 PM</td>
+          <td><button class="orange-button">Rs 460</button></td>
+          <td><button class="green-button">Rs 460</button></td>
+        </tr>
+        <tr>
+          <td>#ITC252</td>
+          <td>Outstation</td>
+          <td>Rampur</td>
+          <td>Jaipur</td>
+          <td>12 April, 12:00 PM</td>
+          <td><button class="orange-button">Rs 460</button></td>
+          <td><button class="green-button">Rs 460</button></td>
+        </tr>
+        <tr>
+          <td>#ITC252</td>
+          <td>Ride Booking</td>
+          <td>Rampur</td>
+          <td>Jaipur</td>
+          <td>12 April, 12:00 PM</td>
+          <td><button class="orange-button">Rs 460</button></td>
+          <td><button class="green-button">Rs 460</button></td>
+        </tr>
+        <tr>
+          <td>#ITC252</td>
+          <td>Outstation</td>
+          <td>Rampur</td>
+          <td>Jaipur</td>
+          <td>12 April, 12:00 PM</td>
+          <td><button class="orange-button">Rs 460</button></td>
+          <td><button class="green-button">Rs 460</button></td>
+        </tr>
+        <tr>
+          <td>#ITC252</td>
+          <td>Ride Booking</td>
+          <td>Rampur</td>
+          <td>Jaipur</td>
+          <td>12 April, 12:00 PM</td>
+          <td><button class="orange-button">Rs 460</button></td>
+          <td><button class="green-button">Rs 460</button></td>
+        </tr>
+      </tbody>
+
+    </table>
+    <mat-paginator [length]="100"
+    [pageSize]="10"
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    aria-label="Select page">
+  </mat-paginator>
+  </div>
+</div>
+

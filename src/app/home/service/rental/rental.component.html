@@ -1,0 +1,57 @@
+<div class="vehicle-container">
+  <div class="vehicle-header">
+    <div class="heading"><p>Package Management</p></div>
+   <button class="btn"><i class="fa-solid fa-plus"></i>Add New Category</button>
+  </div>
+  <div class="vehicle-parent">
+      <div class="vehicle-card">
+        <div class="card-km">
+          <h4>1 hr <br> 50 Km</h4>
+        </div>
+        <div class="vehicle-cont">
+          <div class="vc-three">
+              <div (click)="editPackage()" class="edit"><i class="fa-sharp fa-solid fa-pen-to-square"></i></div>
+              <div><mat-slide-toggle [(ngModel)]="isChecked"></mat-slide-toggle></div>
+              <div class="trash"><i class="fa-solid fa-trash-can"></i></div>
+          </div>
+        </div>
+      </div>
+      <div class="vehicle-card">
+        <div class="card-km">
+          <h4>2 hr <br> 100 Km</h4>
+        </div>
+        <div class="vehicle-cont">
+          <div class="vc-three">
+              <div (click)="editPackage()" class="edit"><i class="fa-sharp fa-solid fa-pen-to-square"></i></div>
+              <div><mat-slide-toggle [(ngModel)]="isChecked"></mat-slide-toggle></div>
+              <div class="trash"><i class="fa-solid fa-trash-can"></i></div>
+          </div>
+        </div>
+      </div>
+      <div class="vehicle-card">
+        <div class="card-km">
+          <h4>4 hr <br> 200 Km</h4>
+        </div>
+        <div class="vehicle-cont">
+          <div class="vc-three">
+              <div (click)="editPackage()" class="edit"><i class="fa-sharp fa-solid fa-pen-to-square"></i></div>
+              <div><mat-slide-toggle [(ngModel)]="isChecked"></mat-slide-toggle></div>
+              <div class="trash"><i class="fa-solid fa-trash-can"></i></div>
+          </div>
+        </div>
+      </div>
+      <div class="vehicle-card">
+        <div class="card-km">
+          <h4>8 hr <br> 400 Km</h4>
+        </div>
+        <div class="vehicle-cont">
+          <div class="vc-three">
+              <div class="edit"><i class="fa-sharp fa-solid fa-pen-to-square"></i></div>
+              <div><mat-slide-toggle [(ngModel)]="isChecked"></mat-slide-toggle></div>
+              <div class="trash"><i class="fa-solid fa-trash-can"></i></div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+<app-cab></app-cab>

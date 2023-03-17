@@ -1,0 +1,29 @@
+.cancel-dlg{
+  padding: 15px 45px;
+  border-radius:40px;
+  text-align: center;
+  h2{
+    margin: 0;
+  }
+  .dlg-btn{
+    display: flex;
+    padding: 0 30px;
+    justify-content: space-around;
+  }
+}
+.goback{
+  color: #4c5673;
+  border: 1px solid #4c5673;
+  background-color: #fff;
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+.confirm{
+  color: rgb(255, 255, 255);
+  border: 1px solid #ff9e99;
+  background-color: #ee7973;
+  padding: 6px 10px;
+  border-radius: 6px;
+
+}
+

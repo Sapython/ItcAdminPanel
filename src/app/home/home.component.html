@@ -1,0 +1,82 @@
+<main>
+  <header>
+    <button *ngIf="!largeScreen" class="uk-navbar-toggle" id="toggle-button" (click)="toggleSidebar()">
+      <i class="ri-menu-3-fill"></i>
+    </button>
+    <div class="logo_cont">
+      <img src="src/assets/mainIcon.png" class="logo" />
+    </div>
+
+    <div class="datePannel">
+      <b>
+        {{ currentPanel }}
+      </b>
+      <br />
+
+      {{ date }}
+    </div>
+    <div class="user">
+      <div class="d-flex justify-content-between align-items-center borderGrey BR10 p-2">
+        <!-- <div class="img-outer"><img [src]="dataProvider.userData?.photoURL" alt="" /></div> -->
+        <!-- <b class=" w-100">{{ dataProvider.userData?.displayName || "Madan" }} </b> -->
+      </div>
+      <button class="notificationbtn">
+        <i class="ri-notification-3-line" routerLink="/admin/notification"></i>
+      </button>
+    </div>
+  </header>
+
+  <div id="overlay" (click)="showSidebar && toggleSidebar()"></div>
+</main>
+<div id="wrapper" (window:resize)="onWindowResize()">
+  <div [style]="largeScreen || showSidebar ? '' : 'display: none'" id="sidebar-container">
+    <aside id="sidebar">
+      <ul id="sidebar-ul">
+        <li class="sidebar-li">
+          <a routerLink="dashboard" routerLinkActive="active" (click)="toggleSidebar()" class="sidebar-li-a">
+            <i class="ri-dashboard-2-line"></i>
+            <span class="sidebar-text">Dashboard</span></a>
+        </li>
+        <li class="sidebar-li">
+          <a routerLink="booking" routerLinkActive="active" (click)="toggleSidebar()" class="sidebar-li-a">
+            <i class="fa-solid fa-calendar-week"></i>
+            <span class="sidebar-text">Booking</span></a>
+        </li>
+        <li class="sidebar-li">
+          <a routerLink="user" routerLinkActive="active" (click)="toggleSidebar()" class="sidebar-li-a">
+            <i class="fa-solid fa-user"></i>
+            <span class="sidebar-text">User</span></a>
+        </li>
+
+        <li class="sidebar-li">
+          <a routerLink="service" routerLinkActive="active" (click)="toggleSidebar()" class="sidebar-li-a">
+            <i class="fa-solid fa-user-gear"></i>
+            <span class="sidebar-text">Service</span></a>
+        </li>
+        <li class="sidebar-li">
+          <a routerLink="content" routerLinkActive="active" (click)="toggleSidebar()" class="sidebar-li-a">
+            <i class="fa-solid fa-pen-to-square"></i>
+                  <span class="sidebar-text">Content</span></a>
+        </li>
+        <li class="sidebar-li">
+          <a routerLink="report" routerLinkActive="active" (click)="toggleSidebar()" class="sidebar-li-a">
+            <i class="fa-solid ri-file-text-line"></i>
+            <span class="sidebar-text">Report</span></a>
+        </li>
+        <li class="sidebar-li">
+          <a routerLink="ledger" routerLinkActive="active" (click)="toggleSidebar()" class="sidebar-li-a">
+            <i class="fa-solid fa-money-check-dollar"></i>
+            <span class="sidebar-text">Ledger</span></a>
+        </li>
+        <li class="sidebar-li">
+          <a routerLink="settings" routerLinkActive="active" (click)="toggleSidebar()" class="sidebar-li-a">
+            <i class="ri-settings-3-fill"></i>
+            <span class="sidebar-text">Settings</span></a>
+        </li>
+      </ul>
+    </aside>
+  </div>
+  <div id="container">
+    <router-outlet></router-outlet>
+  </div>
+</div>
