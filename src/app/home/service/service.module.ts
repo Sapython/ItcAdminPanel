@@ -19,6 +19,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { DeleteWarnComponent } from './dialog/delete-warn/delete-warn.component';
 import { EditVehicleCategoryComponent } from './dialog/edit-vehicle-category/edit-vehicle-category.component';
 import { EditPackageComponent } from './dialog/edit-package/edit-package.component';
+// import { HomeComponent } from './model/home/home.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { EditPackageComponent } from './dialog/edit-package/edit-package.compone
     DeleteWarnComponent,
     EditVehicleCategoryComponent,
     EditPackageComponent,
+    // HomeComponent,
 
   ],
   imports: [

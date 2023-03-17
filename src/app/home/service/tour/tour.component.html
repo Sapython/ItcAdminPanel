@@ -6,7 +6,7 @@
       <input type="text" placeholder="Search Area To Add" />
     </div>
     <div class="addbtn">
-      <button>
+      <button routerLink="addnewtour">
         <i class="fa-solid fa-plus"></i><p>   Add New Tour </p>
        </button>
     </div>
@@ -231,23 +231,15 @@
   <div class="vehicle-header">
     <div class="heading"><p>Commission</p></div>
   </div>
-  <div class="vehicle-parent">
-        <div class="suv-div"><button class="btn"><i class="fa-solid fa-plus"></i>Add New</button></div>
-        <div class="suv-div">
-          <button>Min Price</button>
-          <button>Max Price</button>
-          <button>Enter %</button>
-          <button>Percentage</button>
-          <!-- <div class="trash"><mat-slide-toggle [(ngModel)]="isChecked"></mat-slide-toggle></div>
-          <div class="trash"><i class="fa-solid fa-trash-can"></i></div> -->
-        </div>
-        <div class="suv-div">
+  <div class="vehicle-parent" >
+        <div class="suv-div"><button (click)="addNewCommission()" class="btn"><i class="fa-solid fa-plus"></i>Add New</button></div>
+        <div class="suv-div"  *ngFor="let obj of list">
           <button>Min Price</button>
           <button>Max Price</button>
           <button>Enter %</button>
           <button>Percentage</button>
           <div class="trash"><mat-slide-toggle [(ngModel)]="isChecked"></mat-slide-toggle></div>
-          <div class="trash"><i class="fa-solid fa-trash-can"></i></div>
+          <div (click)="onDelete()" class="trash"><i class="fa-solid fa-trash-can"></i></div>
         </div>
         <div class="suv-div">
           <button>Min Price</button>
@@ -255,7 +247,8 @@
           <button>Enter Amount</button>
           <button>Fix</button>
           <div class="trash"><mat-slide-toggle [(ngModel)]="isChecked"></mat-slide-toggle></div>
-          <div class="trash"><i class="fa-solid fa-trash-can"></i></div>
+          <div (click)="onDelete()" class="trash"><i class="fa-solid fa-trash-can"></i></div>
         </div>
-  </div>
+
+      </div>
 </div>
