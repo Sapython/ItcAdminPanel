@@ -1,0 +1,224 @@
+.header{
+  // width: 100%;
+  // float: right;
+  display: flex;
+  justify-content: space-between;
+  margin: 30px;
+  margin-bottom: 0;
+  div{
+    .arrow-icon{
+      font-size: 35px;
+      color: #404b69;
+    }
+float: right;
+    button{
+      color: #404b69;
+      padding: 8px;
+
+      i{
+        padding: 0 5px;
+        font-size: 15px;
+      align-items: center;
+      }
+      margin: 0 4px;
+    }
+
+    .solid-darkblue-button{
+      background-color: #404b69;
+      border: none;
+      border-radius: 4px;
+      font-weight: 500;
+      color: #ffffff;
+      margin: 0 5px;
+    }
+  }
+}
+.dialog-container{
+  display: block;
+
+  padding: 30px;
+  padding-top: 0;
+  .customer-div{
+    padding: 5px 0;
+    h3{
+      margin: 0;
+      font-weight: 500;
+    }
+    h4{
+      color: #484848;
+    }
+    .customer{
+      display: flex;
+      justify-content: space-between;
+      height: 60px;
+      .cst-dtl-img{
+        display: flex;
+      }
+      .cst-dtl{
+        // background-color: red;
+        padding: 0 10px;
+        img{
+          height: 50px;
+          width: 50px;
+          border-radius: 40px;
+          margin-right: 10px;
+        }
+        .cst-dtl-child{
+          display: flex;
+        }
+        .cst-dtl-icon-child{
+          display: flex;
+          justify-content: space-between;
+        }
+        h4{
+          font-size: 15px;
+          margin: 0;
+          padding: 2px;
+          font-weight: 400;
+          color: #444444;
+        }
+      }
+      .icon{
+        // width: 100px;
+      //  text-align: right;
+
+        i{
+          padding: 0 5px;
+          font-size: 15px;
+          color: #404b69;
+          // float: right;
+        }
+      }
+      // .customer-img{
+      //   width: 60px;
+
+      //   display: flex;
+      //   align-items: center;
+      //     img{
+      //       height: 50px;
+      //       width: 50px;
+      //       border-radius: 40px;
+      //     }
+      //   }
+      }
+  }
+  .grid-table {
+    .table-header{
+      h2{
+        margin: 0;
+      }
+    }
+    table{
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+
+      thead{
+        tr{
+
+            border: 1px solid #d7d7d7;
+            border-radius: 15px;
+
+          th{
+            font-size: 16px;
+            font-weight: 400;
+            padding: 8px;
+            color: #444444;
+          }
+        }
+      }
+      tbody{
+
+        tr{
+            text-align: center;
+            background: #FFFFFF;
+            border: 1px solid #d7d7d7;
+
+          td{
+            font-size: 16px;
+            font-weight: 400;
+            margin: 0;
+            text-align: center;
+            padding: 8px;
+            color: #000000;
+            img{
+              width: 30px;
+              height: 30px;
+              border-radius: 100px;
+            }
+            i{
+              margin:2px;
+              font-size: 13px;
+              color: #404b69;
+            }
+
+            .info-btn{
+              border: none;
+              background-color: white;
+              i{
+                color:#ff9114;
+                margin: 0;
+                padding: 0;
+                font-size: 18px;
+              }
+            }
+            .delete-btn{
+              border: none;
+              background-color: white;
+              i{
+                color:#ff3b14;
+                margin: 0;
+                padding: 0;
+                font-size: 18px;
+              }
+            }
+          }
+        }
+      }
+    }
+    }
+    .red-button{
+        background-color: #faecec;
+        border: 1px solid #cf5757;
+        border-radius: 4px;
+        color: #c94141;
+        padding: 4px 6px;
+    }
+
+    .orange-button{
+      background-color: #ffefd8;
+      border: 1px solid #f07e41;
+      border-radius: 4px;
+      color: #f07e41;
+      padding: 4px 7px;
+    }
+    .blue-button{
+      background-color: #e6ebf5;
+      border: 1px solid #01369a;
+      border-radius: 4px;
+      color: #01369a;
+      padding: 4px 6px;
+    }
+    .skyblue-button{
+      background-color: #edf3fc;
+      border: 1px solid #4b87dd;
+      border-radius: 4px;
+      color: #4b87dd;
+      padding: 4px 6px;
+    }
+    .darkblue-button{
+      background-color: #ecedf0;
+      border: 1px solid #404b69;
+      border-radius: 4px;
+      color: #404b69;
+      padding: 4px 6px;
+    }
+    .green-button{
+      background-color: #eaffe2;
+      border: 1px solid #73a95f;
+      border-radius: 4px;
+      color: #73a95f;
+      padding: 4px 7px;
+    }
+
+}

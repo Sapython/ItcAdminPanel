@@ -26,7 +26,7 @@ import { EMPTY, Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { Router } from '@angular/router';
-import { UserData } from '../../structures/user.structure';
+import { UserData } from '../../src/structures/user.structure';
 import { AlertsAndNotificationsService } from '../alerts-and-notification/alerts-and-notifications.service';
 import { UserDataService } from '../user/user-data.service';
 import { DataProvider } from 'src/app/providers/data.provider';

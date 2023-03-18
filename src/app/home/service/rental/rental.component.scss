@@ -1,0 +1,78 @@
+.vehicle-container{
+  padding: 40px 0;
+  .vehicle-header{
+    display: flex;
+    justify-content: space-between;
+    .heading p{
+      font-size: medium;
+      font-weight: 500;
+      color: #444444;
+    }
+    button{
+      background-color: #fff;
+      color: #404b69;
+      border: 1px solid #404b69;
+      border-radius: 4px;
+    }
+    .btn i{
+      padding: 0 5px;
+    }
+  }
+  .vehicle-parent{
+    overflow: hidden;
+    display: flex;
+    min-height: 120px;
+    // border: 1px solid green;
+    margin-top: 15px;
+    // justify-content:baseli;
+    .vehicle-card{
+      width: 180px;
+      box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(134, 134, 134, 0.19);
+
+      height: 50px;
+      // background-color: red;
+      padding: 6px;
+      margin: 0 35px 0 0;
+      display: flex;
+      border-radius: 8px;
+      justify-content: space-around;
+      border: 1px solid rgb(209, 209, 209);
+      .card-km{
+        h4{
+          font-weight: 500;
+          color: #404b69;
+        }
+      }
+      .vehicle-cont{
+        padding: 2px;
+        display: flex;
+        align-items: center;
+        .vc-three{
+          display: flex;
+          justify-content:end;
+          margin: 0;
+          // padding: 4px 6px;
+            i{
+              font-size: medium;
+            }
+            .edit {
+              margin-right: 5px;
+              i{
+
+                color: #404b69;
+              }
+            }
+            .trash {
+              margin-left: 5px;
+              i{
+                color:#ff3b30 ;
+              }
+            }
+
+        }
+      }
+
+
+    }
+  }
+}

@@ -1,79 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
-// Custom Theming for Angular Material
-// For more information: https://material.angular.io/guide/theming
-@use "@angular/material" as mat;
-// Plus imports for other components in your app.
+.example::-webkit-scrollbar {
+  display: none;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
-// TODO(v15): As of v15 mat.legacy-core no longer includes default typography styles.
-//  The following line adds:
-//    1. Default typography styles for all components
-//    2. Styles for typography hierarchy classes (e.g. .mat-headline-1)
-//  If you specify typography styles for the components you use elsewhere, you should delete this line.
-//  If you don't need the default component typographies but still want the hierarchy styles,
-//  you can delete this line and instead use:
-//    `@include mat.legacy-typography-hierarchy(mat.define-legacy-typography-config());`
-@include mat.all-legacy-component-typographies();
-@include mat.legacy-core();
-
-$urbanlaundry-palette: (
-  50: #edffe6,
-  100: #d6fec7,
-  200: #c2e8b3,
-  300: #b2dca3,
-  400: #90c57d,
-  500: #84bc6f,
-  600: #69ab51,
-  700: #579540,
-  800: #478330,
-  900: #366923,
-  contrast: (
-    50: rgba(black, 0.87),
-    100: rgba(black, 0.87),
-    200: rgba(black, 0.87),
-    300: rgb(36, 36, 36),
-    400: rgb(36, 36, 36),
-    500: rgb(36, 36, 36),
-    600: rgb(255, 255, 255),
-    700: rgb(255, 255, 255),
-    800: rgb(255, 255, 255),
-    900: rgb(255, 255, 255),
-  ),
-);
-$simple-pallette:(
-  50:#3e94e0,
-  100:#3e94e0,
-  700: #3e94e0,
-  contrast: (
-    50:white,
-    100:white,
-    700:white,
-  )
-);
-$my-primary: mat.define-palette($urbanlaundry-palette, 700);
-$my-accent: mat.define-palette($simple-pallette,50);
-
-$my-theme: mat.define-light-theme(
-  (
-    color: (
-      primary: $my-primary,
-      accent: $my-accent,
-      foreground: $urbanlaundry-palette,
-    ),
-  )
-);
-@include mat.core-theme($my-theme);
-@include mat.button-theme($my-theme);
-@include mat.tabs-theme($my-theme);
-@include mat.input-theme($my-theme);
-@include mat.form-field-theme($my-theme);
-@include mat.progress-spinner-theme($my-theme);
-@include mat.checkbox-color($my-theme);
-@include mat.datepicker-theme($my-theme);
-@include mat.datepicker-color($my-theme);
-@include mat.all-component-themes($my-theme);
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.mat-dialog-container {
+  border-radius: 20px !important;
+}
