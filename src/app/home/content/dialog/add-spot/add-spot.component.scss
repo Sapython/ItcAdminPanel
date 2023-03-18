@@ -1,0 +1,143 @@
+.dialog-container {
+    padding: 15px 30px;
+    width: 600px;
+  
+    .heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+  
+      h2 {
+        margin: 0;
+      }
+  
+      i {
+        display: flex;
+        align-items: center;
+        font-size: 30px;
+      }
+    }
+  .image-category{
+    border: 1px solid #57617b;
+    border-radius: 8px;
+    border-style: dashed;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    height: 80px;
+    h3{
+      // padding: 40px;
+      margin: auto;
+      color: #57617b;
+    }
+  }
+  .input{
+    border: 1px solid #57617b;
+    border-radius: 6px;
+    padding: 8px 0px;
+    margin: 15px 0;
+    h3{
+      margin: 0;
+      color: #57617b;
+  
+    }
+  }
+  .Schedule-post{
+    border: 1px solid #57617b;
+    border-radius: 6px;
+    padding: 8px 15px;
+    margin: 15px 0;
+    width: 50%;
+  
+    h3{
+      margin: 0;
+      color: #57617b;
+      display: flex;
+      align-items: center;
+      i{
+        margin: 0;
+       font-size: 18px;
+       padding-right: 5px;
+      }
+    }
+  }
+  .discription{
+    border: 1px solid #57617b;
+    border-radius: 6px;
+    padding: 8px 15px;
+    margin: 15px 0;
+    height: 100px;
+    h3{
+      margin: 0;
+      color: #57617b;
+  
+    }
+  }
+  .btn-divs{
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0;
+  
+    h3{
+      margin: 0;
+      color: #57617b;
+  
+    }
+    div{
+      display: flex;
+      // width: 33%;
+      .numbers{
+        border: 1px solid #57617b;
+        border-radius: 4px;
+        padding: 0 10px;
+        width: 60px;
+        margin-left: 15px;
+      }
+    }
+  }
+  .price{
+    display: flex;
+    justify-content: space-between;
+  .price-btn{
+    border: 1px solid #57617b;
+    border-radius: 4px;
+    padding: 4px  0 4px 15px;
+    width: 46%;
+    // margin-left: 15px;
+    h3{
+      margin: 0;
+      color: #57617b;
+  
+    }
+  }
+  }
+  }
+  .btns{
+    display: flex;
+    text-align: center;
+    align-items: center;
+    width: fit-content;
+    margin: auto;
+    margin-top: 50px;
+    .outline-btn-red{
+      border: 1px solid #ff6969;
+      background-color: #fff;
+      color: #ff6969;
+      border-radius: 4px;
+      // font-weight: 600;
+      padding:8px 25px;
+      margin: 0 5px;
+    }
+    .solid-darkblue-button{
+      background-color: #404b69;
+      border: none;
+      border-radius: 4px;
+      font-weight: 300;
+      color: #ffffff;
+      padding:8px 25px;
+      margin: 0 5px;
+    }
+  }
+  
+  

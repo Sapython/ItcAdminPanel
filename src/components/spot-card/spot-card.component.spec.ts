@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SpotComponent } from './spot.component';
+import { SpotCardComponent } from './spot-card.component';
 
-describe('SpotComponent', () => {
-  let component: SpotComponent;
-  let fixture: ComponentFixture<SpotComponent>;
+describe('SpotCardComponent', () => {
+  let component: SpotCardComponent;
+  let fixture: ComponentFixture<SpotCardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SpotComponent ]
+      declarations: [ SpotCardComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(SpotComponent);
+    fixture = TestBed.createComponent(SpotCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

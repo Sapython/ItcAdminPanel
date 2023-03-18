@@ -9,13 +9,16 @@ import { ContentRoutingModule } from './content-routing.module';
 import { ContentComponent } from './content.component';
 import { BannersComponent } from './banners/banners.component';
 import { BlogComponent } from './blog/blog.component';
-import { SpotComponent } from './spot/spot.component';
+
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { AddblogComponent } from './dialog/addblog/addblog.component';
 import { EditblogComponent } from './dialog/editblog/editblog.component';
 import { DeleteBannerComponent } from './dialog/delete-blog/delete-banner.component';
 import { AddBannerComponent } from './dialog/add-banner/add-banner.component';
 import { EditBannerComponent } from './dialog/edit-banner/edit-banner.component';
+import { SpotsComponent } from './spots/spots.component';
+import { ComponentModule } from 'src/components/component.module';
+import { AddSpotComponent } from './dialog/add-spot/add-spot.component';
 
 
 @NgModule({
@@ -23,12 +26,13 @@ import { EditBannerComponent } from './dialog/edit-banner/edit-banner.component'
     ContentComponent,
     BannersComponent,
     BlogComponent,
-    SpotComponent,
     AddblogComponent,
     EditblogComponent,
     DeleteBannerComponent,
     AddBannerComponent,
-    EditBannerComponent
+    EditBannerComponent,
+    SpotsComponent,
+    AddSpotComponent
   ],
   imports: [
     CommonModule,
@@ -40,7 +44,9 @@ import { EditBannerComponent } from './dialog/edit-banner/edit-banner.component'
     MatPaginatorModule,
     FormsModule,
     ReactiveFormsModule,
-    MatDialogModule
+    MatDialogModule,
+    ComponentModule
+    
   ]
 })
 export class ContentModule { }
