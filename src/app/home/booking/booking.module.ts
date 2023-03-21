@@ -1,3 +1,4 @@
+import { MatMenuModule } from '@angular/material/menu';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -23,6 +24,7 @@ import { BookingDetailsOfOutstationComponent } from './dialogs/booking-details-o
 import { OutstaionCompleteInfoComponent } from './dialogs/outstaion-complete-info/outstaion-complete-info.component';
 import { TourCompleteInfoComponent } from './dialogs/tour-complete-info/tour-complete-info.component';
 import { TourwiseBookingInfoComponent } from './dialogs/tourwise-booking-info/tourwise-booking-info.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 
 @NgModule({
@@ -51,10 +53,12 @@ import { TourwiseBookingInfoComponent } from './dialogs/tourwise-booking-info/to
     MatExpansionModule,
     MatTabsModule,
     MatButtonModule,
-    MatDialogModule
+    MatDialogModule,
+    MatPaginatorModule,
+    MatMenuModule
   ],
   exports:[
-    
+
   ]
 })
 export class BookingModule { }

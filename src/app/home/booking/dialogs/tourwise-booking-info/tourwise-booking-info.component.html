@@ -113,8 +113,8 @@
     </div>
   </div>
   <div class="btns">
-    <button class="solid-darkblue-button">Mark as Completed</button>
-    <button class="outline-btn-blue">Reassign</button>
-    <button class="outline-btn-red">Cancel</button>
+    <button mat-dialog-close class="solid-darkblue-button">Mark as Completed</button>
+    <button mat-dialog-close (click)="onReassign()" class="outline-btn-blue">Reassign</button>
+    <button mat-dialog-close (click)="onCancel()" class="outline-btn-red">Cancel</button>
   </div>
 </div>

@@ -1,39 +1,237 @@
-.grid-container {
-  display: grid;
-  grid-template-columns: auto;
-  // background-color: #2196F3;
-  padding: 10px;
+.scroll-cont{
+  width: 1200px;
+  overflow-x: scroll;
+  overflow: hidden;
 }
+.main{
+  overflow-x: scroll;
 
-.grid-item {
-  // background-color: rgba(255, 255, 255, 0.8);
-  // border: 1px solid rgba(212, 212, 212, 0.8);
-  padding: 0 0 20px 0;
-  font-size: 30px;
-  display: grid;
-  grid-template-columns: 32% 32% 32%;
-  text-align: center;
-  border-radius: 12px 12px 0 0;
-  justify-content: space-between;
+  .grid-container {
+    display: grid;
+    grid-template-columns: auto;
+    // background-color: #2196F3;
+    padding: 10px;
+  }
 
-  .card {
-    overflow: hidden;
-    padding: 0;
-    height: 500px;
-    display: block;
-    justify-content: center;
+  .grid-item {
+    // background-color: rgba(255, 255, 255, 0.8);
+    // border: 1px solid rgba(212, 212, 212, 0.8);
+    padding: 0 0 20px 0;
+    font-size: 30px;
+    display: grid;
+    grid-template-columns: 32% 32% 32%;
+    text-align: center;
+    border-radius: 12px 12px 0 0;
+    justify-content: space-between;
+
+    .card {
+      overflow: hidden;
+      padding: 0;
+      height: 500px;
+      display: block;
+      justify-content: center;
+      border: 1px solid rgba(212, 212, 212, 0.8);
+
+      .card-detail-child {
+        height: 40px;
+        border: 1px solid #fbb0fd;
+        padding: 10px;
+        margin: 10px;
+        font-size: 30px;
+        text-align: center;
+        display: flex;
+        justify-content: space-between;
+        border-radius: 8px;
+        // background-color: #fedeff;
+        .content {
+          padding: 0 18px;
+          display: none;
+          overflow: hidden;
+          background-color: #f1f1f1;
+        }
+        .card-detail-sec {
+          // background: green;
+          display: flex;
+          justify-content: left;
+          height: 100%;
+          .collapsible {
+            background-color: #777;
+            color: white;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+          }
+
+          .active, .collapsible:hover {
+            background-color: #555;
+          }
+
+
+          h4 {
+            margin: 0;
+            padding: 0;
+          }
+
+          .card-detail-img {
+            // background: rgb(230, 212, 212);
+            border: 1px solid #fdc7ff;
+            width: 40px;
+            border-radius: 55px;
+          }
+
+          .card-detail-name {
+            // background-color: grey;
+            text-align: left;
+            padding-left: 8px;
+
+            i {
+              color: #404b69;
+              font-size: 10px;
+            }
+
+            p {
+              margin: 0;
+              font-size: small;
+              font-weight: 500;
+              padding: 0;
+              color: #444444;
+            }
+
+            h6 {
+              margin: 0;
+              padding: 0;
+              font-size: 12px;
+            }
+          }
+        }
+
+        .buttons {
+          height: 60%;
+          display: flex;
+          padding: 0;
+          justify-content: space-between;
+
+          div {
+            margin: 0 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            button {
+              font-size: small;
+              // margin: 0;
+              padding: 2px 8px;
+              border-radius: 8px;
+              color: #4b87dd;
+              border: 1px solid #4b87dd;
+              // background-color: #fedeff;
+            }
+
+            p {
+              font-size: small;
+              margin: 0 4px;
+              padding: 0;
+              color: #3cac11;
+            }
+
+            i {
+              font-size: small;
+              color: #36383f;
+            }
+          }
+        }
+      }
+
+      #allbooking {
+        background-color: #507bcc;
+      }
+
+      #assigned {
+        background-color: #f8b445;
+      }
+
+      #completed {
+        background-color: #4bc456;
+      }
+
+      #cancelled {
+        background-color: red;
+      }
+
+      .card-header {
+        width: 100%;
+        height: 35px;
+        margin: 0;
+        padding: 0;
+        border-radius: 12px 12px 0 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        h4 {
+          text-align: center;
+          color: white;
+          margin: 0;
+          padding: 0;
+        }
+      }
+    }
+  }
+
+  .grid-cancel{
+    border-radius: 12px 12px 0 0;
     border: 1px solid rgba(212, 212, 212, 0.8);
+    margin-bottom: 20px;
+  }
+  .card-cancel {
+    width: 100%;
+    height: 35px;
+    margin: 0;
+    padding: 0;
+    border-radius: 12px 12px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color:#f46152;
+    h4 {
+      text-align: center;
+      color: white;
+      margin: 0;
+      padding: 0;
+    }
+  }
+  .grid-container-cancel {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    // background-color: #2196F3;
+    padding: 10px;
+  }
+  .grid-item-cancel {
+    // background-color: #ffcad1;
+    border: 1px solid rgba(128, 68, 68, 0.8);
+    // padding: 10px;
+    margin: 5px 10px;
+    font-size: 30px;
+    text-align: center;
+    padding: 12px;
+    color: black;
+    border-radius: 10px;
 
     .card-detail-child {
       height: 40px;
-      border: 1px solid #fbb0fd;
+      // background-color: rgba(255, 255, 255, 0.8);
+      // border: 1px solid rgba(0, 0, 0, 0.8);
       padding: 10px;
-      margin: 10px;
+      // margin: 10px 10px 0 10px;
       font-size: 30px;
       text-align: center;
       display: flex;
       justify-content: space-between;
-      border-radius: 8px;
+      // border-radius: 8px;
       // background-color: #fedeff;
 
       .card-detail-sec {
@@ -48,8 +246,8 @@
         }
 
         .card-detail-img {
-          // background: rgb(230, 212, 212);
-          border: 1px solid #fdc7ff;
+          // background: rgb(150, 162, 187);
+          border: 1px solid rgb(247, 174, 174);
           width: 40px;
           border-radius: 55px;
         }
@@ -66,10 +264,10 @@
 
           p {
             margin: 0;
-            font-size: small;
+            font-size: 14px;
             font-weight: 500;
             padding: 0;
-            color: #444444;
+            color: #000000;
           }
 
           h6 {
@@ -96,10 +294,10 @@
             font-size: small;
             // margin: 0;
             padding: 2px 8px;
-            border-radius: 8px;
-            color: #4b87dd;
-            border: 1px solid #4b87dd;
-            // background-color: #fedeff;
+            border-radius: 4px;
+            color: #f46152;
+            border: 1px solid #f46152;
+            background-color: #ffffff;
           }
 
           p {
@@ -116,197 +314,30 @@
         }
       }
     }
-
-    #allbooking {
-      background-color: #507bcc;
-    }
-
-    #assigned {
-      background-color: #f8b445;
-    }
-
-    #completed {
-      background-color: #4bc456;
-    }
-
-    #cancelled {
-      background-color: red;
-    }
-
-    .card-header {
-      width: 100%;
-      height: 35px;
+    .location{
+      // background-color: rgb(218, 218, 218);
+      text-align: left;
+      padding: 0 10px;
       margin: 0;
-      padding: 0;
-      border-radius: 12px 12px 0 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      h4 {
-        text-align: center;
-        color: white;
+      p{
+        font-size: 12px;
+        font-weight: 400;
         margin: 0;
         padding: 0;
+        color: #444444;
       }
     }
-  }
-}
-
-.grid-cancel{
-  border-radius: 12px 12px 0 0;
-  border: 1px solid rgba(212, 212, 212, 0.8);
-  margin-bottom: 20px;
-}
-.card-cancel {
-  width: 100%;
-  height: 35px;
-  margin: 0;
-  padding: 0;
-  border-radius: 12px 12px 0 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color:#f46152;
-  h4 {
-    text-align: center;
-    color: white;
-    margin: 0;
-    padding: 0;
-  }
-}
-.grid-container-cancel {
-  display: grid;
-  grid-template-columns: auto auto auto;
-  // background-color: #2196F3;
-  padding: 10px;
-}
-.grid-item-cancel {
-  // background-color: #ffcad1;
-  border: 1px solid rgba(128, 68, 68, 0.8);
-  // padding: 10px;
-  margin: 5px 10px;
-  font-size: 30px;
-  text-align: center;
-  padding: 12px;
-  color: black;
-  border-radius: 10px;
-
-  .card-detail-child {
-    height: 40px;
-    // background-color: rgba(255, 255, 255, 0.8);
-    // border: 1px solid rgba(0, 0, 0, 0.8);
-    padding: 10px;
-    // margin: 10px 10px 0 10px;
-    font-size: 30px;
-    text-align: center;
-    display: flex;
-    justify-content: space-between;
-    // border-radius: 8px;
-    // background-color: #fedeff;
-
-    .card-detail-sec {
-      // background: green;
+    .driver-guide{
       display: flex;
-      justify-content: left;
-      height: 100%;
-
-      h4 {
-        margin: 0;
-        padding: 0;
-      }
-
-      .card-detail-img {
-        // background: rgb(150, 162, 187);
-        border: 1px solid rgb(247, 174, 174);
-        width: 40px;
-        border-radius: 55px;
-      }
-
-      .card-detail-name {
-        // background-color: grey;
-        text-align: left;
-        padding-left: 8px;
-
-        i {
-          color: #404b69;
-          font-size: 10px;
-        }
-
-        p {
-          margin: 0;
-          font-size: 14px;
-          font-weight: 500;
-          padding: 0;
-          color: #000000;
-        }
-
-        h6 {
-          margin: 0;
-          padding: 0;
-          font-size: 12px;
-        }
-      }
-    }
-
-    .buttons {
-      height: 60%;
-      display: flex;
-      padding: 0;
       justify-content: space-between;
-
-      div {
-        margin: 0 4px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        button {
-          font-size: small;
-          // margin: 0;
-          padding: 2px 8px;
-          border-radius: 4px;
-          color: #f46152;
-          border: 1px solid #f46152;
-          background-color: #ffffff;
-        }
-
-        p {
-          font-size: small;
-          margin: 0 4px;
-          padding: 0;
-          color: #3cac11;
-        }
-
-        i {
-          font-size: small;
-          color: #36383f;
-        }
+      padding: 0 10px;
+      p{
+        font-size: small;
+        margin: 0;
+        padding: 0;
+        color: #444444;
       }
     }
   }
-  .location{
-    // background-color: rgb(218, 218, 218);
-    text-align: left;
-    padding: 0 10px;
-    margin: 0;
-    p{
-      font-size: 12px;
-      font-weight: 400;
-      margin: 0;
-      padding: 0;
-      color: #444444;
-    }
-  }
-  .driver-guide{
-    display: flex;
-    justify-content: space-between;
-    padding: 0 10px;
-    p{
-      font-size: small;
-      margin: 0;
-      padding: 0;
-      color: #444444;
-    }
-  }
+
 }

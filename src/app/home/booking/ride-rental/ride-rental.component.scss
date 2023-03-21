@@ -1,8 +1,15 @@
+
+.scroll-cont{
+  width: 1200px;
+  overflow-x: scroll;
+  overflow: hidden;
+}
 .grid-container {
   display: grid;
   grid-template-columns: auto auto;
   // background-color: #2196F3;
   padding: 10px;
+
 }
 .grid-item {
   background-color: rgba(255, 255, 255, 0.8);
@@ -10,6 +17,7 @@
   padding: 5px;
   font-size: 30px;
   text-align: center;
+
   .tablename{
     display: flex;
     justify-content: left;
@@ -110,7 +118,13 @@
         margin: 0;
         text-align: center;
         padding: 6px 0;
+        .selection{
+          padding:5px 8px;
+          border: 1px solid #404b69;
+          border-radius: 4px;
+          color:#404b69 ;
 
+        }
         i{
           margin:2px;
           font-size: 11px;

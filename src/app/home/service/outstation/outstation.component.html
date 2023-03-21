@@ -19,7 +19,7 @@
         </div>
         <div class="btns">
           <div id="edit"><i class="fa-sharp fa-solid fa-pen-to-square"></i></div>
-          <div><mat-slide-toggle [(ngModel)]="isChecked"></mat-slide-toggle></div>
+          <div><mat-slide-toggle   ></mat-slide-toggle></div>
           <div id="trash"><i class="fa-solid fa-trash-can"></i></div>
         </div>
       </div>
@@ -30,7 +30,7 @@
         </div>
         <div class="btns">
           <div id="edit"><i class="fa-sharp fa-solid fa-pen-to-square"></i></div>
-          <div><mat-slide-toggle [(ngModel)]="isChecked"></mat-slide-toggle></div>
+          <div><mat-slide-toggle   ></mat-slide-toggle></div>
           <div id="trash"><i class="fa-solid fa-trash-can"></i></div>
         </div>
       </div>
@@ -41,7 +41,7 @@
         </div>
         <div class="btns">
           <div id="edit"><i class="fa-sharp fa-solid fa-pen-to-square"></i></div>
-          <div><mat-slide-toggle [(ngModel)]="isChecked"></mat-slide-toggle></div>
+          <div><mat-slide-toggle   ></mat-slide-toggle></div>
           <div id="trash"><i class="fa-solid fa-trash-can"></i></div>
         </div>
       </div>
@@ -52,7 +52,7 @@
         </div>
         <div class="btns">
           <div id="edit"><i class="fa-sharp fa-solid fa-pen-to-square"></i></div>
-          <div><mat-slide-toggle [(ngModel)]="isChecked"></mat-slide-toggle></div>
+          <div><mat-slide-toggle   ></mat-slide-toggle></div>
           <div id="trash"><i class="fa-solid fa-trash-can"></i></div>
         </div>
       </div>
@@ -63,7 +63,7 @@
         </div>
         <div class="btns">
           <div id="edit"><i class="fa-sharp fa-solid fa-pen-to-square"></i></div>
-          <div><mat-slide-toggle [(ngModel)]="isChecked"></mat-slide-toggle></div>
+          <div><mat-slide-toggle   ></mat-slide-toggle></div>
           <div id="trash"><i class="fa-solid fa-trash-can"></i></div>
         </div>
       </div>
@@ -74,7 +74,7 @@
         </div>
         <div class="btns">
           <div id="edit"><i class="fa-sharp fa-solid fa-pen-to-square"></i></div>
-          <div><mat-slide-toggle [(ngModel)]="isChecked"></mat-slide-toggle></div>
+          <div><mat-slide-toggle   ></mat-slide-toggle></div>
           <div id="trash"><i class="fa-solid fa-trash-can"></i></div>
         </div>
       </div>
@@ -97,7 +97,7 @@
           <div class="vc-three">
 
               <div (click)="onEdit()" class="edit"><i class="fa-sharp fa-solid fa-pen-to-square"></i></div>
-              <div><mat-slide-toggle [(ngModel)]="isChecked"></mat-slide-toggle></div>
+              <div><mat-slide-toggle   ></mat-slide-toggle></div>
               <div (click)="onDelete()" class="trash"><i class="fa-solid fa-trash-can"></i></div>
 
           </div>
@@ -113,7 +113,7 @@
           <div class="vc-three">
 
               <div (click)="onEdit()" class="edit"><i class="fa-sharp fa-solid fa-pen-to-square"></i></div>
-              <div><mat-slide-toggle [(ngModel)]="isChecked"></mat-slide-toggle></div>
+              <div><mat-slide-toggle   ></mat-slide-toggle></div>
               <div (click)="onDelete()" class="trash"><i class="fa-solid fa-trash-can"></i></div>
 
           </div>
@@ -129,7 +129,7 @@
           <div class="vc-three">
 
               <div (click)="onEdit()" class="edit"><i class="fa-sharp fa-solid fa-pen-to-square"></i></div>
-              <div><mat-slide-toggle [(ngModel)]="isChecked"></mat-slide-toggle></div>
+              <div><mat-slide-toggle   ></mat-slide-toggle></div>
               <div (click)="onDelete()" class="trash"><i class="fa-solid fa-trash-can"></i></div>
 
           </div>
@@ -145,19 +145,19 @@
   <div class="vehicle-parent">
     <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
       <mat-tab label="SUV">
-        <div class="suv-div"><button class="btn"><i class="fa-solid fa-plus"></i>Add Package</button></div>
+        <div class="suv-div"><button (click)="addPackage()" class="btn"><i class="fa-solid fa-plus"></i>Add Package</button></div>
         <div class="suv-div">
           <button>Min hr.</button>
           <button>Max hr.</button>
           <button>₹ /hr.</button>
-          <div class="trash"><mat-slide-toggle [(ngModel)]="isChecked"></mat-slide-toggle></div>
+          <div class="trash"><mat-slide-toggle   ></mat-slide-toggle></div>
           <div (click)="onDelete()" class="trash"><i class="fa-solid fa-trash-can"></i></div>
         </div>
         <div class="suv-div">
           <button>Min hr.</button>
           <button>Max hr.</button>
           <button>₹ /hr.</button>
-          <div class="trash"><mat-slide-toggle [(ngModel)]="isChecked"></mat-slide-toggle></div>
+          <div class="trash"><mat-slide-toggle   ></mat-slide-toggle></div>
           <div (click)="onDelete()" class="trash"><i class="fa-solid fa-trash-can"></i></div>
         </div>
       </mat-tab>
@@ -167,14 +167,14 @@
           <button>Min hr.</button>
           <button>Max hr.</button>
           <button>₹ /hr.</button>
-          <div class="trash"><mat-slide-toggle [(ngModel)]="isChecked"></mat-slide-toggle></div>
+          <div class="trash"><mat-slide-toggle   ></mat-slide-toggle></div>
           <div (click)="onDelete()" class="trash"><i class="fa-solid fa-trash-can"></i></div>
         </div>
         <div class="suv-div">
           <button>Min hr.</button>
           <button>Max hr.</button>
           <button>₹ /hr.</button>
-          <div class="trash"><mat-slide-toggle [(ngModel)]="isChecked"></mat-slide-toggle></div>
+          <div class="trash"><mat-slide-toggle   ></mat-slide-toggle></div>
           <div (click)="onDelete()" class="trash"><i class="fa-solid fa-trash-can"></i></div>
         </div>
       </mat-tab>
@@ -184,14 +184,14 @@
           <button>Min hr.</button>
           <button>Max hr.</button>
           <button>₹ /hr.</button>
-          <div class="trash"><mat-slide-toggle [(ngModel)]="isChecked"></mat-slide-toggle></div>
+          <div class="trash"><mat-slide-toggle   ></mat-slide-toggle></div>
           <div (click)="onDelete()" class="trash"><i class="fa-solid fa-trash-can"></i></div>
         </div>
         <div class="suv-div">
           <button>Min hr.</button>
           <button>Max hr.</button>
           <button>₹ /hr.</button>
-          <div class="trash"><mat-slide-toggle [(ngModel)]="isChecked"></mat-slide-toggle></div>
+          <div class="trash"><mat-slide-toggle   ></mat-slide-toggle></div>
           <div (click)="onDelete()" class="trash"><i class="fa-solid fa-trash-can"></i></div>
         </div>
       </mat-tab>
@@ -201,14 +201,14 @@
           <button>Min hr.</button>
           <button>Max hr.</button>
           <button>₹ /hr.</button>
-          <div class="trash"><mat-slide-toggle [(ngModel)]="isChecked"></mat-slide-toggle></div>
+          <div class="trash"><mat-slide-toggle   ></mat-slide-toggle></div>
           <div (click)="onDelete()" class="trash"><i class="fa-solid fa-trash-can"></i></div>
         </div>
         <div class="suv-div">
           <button>Min hr.</button>
           <button>Max hr.</button>
           <button>₹ /hr.</button>
-          <div class="trash"><mat-slide-toggle [(ngModel)]="isChecked"></mat-slide-toggle></div>
+          <div class="trash"><mat-slide-toggle   ></mat-slide-toggle></div>
           <div (click)="onDelete()" class="trash"><i class="fa-solid fa-trash-can"></i></div>
         </div>
       </mat-tab>
@@ -222,13 +222,13 @@
   <div class="vehicle-parent">
     <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
       <mat-tab label="SUV">
-        <div class="suv-div"><button class="btn"><i class="fa-solid fa-plus"></i>Add Commission</button></div>
+        <div class="suv-div"><button (click)="addCommission()"  class="btn"><i class="fa-solid fa-plus"></i>Add Commission</button></div>
         <div class="suv-div">
           <button>Min hr.</button>
           <button>Max hr.</button>
           <button>₹ /hr.</button>
           <button>Percentage</button>
-          <div class="trash"><mat-slide-toggle [(ngModel)]="isChecked"></mat-slide-toggle></div>
+          <div class="trash"><mat-slide-toggle   ></mat-slide-toggle></div>
           <div (click)="onDelete()" class="trash"><i class="fa-solid fa-trash-can"></i></div>
         </div>
         <div class="suv-div">
@@ -236,7 +236,7 @@
           <button>Max hr.</button>
           <button>₹ /hr.</button>
           <button>Percentage</button>
-          <div class="trash"><mat-slide-toggle [(ngModel)]="isChecked"></mat-slide-toggle></div>
+          <div class="trash"><mat-slide-toggle   ></mat-slide-toggle></div>
           <div (click)="onDelete()" class="trash"><i class="fa-solid fa-trash-can"></i></div>
         </div>
         <div class="suv-div">
@@ -244,7 +244,7 @@
           <button>Max hr.</button>
           <button>₹ /hr.</button>
           <button>Percentage</button>
-          <div class="trash"><mat-slide-toggle [(ngModel)]="isChecked"></mat-slide-toggle></div>
+          <div class="trash"><mat-slide-toggle   ></mat-slide-toggle></div>
           <div (click)="onDelete()" class="trash"><i class="fa-solid fa-trash-can"></i></div>
         </div>
       </mat-tab>
@@ -255,7 +255,7 @@
           <button>Max hr.</button>
           <button>₹ /hr.</button>
           <button>Percentage</button>
-          <div class="trash"><mat-slide-toggle [(ngModel)]="isChecked"></mat-slide-toggle></div>
+          <div class="trash"><mat-slide-toggle   ></mat-slide-toggle></div>
           <div (click)="onDelete()" class="trash"><i class="fa-solid fa-trash-can"></i></div>
         </div>
         <div class="suv-div">
@@ -263,7 +263,7 @@
           <button>Max hr.</button>
           <button>₹ /hr.</button>
           <button>Percentage</button>
-          <div class="trash"><mat-slide-toggle [(ngModel)]="isChecked"></mat-slide-toggle></div>
+          <div class="trash"><mat-slide-toggle   ></mat-slide-toggle></div>
           <div (click)="onDelete()" class="trash"><i class="fa-solid fa-trash-can"></i></div>
         </div>
         <div class="suv-div">
@@ -271,7 +271,7 @@
           <button>Max hr.</button>
           <button>₹ /hr.</button>
           <button>Percentage</button>
-          <div class="trash"><mat-slide-toggle [(ngModel)]="isChecked"></mat-slide-toggle></div>
+          <div class="trash"><mat-slide-toggle   ></mat-slide-toggle></div>
           <div (click)="onDelete()" class="trash"><i class="fa-solid fa-trash-can"></i></div>
         </div>
       </mat-tab>
@@ -282,7 +282,7 @@
           <button>Max hr.</button>
           <button>₹ /hr.</button>
           <button>Percentage</button>
-          <div class="trash"><mat-slide-toggle [(ngModel)]="isChecked"></mat-slide-toggle></div>
+          <div class="trash"><mat-slide-toggle   ></mat-slide-toggle></div>
           <div (click)="onDelete()" class="trash"><i class="fa-solid fa-trash-can"></i></div>
         </div>
         <div class="suv-div">
@@ -290,7 +290,7 @@
           <button>Max hr.</button>
           <button>₹ /hr.</button>
           <button>Percentage</button>
-          <div class="trash"><mat-slide-toggle [(ngModel)]="isChecked"></mat-slide-toggle></div>
+          <div class="trash"><mat-slide-toggle   ></mat-slide-toggle></div>
           <div (click)="onDelete()" class="trash"><i class="fa-solid fa-trash-can"></i></div>
         </div>
         <div class="suv-div">
@@ -298,7 +298,7 @@
           <button>Max hr.</button>
           <button>₹ /hr.</button>
           <button>Percentage</button>
-          <div class="trash"><mat-slide-toggle [(ngModel)]="isChecked"></mat-slide-toggle></div>
+          <div class="trash"><mat-slide-toggle   ></mat-slide-toggle></div>
           <div (click)="onDelete()" class="trash"><i class="fa-solid fa-trash-can"></i></div>
         </div>
       </mat-tab>
@@ -309,7 +309,7 @@
           <button>Max hr.</button>
           <button>₹ /hr.</button>
           <button>Percentage</button>
-          <div class="trash"><mat-slide-toggle [(ngModel)]="isChecked"></mat-slide-toggle></div>
+          <div class="trash"><mat-slide-toggle   ></mat-slide-toggle></div>
           <div (click)="onDelete()" class="trash"><i class="fa-solid fa-trash-can"></i></div>
         </div>
         <div class="suv-div">
@@ -317,7 +317,7 @@
           <button>Max hr.</button>
           <button>₹ /hr.</button>
           <button>Percentage</button>
-          <div class="trash"><mat-slide-toggle [(ngModel)]="isChecked"></mat-slide-toggle></div>
+          <div class="trash"><mat-slide-toggle   ></mat-slide-toggle></div>
           <div (click)="onDelete()" class="trash"><i class="fa-solid fa-trash-can"></i></div>
         </div>
         <div class="suv-div">
@@ -325,7 +325,7 @@
           <button>Max hr.</button>
           <button>₹ /hr.</button>
           <button>Percentage</button>
-          <div class="trash"><mat-slide-toggle [(ngModel)]="isChecked"></mat-slide-toggle></div>
+          <div class="trash"><mat-slide-toggle   ></mat-slide-toggle></div>
           <div (click)="onDelete()" class="trash"><i class="fa-solid fa-trash-can"></i></div>
         </div>
       </mat-tab>

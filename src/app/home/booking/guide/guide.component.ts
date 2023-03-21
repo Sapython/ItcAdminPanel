@@ -4,6 +4,8 @@ import { BookingDetailsOfOutstationComponent } from './../dialogs/booking-detail
 import { MatConfirmDialogComponent } from './../dialogs/mat-confirm-dialog/mat-confirm-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Component } from '@angular/core';
+import { RecentbookingassignguideComponent } from '../../dashboard/dialogs/recentbookingassignguide/recentbookingassignguide.component';
+import { AssignDriverDialogComponent } from '../dialogs/assign-driver-dialog/assign-driver-dialog.component';
 
 @Component({
   selector: 'app-guide',
@@ -14,7 +16,11 @@ export class GuideComponent {
   panelOpenState:boolean=false;
   // Head
   constructor(private dialog:MatDialog){}
-  onDelete(){
+  onSucc(){
+    this.dialog.open(RecentbookingassignguideComponent)
+
+  }
+  onCancel(){
     this.dialog.open(MatConfirmDialogComponent)
   }
   onInfo(){
@@ -22,5 +28,14 @@ export class GuideComponent {
   }
   completedBookingInfo(){
     this.dialog.open(TourCompleteInfoComponent)
+  }
+  onComplete(){
+    this.dialog.open(OutstaionCompleteInfoComponent)
+  }
+  onReassignMenu(){
+      this.dialog.open(AssignDriverDialogComponent)
+  }
+  onInfoMenu(){
+    this.dialog.open(BookingDetailsOfOutstationComponent)
   }
 }

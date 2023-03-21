@@ -9,11 +9,8 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./allbooking.component.scss']
 })
 export class AllbookingComponent {
+
   constructor(private dialog:MatDialog){}
-  assignDriverandGuide(){
-this.dialog.open(AssignDriverDialogComponent)
-  }
-  assignGuide(){
-    this.dialog.open(AssignGuideDialogComponent)
-  }
+
+
 }

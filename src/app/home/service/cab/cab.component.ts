@@ -1,3 +1,5 @@
+import { AddnewcommissionComponent } from './../../dashboard/dialogs/addnewcommission/addnewcommission.component';
+import { AddnewpackageComponent } from './../../dashboard/dialogs/addnewpackage/addnewpackage.component';
 import { EditVehicleCategoryComponent } from './../dialog/edit-vehicle-category/edit-vehicle-category.component';
 import { DeleteWarnComponent } from './../dialog/delete-warn/delete-warn.component';
 import { AddVehicleCategoryComponent } from './../dialog/add-vehicle-category/add-vehicle-category.component';
@@ -20,5 +22,11 @@ export class CabComponent {
   }
   editVehicle(){
     this.dialog.open(EditVehicleCategoryComponent)
+  }
+  addPackage(){
+    this.dialog.open(AddnewpackageComponent)
+  }
+  addCommission(){
+    this.dialog.open(AddnewcommissionComponent)
   }
 }

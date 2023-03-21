@@ -1,5 +1,5 @@
 <!-- <app-ride-rental></app-ride-rental> -->
-<div class="grid-container">
+<div class="grid-container scroll-cont">
   <div class="grid-item">
     <div class="tablename">
       <P>Pending </P><button><p>40</p></button>
@@ -82,8 +82,13 @@
           <td><button class="green-button">₹1502</button></td>
           <td>Abhijeet</td>
           <td>
-            <button class="info-btn"><i class="fa-solid fa-circle-info"></i></button>
-          </td>
+            <button mat-button [matMenuTriggerFor]="menu"><i style="font-size: 30px;" class="ri-arrow-drop-down-line"></i></button>
+            <mat-menu #menu="matMenu">
+              <button mat-dialog-close (click)="onComplete()" mat-menu-item>Complete</button>
+              <button mat-dialog-close (click)="onCancel()" mat-menu-item>Cancel</button>
+              <button mat-dialog-close (click)="onReassignMenu()" mat-menu-item>Reassign</button>
+              <button mat-dialog-close (click)="onInfoMenu()" mat-menu-item>More Info</button>
+            </mat-menu>          </td>
         </tr>
         <tr>
           <td>#ITC25</td>
@@ -94,8 +99,13 @@
           <td><button class="green-button">₹1502</button></td>
           <td>Abhijeet</td>
           <td>
-            <button class="info-btn"><i class="fa-solid fa-circle-info"></i></button>
-          </td>
+            <button mat-button [matMenuTriggerFor]="menu"><i style="font-size: 30px;" class="ri-arrow-drop-down-line"></i></button>
+            <mat-menu #menu="matMenu">
+              <button mat-dialog-close (click)="onComplete()" mat-menu-item>Complete</button>
+              <button mat-dialog-close (click)="onCancel()" mat-menu-item>Cancel</button>
+              <button mat-dialog-close (click)="onReassignMenu()" mat-menu-item>Reassign</button>
+              <button mat-dialog-close (click)="onInfoMenu()" mat-menu-item>More Info</button>
+            </mat-menu>          </td>
         </tr>
         <tr>
           <td>#ITC25</td>
@@ -106,8 +116,13 @@
           <td><button class="green-button">₹1502</button></td>
           <td>Abhijeet</td>
           <td>
-            <button class="info-btn"><i class="fa-solid fa-circle-info"></i></button>
-          </td>
+            <button mat-button [matMenuTriggerFor]="menu"><i style="font-size: 30px;" class="ri-arrow-drop-down-line"></i></button>
+            <mat-menu #menu="matMenu">
+              <button mat-dialog-close (click)="onComplete()" mat-menu-item>Complete</button>
+              <button mat-dialog-close (click)="onCancel()" mat-menu-item>Cancel</button>
+              <button mat-dialog-close (click)="onReassignMenu()" mat-menu-item>Reassign</button>
+              <button mat-dialog-close (click)="onInfoMenu()" mat-menu-item>More Info</button>
+            </mat-menu>          </td>
         </tr>
       </table>
     </div>
@@ -216,7 +231,7 @@
     </div>
   </div>
 </div>
-<div class="grid-item">
+<div class="grid-item scroll-cont">
   <div class="tablename">
     <P>Assigned Driver </P><button><p>10</p></button>
   </div>
@@ -268,7 +283,7 @@
     </table>
   </div>
 </div>
-<div class="grid-item">
+<div class="grid-item scroll-cont">
   <div class="tablename">
     <P>Destination of assigned driver </P><button><p>10</p></button>
   </div>
@@ -308,7 +323,7 @@
     </table>
   </div>
 </div>
-<div class="grid-item">
+<div class="grid-item scroll-cont">
   <div class="tablename">
     <P>Attendance of Drivers </P><button><p>40</p></button>
   </div>
@@ -344,24 +359,11 @@
         <td>124</td>
         <td>GJ 12 GB 1231</td>
         <td><button class="orange-button">4.2</button></td>
-        <!-- <td><button class="blue-button">Marks as Present</button></td> -->
         <td>
-          <div >
-          <button class="blue-button">
-
-            <mat-accordion>
-              <mat-expansion-panel hideToggle>
-              </mat-expansion-panel>
-              <mat-expansion-panel (opened)="panelOpenState = true"
-                                   (closed)="panelOpenState = false">
-                <mat-expansion-panel-header>
-                  <p>Mark as Present</p>
-                </mat-expansion-panel-header>
-                <p>Mark as Absent</p>
-              </mat-expansion-panel>
-            </mat-accordion>
-          </button>
-        </div>
+          <select class="selection" >
+            <option selected>Mark As Present</option>
+            <option  >Mark As Absent</option>
+          </select>
         </td>
       </tr>
       <tr>
@@ -372,8 +374,12 @@
         <td>124</td>
         <td>GJ 12 GB 1231</td>
         <td><button class="orange-button">4.2</button></td>
-        <td><button class="blue-button">Marks as Present</button></td>
-      </tr>
+        <td>
+          <select class="selection" >
+            <option selected>Mark As Present</option>
+            <option  >Mark As Absent</option>
+          </select>
+        </td>      </tr>
       <tr>
         <td>#ITC25</td>
         <td>+91 9856568520</td>
@@ -382,8 +388,12 @@
         <td>124</td>
         <td>GJ 12 GB 1231</td>
         <td><button class="orange-button">4.2</button></td>
-        <td><button class="blue-button">Marks as Present</button></td>
-      </tr>
+        <td>
+          <select class="selection" >
+            <option selected>Mark As Present</option>
+            <option  >Mark As Absent</option>
+          </select>
+        </td>      </tr>
       <tr>
         <td>#ITC25</td>
         <td>+91 9856568520</td>
@@ -392,8 +402,17 @@
         <td>124</td>
         <td>GJ 12 GB 1231</td>
         <td><button class="orange-button">4.2</button></td>
-        <td><button class="blue-button">Marks as Present</button></td>
-      </tr>
+        <td>
+          <select class="selection" >
+            <option selected>Mark As Present</option>
+            <option  >Mark As Absent</option>
+          </select>
+        </td>      </tr>
     </table>
   </div>
 </div>
+<mat-paginator class="scroll-cont" [length]="100"
+              [pageSize]="10"
+              [pageSizeOptions]="[5, 10, 25, 100]"
+              aria-label="Select page">
+</mat-paginator>

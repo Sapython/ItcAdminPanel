@@ -19,6 +19,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { DeleteWarnComponent } from './dialog/delete-warn/delete-warn.component';
 import { EditVehicleCategoryComponent } from './dialog/edit-vehicle-category/edit-vehicle-category.component';
 import { EditPackageComponent } from './dialog/edit-package/edit-package.component';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { EditPackageComponent } from './dialog/edit-package/edit-package.compone
     MatSlideToggleModule,
     ReactiveFormsModule,
     FormsModule,
-    MatDialogModule
+    MatDialogModule,
+    GoogleMapsModule
   ]
 })
 export class ServiceModule { }

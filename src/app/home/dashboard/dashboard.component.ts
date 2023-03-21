@@ -1,5 +1,9 @@
+import { TableinfoComponent } from './dialogs/tableinfo/tableinfo.component';
+import { ConfirmDeleteComponent } from './../dashboard/dialogs/confirm-delete/confirm-delete.component';
+import { MatDialog } from '@angular/material/dialog';
 import { Component } from '@angular/core';
 import { Chart } from 'chart.js/auto';
+import { AssignGuideDialogComponent } from '../booking/dialogs/assign-guide-dialog/assign-guide-dialog.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,7 +14,7 @@ export class DashboardComponent {
   panelOpenState = false;
   AllBookings:any[] = [];
   // constructor(private database:DatabaseService) { }
-
+constructor(private dialog:MatDialog){}
   ngOnInit(): void {
     // this.bookings();
     this.createChart();
@@ -39,7 +43,7 @@ export class DashboardComponent {
 
       data: {// values on X-Axis
         labels: ['Sun', 'Mon', 'Tue','Wed',
-								 'Thus', 'Fri', 'Sat', ], 
+								 'Thus', 'Fri', 'Sat', ],
 	       datasets: [
           {
             label: "Ride",
@@ -76,7 +80,7 @@ export class DashboardComponent {
 									 '0.00', '538', '541'],
             backgroundColor: '#5FB402',
             barThickness: this.barThickness,
-          }     
+          }
         ]
       },
       options: {
@@ -87,7 +91,17 @@ export class DashboardComponent {
           },
 }
       }
-      
+
     });
+  }
+
+  onDelete(){
+     this.dialog.open(ConfirmDeleteComponent)
+  }
+  assignGuide(){
+    this.dialog.open(AssignGuideDialogComponent)
+  }
+  onInfo(){
+    this.dialog.open(TableinfoComponent)
   }
 }

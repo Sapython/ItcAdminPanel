@@ -1,4 +1,4 @@
-<div class="grid-container">
+<div class="grid-container scroll-cont">
   <div class="grid-item">
     <div class="tablename">
       <P>Pending </P><button><p>40</p></button>
@@ -79,8 +79,13 @@
           <td><button class="green-button">₹1502</button></td>
           <td>Abhijeet</td>
           <td>
-            <button class="info-btn"><i class="fa-solid fa-circle-info"></i></button>
-          </td>
+            <button mat-button [matMenuTriggerFor]="menu"><i style="font-size: 30px;" class="ri-arrow-drop-down-line"></i></button>
+            <mat-menu #menu="matMenu">
+              <button mat-dialog-close (click)="onComplete()" mat-menu-item>Complete</button>
+              <button mat-dialog-close (click)="onCancel()" mat-menu-item>Cancel</button>
+              <button mat-dialog-close (click)="onReassignMenu()" mat-menu-item>Reassign</button>
+              <button mat-dialog-close (click)="onInfoMenu()" mat-menu-item>More Info</button>
+            </mat-menu>          </td>
         </tr>
         <tr>
           <td>#ITC25</td>
@@ -90,8 +95,13 @@
           <td><button class="green-button">₹1502</button></td>
           <td>Abhijeet</td>
           <td>
-            <button class="info-btn"><i class="fa-solid fa-circle-info"></i></button>
-          </td>
+            <button mat-button [matMenuTriggerFor]="menu"><i style="font-size: 30px;" class="ri-arrow-drop-down-line"></i></button>
+            <mat-menu #menu="matMenu">
+              <button mat-dialog-close (click)="onComplete()" mat-menu-item>Complete</button>
+              <button mat-dialog-close (click)="onCancel()" mat-menu-item>Cancel</button>
+              <button mat-dialog-close (click)="onReassignMenu()" mat-menu-item>Reassign</button>
+              <button mat-dialog-close (click)="onInfoMenu()" mat-menu-item>More Info</button>
+            </mat-menu>          </td>
         </tr>
         <tr>
           <td>#ITC25</td>
@@ -101,8 +111,13 @@
           <td><button class="green-button">₹1502</button></td>
           <td>Abhijeet</td>
           <td>
-            <button class="info-btn"><i class="fa-solid fa-circle-info"></i></button>
-          </td>
+            <button mat-button [matMenuTriggerFor]="menu"><i style="font-size: 30px;" class="ri-arrow-drop-down-line"></i></button>
+            <mat-menu #menu="matMenu">
+              <button mat-dialog-close (click)="onComplete()" mat-menu-item>Complete</button>
+              <button mat-dialog-close (click)="onCancel()" mat-menu-item>Cancel</button>
+              <button mat-dialog-close (click)="onReassignMenu()" mat-menu-item>Reassign</button>
+              <button mat-dialog-close (click)="onInfoMenu()" mat-menu-item>More Info</button>
+            </mat-menu>          </td>
         </tr>
       </table>
     </div>
@@ -203,7 +218,7 @@
     </div>
   </div>
 </div>
-<div class="grid-item">
+<div class="grid-item scroll-cont">
   <div class="tablename">
     <P>Tour wise Booking </P><button><p>10</p></button>
   </div>
@@ -387,7 +402,7 @@
     </div>
   </div>
 </div>
-<div class="grid-item">
+<div class="grid-item scroll-cont">
   <div class="tablename">
     <P>Customer Active On Tour</P><button><p>10</p></button>
   </div>
@@ -423,7 +438,7 @@
     </table>
   </div>
 </div>
-<div class="grid-item">
+<div class="grid-item scroll-cont">
   <div class="tablename">
     <P>SOS & Query From Active Tour</P><button><p>10</p></button>
   </div>
@@ -477,3 +492,8 @@
     </table>
   </div>
 </div>
+<mat-paginator class="scroll-cont" [length]="100"
+              [pageSize]="10"
+              [pageSizeOptions]="[5, 10, 25, 100]"
+              aria-label="Select page">
+</mat-paginator>

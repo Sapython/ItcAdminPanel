@@ -1,7 +1,7 @@
 <div class="dialog-container">
   <div class="dialog-header">
     <div class="mainheader">
-      <h2>Booking Details of Thar Desert Tour</h2>
+      <h2>{{title}}</h2>
      <div mat-dialog-close><i class="ri-close-circle-line"></i></div>
     </div>
     <hr />
@@ -88,7 +88,7 @@
     </div>
   </div>
   <div class="btns">
-    <button class="solid-darkblue-button">Accept</button>
-    <button class="outline-btn-red">Cancel</button>
+    <button mat-dialog-close (click)="onAccept()" class="solid-darkblue-button">Accept</button>
+    <button mat-dialog-close (click)="onDelete()" class="outline-btn-red">Cancel</button>
   </div>
 </div>

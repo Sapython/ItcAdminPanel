@@ -9,7 +9,7 @@
     <i class="ri-search-line icon"></i>
   </div>
   <div class="btns">
-    <button class="outline-btn-red">Cancel</button>
-    <button class="solid-darkblue-button">Assign</button>
+    <button mat-dialog-close (click)="onCancel()" class="outline-btn-red">Cancel</button>
+    <button mat-dialog-close  (click)="onAssign()" class="solid-darkblue-button">Assign</button>
   </div>
 </div>
