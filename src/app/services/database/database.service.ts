@@ -1,3 +1,4 @@
+import { AddVehicleCategoryComponent } from './../../home/service/dialog/add-vehicle-category/add-vehicle-category.component';
 import { Injectable } from '@angular/core';
 import {
   Firestore,
@@ -364,7 +365,12 @@ export class DatabaseService {
   getBanners(){
     return getDocs(query(collection(this.fs, 'banner-management')));
   }
-
+  // Services
+  addVehiclePackage(data:any){
+    addDoc(collection(this.fs,'test/'),data).then((data)=>{
+      console.log('Doc added');
+    });
+  }
 
   // ledger
   today=new Date();
