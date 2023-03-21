@@ -11,9 +11,6 @@ import {
   getDoc,
   setDoc,
   where,
-} from '@angular/fire/firestore';
-
-import {
   DocumentSnapshot,
   endAt,
   increment,
@@ -21,7 +18,8 @@ import {
   limitToLast,
   orderBy,
   startAfter,
-} from 'firebase/firestore';
+} from '@angular/fire/firestore';
+
 
 import {
   getDownloadURL,
@@ -36,6 +34,7 @@ import { urls } from '../url';
   providedIn: 'root',
 })
 export class DatabaseService {
+  [x: string]: any;
   storage = getStorage();
 
   constructor(private fs: Firestore) { }
@@ -364,5 +363,22 @@ export class DatabaseService {
 
   getBanners(){
     return getDocs(query(collection(this.fs, 'banner-management')));
+  }
+
+
+  // ledger
+  today=new Date();
+  date=this.today.getDate()+'-'+this.today.getHours()+'-'+this.today.getFullYear();
+  addLedgerCredit(creditData:any){
+    // console.log(this.date);
+    addDoc(collection(this.fs,'ledgers/ledger/'+this.date+'/'),creditData).then((data)=>{
+        console.log('Doc added');
+    });
+  }
+  addLedgerDebit(debitData:any){
+    // console.log(this.date);
+    addDoc(collection(this.fs,'ledgers/ledger/'+this.date+'/'),debitData).then((data)=>{
+        console.log('Doc added');
+    });
   }
 }

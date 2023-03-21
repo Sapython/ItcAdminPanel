@@ -1,0 +1,55 @@
+<div class="dailog">
+    <div class="dailog-header">
+  
+      <div class="title">
+        <h1>Debit Details</h1>
+        <p>Transaction ID: #ITC4250</p>
+      </div>
+  
+      <div class="date">
+        <i class="ri-time-line"></i>
+        <p>13 March 2023 12:33</p>
+      </div>
+  
+    </div>
+  
+    <form [formGroup]="debitForm" (ngSubmit)="debitUser()">
+      <div class="dailog-content">
+  
+        <div class="amount">
+          <div class="amount-label">
+            <h3>Amount</h3>
+          </div>
+          <input type="text" formControlName="amount" />
+        </div>
+  
+        <div class="sender">
+          <div class="sender-label">
+            <h3>Sender</h3>
+          </div>
+          <input type="text" formControlName="sender" />
+        </div>
+  
+        <div class="reason">
+          <h3>Reason</h3>
+          <input type="text"  formControlName="reason"/>
+        </div>
+  
+      </div>
+  
+      <div mat-dialog-actions class="action-btn">
+        
+        <div class="cancel-btn">
+          <button mat-button (click)="onNoClick()">Cancel</button>
+        </div>
+        
+        <div class="save-btn">
+          <button mat-button cdkFocusInitial (click)="onNoClick()">
+            Save
+          </button>
+        </div>
+      
+      </div>
+    </form>
+  </div>
+  

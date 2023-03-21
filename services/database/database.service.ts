@@ -11,9 +11,6 @@ import {
   getDoc,
   setDoc,
   where,
-} from '@angular/fire/firestore';
-
-import {
   DocumentSnapshot,
   endAt,
   increment,
@@ -21,7 +18,8 @@ import {
   limitToLast,
   orderBy,
   startAfter,
-} from 'firebase/firestore';
+} from '@angular/fire/firestore';
+
 
 import {
   getDownloadURL,
@@ -37,7 +35,6 @@ import { urls } from '../url';
 })
 export class DatabaseService {
   storage = getStorage();
-
   constructor(private fs: Firestore) { }
 
   async upload(
@@ -325,6 +322,7 @@ export class DatabaseService {
       return null;
     }
   }
+
   // Rohan
 
   bookings() {
@@ -365,4 +363,11 @@ export class DatabaseService {
   getBanners(){
     return getDocs(query(collection(this.fs, 'banner-management')));
   }
+
+
+
 }
+
+
+
+

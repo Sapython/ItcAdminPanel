@@ -1,0 +1,92 @@
+<div class="dialog-container">
+  <div class="dialog-header">
+    <div class="mainheader">
+      <h2>Booking Details of Rental</h2>
+     <div mat-dialog-close><i class="ri-close-circle-line"></i></div>
+    </div>
+    <hr />
+  </div>
+  <div class="customer-div">
+    <h3>Customer Details</h3>
+    <div class="customer">
+      <div class="customer-img cst-dtl">
+        <img
+          src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cGVyc29ufGVufDB8fDB8fA%3D%3D&w=1000&q=80"
+          alt=""
+        />
+      </div>
+      <div class="cst-dtl">
+        <h4>Name: Arun Arora</h4>
+        <h4>Example@gmail.com</h4>
+      </div>
+      <div class="cst-dtl">
+        <h4>Phone: 9995566633</h4>
+        <h4>Alternative Phone: 9995566633</h4>
+      </div>
+      <div class="cst-dtl icon">
+        <i class="ri-phone-fill"></i>
+        <!-- <i class="ri-arrow-drop-down-line"></i> -->
+        <i class="fa-solid fa-caret-down"></i>
+      </div>
+    </div>
+  </div>
+  <hr />
+  <div class="booking-details-div">
+    <div class="booking-details">
+      <h3>Booking Details</h3>
+      <div class="bd">
+        <div class="bill">
+          <p>Service : Rental</p>
+          <P>Package : 6 Hours</P>
+          <p>Start Time : 12 April, 12:00 PM</p>
+
+        </div>
+        <div class="bill">
+          <p>Vehicle Type : SUV</p>
+          <p>Guide : With Guide</p>
+
+          <p>End Time : 12 April, 12:00 PM</p>
+        </div>
+
+      </div>
+      <h3>Start Location</h3>
+      <p>Robert Robertson, 1234 NW</p>
+    </div>
+
+    <div class="billing-summary">
+      <div>
+        <h3>Billing Summary</h3>
+      </div>
+      <hr />
+      <div class="bill">
+        <p>Taxi Fair</p>
+        <p>₹20</p>
+      </div>
+      <div class="bill">
+        <p>Tax</p>
+        <p>₹20</p>
+      </div>
+      <div class="bill">
+        <p>5 Days</p>
+        <p>₹400</p>
+      </div>
+      <div class="bill">
+        <p>Night Stay Charge</p>
+        <p>₹1200</p>
+      </div>
+      <div class="bill">
+        <p>Coupon Discount</p>
+        <p>-₹1200</p>
+      </div>
+      <hr />
+      <div class="bill">
+        <h3>Total Amount</h3>
+        <h3>₹1502</h3>
+      </div>
+    </div>
+  </div>
+  <div class="btns">
+    <button mat-dialog-close (click)="onAccept()" class="solid-darkblue-button">Accept</button>
+    <button mat-dialog-close (click)="onDelete()" class="outline-btn-red">Cancel</button>
+  </div>
+</div>

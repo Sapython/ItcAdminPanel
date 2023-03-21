@@ -2,908 +2,930 @@
   <mat-tab label="Ledger">
     <div class="head-btn">
       <div class="hd-btn">
-        <div class="green-button"><button class="green-button"><i class="fa-solid fa-arrow-up"></i><p>Add Debit</p> </button></div>
-        <div class="darkblue-button"><button class="darkblue-button"><i class="fa-solid fa-arrow-down"></i><p>Add Credit</p> </button></div>
+        
+        <!-- Debit Button -->
+        <div class="green-button">
+          <button mat-raised-button (click)="openDialogDebit()" class="green-button">
+            <i class="fa-solid fa-arrow-up"></i>
+            <p>Add Debit</p>
+          </button>
+        </div>
+        
+        <!-- Credit Button -->
+        <div class="darkblue-button">
+          <button mat-raised-button (click)="openDialogSettlement()" class="darkblue-button">
+            <i class="fa-solid fa-arrow-down"></i>
+            <p>Add Credit</p>
+          </button>
+        </div>
+
       </div>
       <div class="hd-btn">
-            <button class="outline-btn-blue" mat-stroked-button>
-              <i class="fa-solid fa-retweet"></i><p>Refresh</p>
-            </button>
-            <button class="outline-btn-blue"mat-stroked-button>
-              <i class="ri-filter-2-line"></i><p>Clear Filter</p>
-            </button>
-            <button class="fill-btn-blue" mat-stroked-button>
-             <p> Enter the date Range</p><i class="fa-solid fa-calendar-days"></i>
-            </button>
+        <button class="outline-btn-blue" mat-stroked-button>
+          <i class="fa-solid fa-retweet"></i>
+          <p>Refresh</p>
+        </button>
+        <button class="outline-btn-blue" mat-stroked-button>
+          <i class="ri-filter-2-line"></i>
+          <p>Clear Filter</p>
+        </button>
+        <button class="fill-btn-blue" mat-stroked-button>
+          <p>Enter the date Range</p>
+          <i class="fa-solid fa-calendar-days"></i>
+        </button>
       </div>
     </div>
     <div class="main">
+      <div class="submain">
+        <mat-accordion>
+          <mat-expansion-panel
+            (opened)="panelOpenState = true"
+            (closed)="panelOpenState = false"
+          >
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <i class="ri-calendar-2-fill"></i>
+                Today 25 Jan 2023
+              </mat-panel-title>
+            </mat-expansion-panel-header>
 
-        <div class="submain">
-          <mat-accordion>
-            <mat-expansion-panel (opened)="panelOpenState = true"
-                                 (closed)="panelOpenState = false">
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                  <i class="ri-calendar-2-fill"></i>
-                  Today 25 Jan 2023
-                </mat-panel-title>
-              </mat-expansion-panel-header>
-              
-              <!-- Cards -->
-              <div class="card-div">
-
-                <div class="balance-card debit">
-                  <div class="balance-card-content">
-                    <i class="ri-arrow-down-line"></i>
-                    <div class="balance-card-data">
-                      <span class="card-number">{{price | currency: 'INR'}}</span><br>
-                      <span class="card-name">Deposit</span>
-                    </div>
+            <!-- Cards -->
+            <div class="card-div">
+              <div class="balance-card debit">
+                <div class="balance-card-content">
+                  <i class="ri-arrow-down-line"></i>
+                  <div class="balance-card-data">
+                    <span class="card-number">{{
+                      price | currency : "INR"
+                    }}</span
+                    ><br />
+                    <span class="card-name">Deposit</span>
                   </div>
                 </div>
-
-                  <div class="balance-card credit">
-                    <div class="balance-card-content">
-                      <i class="ri-arrow-up-line"></i>
-                      <div class="balance-card-data">
-                        <span class="card-number">{{price | currency: 'INR'}}</span><br>
-                        <span class="card-name">Deposit</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="balance-card balance">
-                    <div class="balance-card-content">
-                      <i class="ri-bank-line"></i>
-                      <div class="balance-card-data">
-                        <span class="card-number">{{price | currency: 'INR'}}</span><br>
-                        <span class="card-name">Deposit</span>
-                      </div>
-                    </div>
-                  </div>
-
-              </div>
-              <!--Card End -->
-
-              <!-- Table -->
-              <div class="table-div">
-                <div class="table-div-data">
-                  <p>Debit Transactions</p>
-                  <table class="table-left-div">
-                      <tr class="head-row">
-                        <th scope="col">Booking ID</th>
-                        <th scope="col">Customer</th>
-                        <th scope="col">Service</th>
-                        <th scope="col">Booking Price</th>
-                        <th scope="col">ITC Comm.</th>
-                      </tr>
-                        <tr>
-                          <td class="table_data">TX87H6678</td>
-                          <td class="table_data">Arun Arora</td>
-                          <td class="table_data">Rental</td>
-                          <td class="table_data">
-                            <div class="voilet-div">
-                              <p>2200</p>
-                            </div>
-                          </td>
-                          <td class="table_data">
-                            <div class="green-div">
-                              <p>225</p>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="table_data">TX87H6678</td>
-                          <td class="table_data">Arun Arora</td>
-                          <td class="table_data">Rental</td>
-                          <td class="table_data">
-                            <div class="voilet-div">
-                              <p>2200</p>
-                            </div>
-                          </td>
-                          <td class="table_data">
-                            <div class="green-div">
-                              <p>225</p>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="table_data">TX87H6678</td>
-                          <td class="table_data">Arun Arora</td>
-                          <td class="table_data">Rental</td>
-                          <td class="table_data">
-                            <div class="voilet-div">
-                              <p>2200</p>
-                            </div>
-                          </td>
-                          <td class="table_data">
-                            <div class="green-div">
-                              <p>225</p>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="table_data">TX87H6678</td>
-                          <td class="table_data">Arun Arora</td>
-                          <td class="table_data">Rental</td>
-                          <td class="table_data">
-                            <div class="voilet-div">
-                              <p>2200</p>
-                            </div>
-                          </td>
-                          <td class="table_data">
-                            <div class="green-div">
-                              <p>225</p>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="table_data">TX87H6678</td>
-                          <td class="table_data">Arun Arora</td>
-                          <td class="table_data">Rental</td>
-                          <td class="table_data">
-                            <div class="voilet-div">
-                              <p>2200</p>
-                            </div>
-                          </td>
-                          <td class="table_data">
-                            <div class="green-div">
-                              <p>225</p>
-                            </div>
-                          </td>
-                        </tr>
-                        
-                  </table>
-                </div>
-              
-                <div class="table-div-data table-right-div">
-                  <p>Credit Transactions</p>
-                  <table class="table-right-div">
-                      <tr class="head-row">
-                        <th scope="col">Receipent</th>
-                        <th scope="col">User Type</th>
-                        <th scope="col">Total</th>
-                        <th scope="col">Paid</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Action</th>
-                      </tr>
-
-                        <tr>
-                          <td class="table_data">Arun Arora</td>
-                          <td class="table_data">Driver</td>
-                          <td class="table_data">
-                            <div class="voilet-div">
-                              <p>225</p>
-                            </div>
-                          </td>
-                          <td class="table_data">
-                            <div class="green-div">
-                              <p>225</p>
-                            </div>
-                          </td>
-                          <td class="table_data">
-                            <div class="voilet-div">
-                              <p>Settled</p>
-                            </div>
-                          </td>
-                          <td class="table_data">
-                            <div class="voilet-button-div">
-                              <button>Pay Now</button>
-                            </div>
-                          </td>
-                        </tr>
-
-                        <tr>
-                          <td class="table_data">Arun Arora</td>
-                          <td class="table_data">Driver</td>
-                          <td class="table_data">
-                            <div class="voilet-div">
-                              <p>225</p>
-                            </div>
-                          </td>
-                          <td class="table_data">
-                            <div class="green-div">
-                              <p>225</p>
-                            </div>
-                          </td>
-                          <td class="table_data">
-                            <div class="red-div">
-                              <p>Unsettled</p>
-                            </div>
-                          </td>
-                          <td class="table_data">
-                            <div class="voilet-button-div">
-                              <button>Pay Now</button>
-                            </div>
-                            
-                          </td>
-                        </tr>
-
-                        <tr>
-                          <td class="table_data">Arun Arora</td>
-                          <td class="table_data">Driver</td>
-                          <td class="table_data">
-                            <div class="voilet-div">
-                              <p>225</p>
-                            </div>
-                          </td>
-                          <td class="table_data">
-                            <div class="green-div">
-                              <p>225</p>
-                            </div>
-                          </td>
-                          <td class="table_data">
-                            <div class="voilet-div">
-                              <p>Settled</p>
-                            </div>
-                          </td>
-                          <td class="table_data">
-                            <div class="voilet-button-div">
-                              <button>Pay Now</button>
-                            </div>
-                          </td>
-                        </tr>
-
-                        <tr>
-                          <td class="table_data">Arun Arora</td>
-                          <td class="table_data">Driver</td>
-                          <td class="table_data">
-                            <div class="voilet-div">
-                              <p>225</p>
-                            </div>
-                          </td>
-                          <td class="table_data">
-                            <div class="green-div">
-                              <p>225</p>
-                            </div>
-                          </td>
-                          <td class="table_data">
-                            <div class="red-div">
-                              <p>Unsettled</p>
-                            </div>
-                          </td>
-                          <td class="table_data">
-                            <div class="voilet-button-div">
-                              <button>Pay Now</button>
-                            </div>
-                            
-                          </td>
-                        </tr>
-
-                        <tr>
-                          <td class="table_data">Arun Arora</td>
-                          <td class="table_data">Driver</td>
-                          <td class="table_data">
-                            <div class="voilet-div">
-                              <p>225</p>
-                            </div>
-                          </td>
-                          <td class="table_data">
-                            <div class="green-div">
-                              <p>225</p>
-                            </div>
-                          </td>
-                          <td class="table_data">
-                            <div class="voilet-div">
-                              <p>Settled</p>
-                            </div>
-                          </td>
-                          <td class="table_data">
-                            <div class="voilet-button-div">
-                              <button>Pay Now</button>
-                            </div>
-                          </td>
-                        </tr>
-
-
-
-                  </table>
-                </div>
-
               </div>
 
-
-            </mat-expansion-panel>
-          </mat-accordion>
-        </div>
-
-
-        <!-- Second Dropdown -->
-        <div class="submain">
-          <mat-accordion>
-            <mat-expansion-panel (opened)="panelOpenState = true"
-                                 (closed)="panelOpenState = false">
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                  <i class="ri-calendar-2-fill"></i>
-                  Yesterday 24 Jan 2023
-                </mat-panel-title>
-              </mat-expansion-panel-header>
-              
-              <!-- Cards -->
-              <div class="card-div">
-
-                <div class="balance-card debit">
-                  <div class="balance-card-content">
-                    <i class="ri-arrow-down-line"></i>
-                    <div class="balance-card-data">
-                      <span class="card-number">{{price | currency: 'INR'}}</span><br>
-                      <span class="card-name">Deposit</span>
-                    </div>
+              <div class="balance-card credit">
+                <div class="balance-card-content">
+                  <i class="ri-arrow-up-line"></i>
+                  <div class="balance-card-data">
+                    <span class="card-number">{{
+                      price | currency : "INR"
+                    }}</span
+                    ><br />
+                    <span class="card-name">Deposit</span>
                   </div>
                 </div>
-
-                  <div class="balance-card credit">
-                    <div class="balance-card-content">
-                      <i class="ri-arrow-up-line"></i>
-                      <div class="balance-card-data">
-                        <span class="card-number">{{price | currency: 'INR'}}</span><br>
-                        <span class="card-name">Deposit</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="balance-card balance">
-                    <div class="balance-card-content">
-                      <i class="ri-bank-line"></i>
-                      <div class="balance-card-data">
-                        <span class="card-number">{{price | currency: 'INR'}}</span><br>
-                        <span class="card-name">Deposit</span>
-                      </div>
-                    </div>
-                  </div>
-
-              </div>
-              <!--Card End -->
-
-              <!-- Table -->
-              <div class="table-div">
-                <div class="table-div-data">
-                  <p>Debit Transactions</p>
-                  <table class="table-left-div">
-                      <tr class="head-row">
-                        <th scope="col">Booking ID</th>
-                        <th scope="col">Customer</th>
-                        <th scope="col">Service</th>
-                        <th scope="col">Booking Price</th>
-                        <th scope="col">ITC Comm.</th>
-                      </tr>
-                        <tr>
-                          <td class="table_data">TX87H6678</td>
-                          <td class="table_data">Arun Arora</td>
-                          <td class="table_data">Rental</td>
-                          <td class="table_data">
-                            <div class="voilet-div">
-                              <p>2200</p>
-                            </div>
-                          </td>
-                          <td class="table_data">
-                            <div class="green-div">
-                              <p>225</p>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="table_data">TX87H6678</td>
-                          <td class="table_data">Arun Arora</td>
-                          <td class="table_data">Rental</td>
-                          <td class="table_data">
-                            <div class="voilet-div">
-                              <p>2200</p>
-                            </div>
-                          </td>
-                          <td class="table_data">
-                            <div class="green-div">
-                              <p>225</p>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="table_data">TX87H6678</td>
-                          <td class="table_data">Arun Arora</td>
-                          <td class="table_data">Rental</td>
-                          <td class="table_data">
-                            <div class="voilet-div">
-                              <p>2200</p>
-                            </div>
-                          </td>
-                          <td class="table_data">
-                            <div class="green-div">
-                              <p>225</p>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="table_data">TX87H6678</td>
-                          <td class="table_data">Arun Arora</td>
-                          <td class="table_data">Rental</td>
-                          <td class="table_data">
-                            <div class="voilet-div">
-                              <p>2200</p>
-                            </div>
-                          </td>
-                          <td class="table_data">
-                            <div class="green-div">
-                              <p>225</p>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="table_data">TX87H6678</td>
-                          <td class="table_data">Arun Arora</td>
-                          <td class="table_data">Rental</td>
-                          <td class="table_data">
-                            <div class="voilet-div">
-                              <p>2200</p>
-                            </div>
-                          </td>
-                          <td class="table_data">
-                            <div class="green-div">
-                              <p>225</p>
-                            </div>
-                          </td>
-                        </tr>
-                        
-                  </table>
-                </div>
-              
-                <div class="table-div-data table-right-div">
-                  <p>Credit Transactions</p>
-                  <table class="table-right-div">
-                      <tr class="head-row">
-                        <th scope="col">Receipent</th>
-                        <th scope="col">User Type</th>
-                        <th scope="col">Total</th>
-                        <th scope="col">Paid</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Action</th>
-                      </tr>
-
-                        <tr>
-                          <td class="table_data">Arun Arora</td>
-                          <td class="table_data">Driver</td>
-                          <td class="table_data">
-                            <div class="voilet-div">
-                              <p>225</p>
-                            </div>
-                          </td>
-                          <td class="table_data">
-                            <div class="green-div">
-                              <p>225</p>
-                            </div>
-                          </td>
-                          <td class="table_data">
-                            <div class="voilet-div">
-                              <p>Settled</p>
-                            </div>
-                          </td>
-                          <td class="table_data">
-                            <div class="voilet-button-div">
-                              <button>Pay Now</button>
-                            </div>
-                          </td>
-                        </tr>
-
-                        <tr>
-                          <td class="table_data">Arun Arora</td>
-                          <td class="table_data">Driver</td>
-                          <td class="table_data">
-                            <div class="voilet-div">
-                              <p>225</p>
-                            </div>
-                          </td>
-                          <td class="table_data">
-                            <div class="green-div">
-                              <p>225</p>
-                            </div>
-                          </td>
-                          <td class="table_data">
-                            <div class="red-div">
-                              <p>Unsettled</p>
-                            </div>
-                          </td>
-                          <td class="table_data">
-                            <div class="voilet-button-div">
-                              <button>Pay Now</button>
-                            </div>
-                            
-                          </td>
-                        </tr>
-
-                        <tr>
-                          <td class="table_data">Arun Arora</td>
-                          <td class="table_data">Driver</td>
-                          <td class="table_data">
-                            <div class="voilet-div">
-                              <p>225</p>
-                            </div>
-                          </td>
-                          <td class="table_data">
-                            <div class="green-div">
-                              <p>225</p>
-                            </div>
-                          </td>
-                          <td class="table_data">
-                            <div class="voilet-div">
-                              <p>Settled</p>
-                            </div>
-                          </td>
-                          <td class="table_data">
-                            <div class="voilet-button-div">
-                              <button>Pay Now</button>
-                            </div>
-                          </td>
-                        </tr>
-
-                        <tr>
-                          <td class="table_data">Arun Arora</td>
-                          <td class="table_data">Driver</td>
-                          <td class="table_data">
-                            <div class="voilet-div">
-                              <p>225</p>
-                            </div>
-                          </td>
-                          <td class="table_data">
-                            <div class="green-div">
-                              <p>225</p>
-                            </div>
-                          </td>
-                          <td class="table_data">
-                            <div class="red-div">
-                              <p>Unsettled</p>
-                            </div>
-                          </td>
-                          <td class="table_data">
-                            <div class="voilet-button-div">
-                              <button>Pay Now</button>
-                            </div>
-                            
-                          </td>
-                        </tr>
-
-                        <tr>
-                          <td class="table_data">Arun Arora</td>
-                          <td class="table_data">Driver</td>
-                          <td class="table_data">
-                            <div class="voilet-div">
-                              <p>225</p>
-                            </div>
-                          </td>
-                          <td class="table_data">
-                            <div class="green-div">
-                              <p>225</p>
-                            </div>
-                          </td>
-                          <td class="table_data">
-                            <div class="voilet-div">
-                              <p>Settled</p>
-                            </div>
-                          </td>
-                          <td class="table_data">
-                            <div class="voilet-button-div">
-                              <button>Pay Now</button>
-                            </div>
-                          </td>
-                        </tr>
-
-
-
-                  </table>
-                </div>
-
               </div>
 
+              <div class="balance-card balance">
+                <div class="balance-card-content">
+                  <i class="ri-bank-line"></i>
+                  <div class="balance-card-data">
+                    <span class="card-number">{{
+                      price | currency : "INR"
+                    }}</span
+                    ><br />
+                    <span class="card-name">Deposit</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--Card End -->
 
-            </mat-expansion-panel>
-          </mat-accordion>
-        </div>
+            <!-- Table -->
+            <div class="table-div">
+              <div class="table-div-data">
+                <p>Debit Transactions</p>
+                <table class="table-left-div">
+                  <tr class="head-row">
+                    <th scope="col">Booking ID</th>
+                    <th scope="col">Customer</th>
+                    <th scope="col">Service</th>
+                    <th scope="col">Booking Price</th>
+                    <th scope="col">ITC Comm.</th>
+                  </tr>
+                  <tr>
+                    <td class="table_data">TX87H6678</td>
+                    <td class="table_data">Arun Arora</td>
+                    <td class="table_data">Rental</td>
+                    <td class="table_data">
+                      <div class="voilet-div">
+                        <p>2200</p>
+                      </div>
+                    </td>
+                    <td class="table_data">
+                      <div class="green-div">
+                        <p>225</p>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="table_data">TX87H6678</td>
+                    <td class="table_data">Arun Arora</td>
+                    <td class="table_data">Rental</td>
+                    <td class="table_data">
+                      <div class="voilet-div">
+                        <p>2200</p>
+                      </div>
+                    </td>
+                    <td class="table_data">
+                      <div class="green-div">
+                        <p>225</p>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="table_data">TX87H6678</td>
+                    <td class="table_data">Arun Arora</td>
+                    <td class="table_data">Rental</td>
+                    <td class="table_data">
+                      <div class="voilet-div">
+                        <p>2200</p>
+                      </div>
+                    </td>
+                    <td class="table_data">
+                      <div class="green-div">
+                        <p>225</p>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="table_data">TX87H6678</td>
+                    <td class="table_data">Arun Arora</td>
+                    <td class="table_data">Rental</td>
+                    <td class="table_data">
+                      <div class="voilet-div">
+                        <p>2200</p>
+                      </div>
+                    </td>
+                    <td class="table_data">
+                      <div class="green-div">
+                        <p>225</p>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="table_data">TX87H6678</td>
+                    <td class="table_data">Arun Arora</td>
+                    <td class="table_data">Rental</td>
+                    <td class="table_data">
+                      <div class="voilet-div">
+                        <p>2200</p>
+                      </div>
+                    </td>
+                    <td class="table_data">
+                      <div class="green-div">
+                        <p>225</p>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </div>
 
+              <div class="table-div-data table-right-div">
+                <p>Credit Transactions</p>
+                <table class="table-right-div">
+                  <tr class="head-row">
+                    <th scope="col">Receipent</th>
+                    <th scope="col">User Type</th>
+                    <th scope="col">Total</th>
+                    <th scope="col">Paid</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Action</th>
+                  </tr>
 
+                  <tr>
+                    <td class="table_data">Arun Arora</td>
+                    <td class="table_data">Driver</td>
+                    <td class="table_data">
+                      <div class="voilet-div">
+                        <p>225</p>
+                      </div>
+                    </td>
+                    <td class="table_data">
+                      <div class="green-div">
+                        <p>225</p>
+                      </div>
+                    </td>
+                    <td class="table_data">
+                      <div class="voilet-div">
+                        <p>Settled</p>
+                      </div>
+                    </td>
+                    <td class="table_data">
+                      <div class="voilet-button-div">
+                        <button>Pay Now</button>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="table_data">Arun Arora</td>
+                    <td class="table_data">Driver</td>
+                    <td class="table_data">
+                      <div class="voilet-div">
+                        <p>225</p>
+                      </div>
+                    </td>
+                    <td class="table_data">
+                      <div class="green-div">
+                        <p>225</p>
+                      </div>
+                    </td>
+                    <td class="table_data">
+                      <div class="red-div">
+                        <p>Unsettled</p>
+                      </div>
+                    </td>
+                    <td class="table_data">
+                      <div class="voilet-button-div">
+                        <button>Pay Now</button>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="table_data">Arun Arora</td>
+                    <td class="table_data">Driver</td>
+                    <td class="table_data">
+                      <div class="voilet-div">
+                        <p>225</p>
+                      </div>
+                    </td>
+                    <td class="table_data">
+                      <div class="green-div">
+                        <p>225</p>
+                      </div>
+                    </td>
+                    <td class="table_data">
+                      <div class="voilet-div">
+                        <p>Settled</p>
+                      </div>
+                    </td>
+                    <td class="table_data">
+                      <div class="voilet-button-div">
+                        <button>Pay Now</button>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="table_data">Arun Arora</td>
+                    <td class="table_data">Driver</td>
+                    <td class="table_data">
+                      <div class="voilet-div">
+                        <p>225</p>
+                      </div>
+                    </td>
+                    <td class="table_data">
+                      <div class="green-div">
+                        <p>225</p>
+                      </div>
+                    </td>
+                    <td class="table_data">
+                      <div class="red-div">
+                        <p>Unsettled</p>
+                      </div>
+                    </td>
+                    <td class="table_data">
+                      <div class="voilet-button-div">
+                        <button>Pay Now</button>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="table_data">Arun Arora</td>
+                    <td class="table_data">Driver</td>
+                    <td class="table_data">
+                      <div class="voilet-div">
+                        <p>225</p>
+                      </div>
+                    </td>
+                    <td class="table_data">
+                      <div class="green-div">
+                        <p>225</p>
+                      </div>
+                    </td>
+                    <td class="table_data">
+                      <div class="voilet-div">
+                        <p>Settled</p>
+                      </div>
+                    </td>
+                    <td class="table_data">
+                      <div class="voilet-button-div">
+                        <button>Pay Now</button>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+
+      <!-- Second Dropdown -->
+      <div class="submain">
+        <mat-accordion>
+          <mat-expansion-panel
+            (opened)="panelOpenState = true"
+            (closed)="panelOpenState = false"
+          >
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <i class="ri-calendar-2-fill"></i>
+                Yesterday 24 Jan 2023
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <!-- Cards -->
+            <div class="card-div">
+              <div class="balance-card debit">
+                <div class="balance-card-content">
+                  <i class="ri-arrow-down-line"></i>
+                  <div class="balance-card-data">
+                    <span class="card-number">{{
+                      price | currency : "INR"
+                    }}</span
+                    ><br />
+                    <span class="card-name">Deposit</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="balance-card credit">
+                <div class="balance-card-content">
+                  <i class="ri-arrow-up-line"></i>
+                  <div class="balance-card-data">
+                    <span class="card-number">{{
+                      price | currency : "INR"
+                    }}</span
+                    ><br />
+                    <span class="card-name">Deposit</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="balance-card balance">
+                <div class="balance-card-content">
+                  <i class="ri-bank-line"></i>
+                  <div class="balance-card-data">
+                    <span class="card-number">{{
+                      price | currency : "INR"
+                    }}</span
+                    ><br />
+                    <span class="card-name">Deposit</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--Card End -->
+
+            <!-- Table -->
+            <div class="table-div">
+              <div class="table-div-data">
+                <p>Debit Transactions</p>
+                <table class="table-left-div">
+                  <tr class="head-row">
+                    <th scope="col">Booking ID</th>
+                    <th scope="col">Customer</th>
+                    <th scope="col">Service</th>
+                    <th scope="col">Booking Price</th>
+                    <th scope="col">ITC Comm.</th>
+                  </tr>
+                  <tr>
+                    <td class="table_data">TX87H6678</td>
+                    <td class="table_data">Arun Arora</td>
+                    <td class="table_data">Rental</td>
+                    <td class="table_data">
+                      <div class="voilet-div">
+                        <p>2200</p>
+                      </div>
+                    </td>
+                    <td class="table_data">
+                      <div class="green-div">
+                        <p>225</p>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="table_data">TX87H6678</td>
+                    <td class="table_data">Arun Arora</td>
+                    <td class="table_data">Rental</td>
+                    <td class="table_data">
+                      <div class="voilet-div">
+                        <p>2200</p>
+                      </div>
+                    </td>
+                    <td class="table_data">
+                      <div class="green-div">
+                        <p>225</p>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="table_data">TX87H6678</td>
+                    <td class="table_data">Arun Arora</td>
+                    <td class="table_data">Rental</td>
+                    <td class="table_data">
+                      <div class="voilet-div">
+                        <p>2200</p>
+                      </div>
+                    </td>
+                    <td class="table_data">
+                      <div class="green-div">
+                        <p>225</p>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="table_data">TX87H6678</td>
+                    <td class="table_data">Arun Arora</td>
+                    <td class="table_data">Rental</td>
+                    <td class="table_data">
+                      <div class="voilet-div">
+                        <p>2200</p>
+                      </div>
+                    </td>
+                    <td class="table_data">
+                      <div class="green-div">
+                        <p>225</p>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="table_data">TX87H6678</td>
+                    <td class="table_data">Arun Arora</td>
+                    <td class="table_data">Rental</td>
+                    <td class="table_data">
+                      <div class="voilet-div">
+                        <p>2200</p>
+                      </div>
+                    </td>
+                    <td class="table_data">
+                      <div class="green-div">
+                        <p>225</p>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+
+              <div class="table-div-data table-right-div">
+                <p>Credit Transactions</p>
+                <table class="table-right-div">
+                  <tr class="head-row">
+                    <th scope="col">Receipent</th>
+                    <th scope="col">User Type</th>
+                    <th scope="col">Total</th>
+                    <th scope="col">Paid</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Action</th>
+                  </tr>
+
+                  <tr>
+                    <td class="table_data">Arun Arora</td>
+                    <td class="table_data">Driver</td>
+                    <td class="table_data">
+                      <div class="voilet-div">
+                        <p>225</p>
+                      </div>
+                    </td>
+                    <td class="table_data">
+                      <div class="green-div">
+                        <p>225</p>
+                      </div>
+                    </td>
+                    <td class="table_data">
+                      <div class="voilet-div">
+                        <p>Settled</p>
+                      </div>
+                    </td>
+                    <td class="table_data">
+                      <div class="voilet-button-div">
+                        <button>Pay Now</button>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="table_data">Arun Arora</td>
+                    <td class="table_data">Driver</td>
+                    <td class="table_data">
+                      <div class="voilet-div">
+                        <p>225</p>
+                      </div>
+                    </td>
+                    <td class="table_data">
+                      <div class="green-div">
+                        <p>225</p>
+                      </div>
+                    </td>
+                    <td class="table_data">
+                      <div class="red-div">
+                        <p>Unsettled</p>
+                      </div>
+                    </td>
+                    <td class="table_data">
+                      <div class="voilet-button-div">
+                        <button>Pay Now</button>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="table_data">Arun Arora</td>
+                    <td class="table_data">Driver</td>
+                    <td class="table_data">
+                      <div class="voilet-div">
+                        <p>225</p>
+                      </div>
+                    </td>
+                    <td class="table_data">
+                      <div class="green-div">
+                        <p>225</p>
+                      </div>
+                    </td>
+                    <td class="table_data">
+                      <div class="voilet-div">
+                        <p>Settled</p>
+                      </div>
+                    </td>
+                    <td class="table_data">
+                      <div class="voilet-button-div">
+                        <button>Pay Now</button>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="table_data">Arun Arora</td>
+                    <td class="table_data">Driver</td>
+                    <td class="table_data">
+                      <div class="voilet-div">
+                        <p>225</p>
+                      </div>
+                    </td>
+                    <td class="table_data">
+                      <div class="green-div">
+                        <p>225</p>
+                      </div>
+                    </td>
+                    <td class="table_data">
+                      <div class="red-div">
+                        <p>Unsettled</p>
+                      </div>
+                    </td>
+                    <td class="table_data">
+                      <div class="voilet-button-div">
+                        <button>Pay Now</button>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="table_data">Arun Arora</td>
+                    <td class="table_data">Driver</td>
+                    <td class="table_data">
+                      <div class="voilet-div">
+                        <p>225</p>
+                      </div>
+                    </td>
+                    <td class="table_data">
+                      <div class="green-div">
+                        <p>225</p>
+                      </div>
+                    </td>
+                    <td class="table_data">
+                      <div class="voilet-div">
+                        <p>Settled</p>
+                      </div>
+                    </td>
+                    <td class="table_data">
+                      <div class="voilet-button-div">
+                        <button>Pay Now</button>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
     </div>
   </mat-tab>
 
   <!-- Pending Tab -->
   <mat-tab label="Pending">
-
     <div class="submain">
       <mat-accordion>
-        <mat-expansion-panel (opened)="panelOpenState = true"
-                             (closed)="panelOpenState = false">
+        <mat-expansion-panel
+          (opened)="panelOpenState = true"
+          (closed)="panelOpenState = false"
+        >
           <mat-expansion-panel-header>
-            <mat-panel-title>
-              Driver
-            </mat-panel-title>
+            <mat-panel-title> Driver </mat-panel-title>
           </mat-expansion-panel-header>
-          
+
           <!--Driver Table -->
           <div class="table-div">
             <div class="table-div-data">
               <table class="table-center-div">
-                  <tr class="head-row">
-                    <th scope="col">Driver</th>
-                    <th scope="col">Phone</th>
-                    <th scope="col">Vechicle Type</th>
-                    <th scope="col">Vechicle No.</th>
-                    <th scope="col">Booking</th>
-                    <th scope="col">Settle Amount</th>
-                    <th scope="col">Unsettle Amount</th>
-                    <th scope="col">Action</th>
-                  </tr>
+                <tr class="head-row">
+                  <th scope="col">Driver</th>
+                  <th scope="col">Phone</th>
+                  <th scope="col">Vechicle Type</th>
+                  <th scope="col">Vechicle No.</th>
+                  <th scope="col">Booking</th>
+                  <th scope="col">Settle Amount</th>
+                  <th scope="col">Unsettle Amount</th>
+                  <th scope="col">Action</th>
+                </tr>
 
-                    <tr>
-                      <td class="table_data">Arun Arora</td>
-                      <td class="table_data"><i class="ri-phone-fill phone"></i>9566332544</td>
-                      <td class="table_data">
-                        <div class="yellow-div">
-                          <p>SUV</p>
-                        </div>
-                      </td>
-                      <td class="table_data">GJ 12 GB 1231</td>
-                      <td class="table_data">12</td>
-                      <td class="table_data">
-                        <div class="green-div">
-                          <p>225</p>
-                        </div>
-                      </td>
-                      <td class="table_data">
-                        <div class="voilet-div">
-                          <p>225</p>
-                        </div>
-                      </td>
-                      <td class="table_data">
-                        <div class="yellow-error-div">
-                          <i class="ri-error-warning-line"></i>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="table_data">Arun Arora</td>
-                      <td class="table_data"><i class="ri-phone-fill phone"></i>9566332544</td>
-                      <td class="table_data">
-                        <div class="yellow-div">
-                          <p>SUV</p>
-                        </div>
-                      </td>
-                      <td class="table_data">GJ 12 GB 1231</td>
-                      <td class="table_data">12</td>
-                      <td class="table_data">
-                        <div class="green-div">
-                          <p>225</p>
-                        </div>
-                      </td>
-                      <td class="table_data">
-                        <div class="voilet-div">
-                          <p>225</p>
-                        </div>
-                      </td>
-                      <td class="table_data">
-                        <div class="yellow-error-div">
-                          <i class="ri-error-warning-line"></i>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="table_data">Arun Arora</td>
-                      <td class="table_data"><i class="ri-phone-fill phone"></i>9566332544</td>
-                      <td class="table_data">
-                        <div class="yellow-div">
-                          <p>SUV</p>
-                        </div>
-                      </td>
-                      <td class="table_data">GJ 12 GB 1231</td>
-                      <td class="table_data">12</td>
-                      <td class="table_data">
-                        <div class="green-div">
-                          <p>225</p>
-                        </div>
-                      </td>
-                      <td class="table_data">
-                        <div class="voilet-div">
-                          <p>225</p>
-                        </div>
-                      </td>
-                      <td class="table_data">
-                        <div class="yellow-error-div">
-                          <i class="ri-error-warning-line"></i>
-                        </div>
-                      </td>
-                    </tr>
-                    
+                <tr>
+                  <td class="table_data">Arun Arora</td>
+                  <td class="table_data">
+                    <i class="ri-phone-fill phone"></i>9566332544
+                  </td>
+                  <td class="table_data">
+                    <div class="yellow-div">
+                      <p>SUV</p>
+                    </div>
+                  </td>
+                  <td class="table_data">GJ 12 GB 1231</td>
+                  <td class="table_data">12</td>
+                  <td class="table_data">
+                    <div class="green-div">
+                      <p>225</p>
+                    </div>
+                  </td>
+                  <td class="table_data">
+                    <div class="voilet-div">
+                      <p>225</p>
+                    </div>
+                  </td>
+                  <td class="table_data">
+                    <div class="yellow-error-div">
+                      <i class="ri-error-warning-line"></i>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="table_data">Arun Arora</td>
+                  <td class="table_data">
+                    <i class="ri-phone-fill phone"></i>9566332544
+                  </td>
+                  <td class="table_data">
+                    <div class="yellow-div">
+                      <p>SUV</p>
+                    </div>
+                  </td>
+                  <td class="table_data">GJ 12 GB 1231</td>
+                  <td class="table_data">12</td>
+                  <td class="table_data">
+                    <div class="green-div">
+                      <p>225</p>
+                    </div>
+                  </td>
+                  <td class="table_data">
+                    <div class="voilet-div">
+                      <p>225</p>
+                    </div>
+                  </td>
+                  <td class="table_data">
+                    <div class="yellow-error-div">
+                      <i class="ri-error-warning-line"></i>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="table_data">Arun Arora</td>
+                  <td class="table_data">
+                    <i class="ri-phone-fill phone"></i>9566332544
+                  </td>
+                  <td class="table_data">
+                    <div class="yellow-div">
+                      <p>SUV</p>
+                    </div>
+                  </td>
+                  <td class="table_data">GJ 12 GB 1231</td>
+                  <td class="table_data">12</td>
+                  <td class="table_data">
+                    <div class="green-div">
+                      <p>225</p>
+                    </div>
+                  </td>
+                  <td class="table_data">
+                    <div class="voilet-div">
+                      <p>225</p>
+                    </div>
+                  </td>
+                  <td class="table_data">
+                    <div class="yellow-error-div">
+                      <i class="ri-error-warning-line"></i>
+                    </div>
+                  </td>
+                </tr>
               </table>
             </div>
-        
-          </div>
-
-        </mat-expansion-panel>
-      </mat-accordion>
-    </div>
-
-    <div class="submain">
-      <mat-accordion>
-        <mat-expansion-panel (opened)="panelOpenState = true"
-                             (closed)="panelOpenState = false">
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              Guide
-            </mat-panel-title>
-          </mat-expansion-panel-header>
-          
-          <!--Driver Table -->
-          <div class="table-div">
-            <div class="table-div-data">
-              <table class="table-center-div">
-                  <tr class="head-row">
-                    <th scope="col">Driver</th>
-                    <th scope="col">Phone</th>
-                    <th scope="col">Booking</th>
-                    <th scope="col">Settle Amount</th>
-                    <th scope="col">Unsettle Amount</th>
-                    <th scope="col">Action</th>
-                  </tr>
-
-                    <tr>
-                      <td class="table_data">Arun Arora</td>
-                      <td class="table_data"><i class="ri-phone-fill phone"></i>9566332544</td>
-                      <td class="table_data">12</td>
-                      <td class="table_data">
-                        <div class="green-div">
-                          <p>225</p>
-                        </div>
-                      </td>
-                      <td class="table_data">
-                        <div class="voilet-div">
-                          <p>225</p>
-                        </div>
-                      </td>
-                      <td class="table_data">
-                        <div class="yellow-error-div">
-                          <i class="ri-error-warning-line"></i>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="table_data">Arun Arora</td>
-                      <td class="table_data"><i class="ri-phone-fill phone"></i>9566332544</td>
-                      <td class="table_data">12</td>
-                      <td class="table_data">
-                        <div class="green-div">
-                          <p>225</p>
-                        </div>
-                      </td>
-                      <td class="table_data">
-                        <div class="voilet-div">
-                          <p>225</p>
-                        </div>
-                      </td>
-                      <td class="table_data">
-                        <div class="yellow-error-div">
-                          <i class="ri-error-warning-line"></i>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="table_data">Arun Arora</td>
-                      <td class="table_data"><i class="ri-phone-fill phone"></i>9566332544</td>
-                      <td class="table_data">12</td>
-                      <td class="table_data">
-                        <div class="green-div">
-                          <p>225</p>
-                        </div>
-                      </td>
-                      <td class="table_data">
-                        <div class="voilet-div">
-                          <p>225</p>
-                        </div>
-                      </td>
-                      <td class="table_data">
-                        <div class="yellow-error-div">
-                          <i class="ri-error-warning-line"></i>
-                        </div>
-                      </td>
-                    </tr>
-                    
-              </table>
-            </div>
-        
           </div>
         </mat-expansion-panel>
       </mat-accordion>
     </div>
 
-
     <div class="submain">
       <mat-accordion>
-        <mat-expansion-panel (opened)="panelOpenState = true"
-                             (closed)="panelOpenState = false">
+        <mat-expansion-panel
+          (opened)="panelOpenState = true"
+          (closed)="panelOpenState = false"
+        >
           <mat-expansion-panel-header>
-            <mat-panel-title>
-              Tour Agency
-            </mat-panel-title>
+            <mat-panel-title> Guide </mat-panel-title>
           </mat-expansion-panel-header>
-          
+
           <!--Driver Table -->
           <div class="table-div">
             <div class="table-div-data">
               <table class="table-center-div">
-                  <tr class="head-row">
-                    <th scope="col">Driver</th>
-                    <th scope="col">Phone</th>
-                    <th scope="col">Booking</th>
-                    <th scope="col">Settle Amount</th>
-                    <th scope="col">Unsettle Amount</th>
-                    <th scope="col">Action</th>
-                  </tr>
+                <tr class="head-row">
+                  <th scope="col">Driver</th>
+                  <th scope="col">Phone</th>
+                  <th scope="col">Booking</th>
+                  <th scope="col">Settle Amount</th>
+                  <th scope="col">Unsettle Amount</th>
+                  <th scope="col">Action</th>
+                </tr>
 
-                    <tr>
-                      <td class="table_data">Arun Arora</td>
-                      <td class="table_data"><i class="ri-phone-fill phone"></i>9566332544</td>
-                      <td class="table_data">12</td>
-                      <td class="table_data">
-                        <div class="green-div">
-                          <p>225</p>
-                        </div>
-                      </td>
-                      <td class="table_data">
-                        <div class="voilet-div">
-                          <p>225</p>
-                        </div>
-                      </td>
-                      <td class="table_data">
-                        <div class="yellow-error-div">
-                          <i class="ri-error-warning-line"></i>
-                        </div>
-                      </td>
-                    </tr>
-
-                    <tr>
-                      <td class="table_data">Arun Arora</td>
-                      <td class="table_data"><i class="ri-phone-fill phone"></i>9566332544</td>
-                      <td class="table_data">12</td>
-                      <td class="table_data">
-                        <div class="green-div">
-                          <p>225</p>
-                        </div>
-                      </td>
-                      <td class="table_data">
-                        <div class="voilet-div">
-                          <p>225</p>
-                        </div>
-                      </td>
-                      <td class="table_data">
-                        <div class="yellow-error-div">
-                          <i class="ri-error-warning-line"></i>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="table_data">Arun Arora</td>
-                      <td class="table_data"><i class="ri-phone-fill phone"></i>9566332544</td>
-                      <td class="table_data">12</td>
-                      <td class="table_data">
-                        <div class="green-div">
-                          <p>225</p>
-                        </div>
-                      </td>
-                      <td class="table_data">
-                        <div class="voilet-div">
-                          <p>225</p>
-                        </div>
-                      </td>
-                      <td class="table_data">
-                        <div class="yellow-error-div">
-                          <i class="ri-error-warning-line"></i>
-                        </div>
-                      </td>
-                    </tr>
-                    
+                <tr>
+                  <td class="table_data">Arun Arora</td>
+                  <td class="table_data">
+                    <i class="ri-phone-fill phone"></i>9566332544
+                  </td>
+                  <td class="table_data">12</td>
+                  <td class="table_data">
+                    <div class="green-div">
+                      <p>225</p>
+                    </div>
+                  </td>
+                  <td class="table_data">
+                    <div class="voilet-div">
+                      <p>225</p>
+                    </div>
+                  </td>
+                  <td class="table_data">
+                    <div class="yellow-error-div">
+                      <i class="ri-error-warning-line"></i>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="table_data">Arun Arora</td>
+                  <td class="table_data">
+                    <i class="ri-phone-fill phone"></i>9566332544
+                  </td>
+                  <td class="table_data">12</td>
+                  <td class="table_data">
+                    <div class="green-div">
+                      <p>225</p>
+                    </div>
+                  </td>
+                  <td class="table_data">
+                    <div class="voilet-div">
+                      <p>225</p>
+                    </div>
+                  </td>
+                  <td class="table_data">
+                    <div class="yellow-error-div">
+                      <i class="ri-error-warning-line"></i>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="table_data">Arun Arora</td>
+                  <td class="table_data">
+                    <i class="ri-phone-fill phone"></i>9566332544
+                  </td>
+                  <td class="table_data">12</td>
+                  <td class="table_data">
+                    <div class="green-div">
+                      <p>225</p>
+                    </div>
+                  </td>
+                  <td class="table_data">
+                    <div class="voilet-div">
+                      <p>225</p>
+                    </div>
+                  </td>
+                  <td class="table_data">
+                    <div class="yellow-error-div">
+                      <i class="ri-error-warning-line"></i>
+                    </div>
+                  </td>
+                </tr>
               </table>
             </div>
-        
           </div>
         </mat-expansion-panel>
       </mat-accordion>
     </div>
 
+    <div class="submain">
+      <mat-accordion>
+        <mat-expansion-panel
+          (opened)="panelOpenState = true"
+          (closed)="panelOpenState = false"
+        >
+          <mat-expansion-panel-header>
+            <mat-panel-title> Tour Agency </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <!--Driver Table -->
+          <div class="table-div">
+            <div class="table-div-data">
+              <table class="table-center-div">
+                <tr class="head-row">
+                  <th scope="col">Driver</th>
+                  <th scope="col">Phone</th>
+                  <th scope="col">Booking</th>
+                  <th scope="col">Settle Amount</th>
+                  <th scope="col">Unsettle Amount</th>
+                  <th scope="col">Action</th>
+                </tr>
+
+                <tr>
+                  <td class="table_data">Arun Arora</td>
+                  <td class="table_data">
+                    <i class="ri-phone-fill phone"></i>9566332544
+                  </td>
+                  <td class="table_data">12</td>
+                  <td class="table_data">
+                    <div class="green-div">
+                      <p>225</p>
+                    </div>
+                  </td>
+                  <td class="table_data">
+                    <div class="voilet-div">
+                      <p>225</p>
+                    </div>
+                  </td>
+                  <td class="table_data">
+                    <div class="yellow-error-div">
+                      <i class="ri-error-warning-line"></i>
+                    </div>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="table_data">Arun Arora</td>
+                  <td class="table_data">
+                    <i class="ri-phone-fill phone"></i>9566332544
+                  </td>
+                  <td class="table_data">12</td>
+                  <td class="table_data">
+                    <div class="green-div">
+                      <p>225</p>
+                    </div>
+                  </td>
+                  <td class="table_data">
+                    <div class="voilet-div">
+                      <p>225</p>
+                    </div>
+                  </td>
+                  <td class="table_data">
+                    <div class="yellow-error-div">
+                      <i class="ri-error-warning-line"></i>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="table_data">Arun Arora</td>
+                  <td class="table_data">
+                    <i class="ri-phone-fill phone"></i>9566332544
+                  </td>
+                  <td class="table_data">12</td>
+                  <td class="table_data">
+                    <div class="green-div">
+                      <p>225</p>
+                    </div>
+                  </td>
+                  <td class="table_data">
+                    <div class="voilet-div">
+                      <p>225</p>
+                    </div>
+                  </td>
+                  <td class="table_data">
+                    <div class="yellow-error-div">
+                      <i class="ri-error-warning-line"></i>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
   </mat-tab>
 </mat-tab-group>

@@ -1,0 +1,31 @@
+<div class="dialog-container">
+  <div class="heading">
+    <h2>{{title}}</h2>
+    <div mat-dialog-close><i class="ri-close-circle-line"></i></div>
+  </div>
+  <div class="addpackageform">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <label for="hour"></label><br>
+      <input class="fullinput" type="text" id="hour" formControlName="hour"  placeholder="Enter Hour"><br>
+      <label for="km"></label><br>
+      <input class="fullinput" type="text" id="km" formControlName="km"placeholder="Enter Km"><br><br>
+
+      <div class="smallinput">
+
+        <label for="SUV"></label>
+        <input class="midinput" type="text" id="SUV" formControlName="SUV" placeholder="Enter SUV Rent">
+        <label for="Sedan"></label>
+        <input class="midinput" type="text" id="Sedan" formControlName="Sedan" placeholder="Enter Sedan Rent">
+        <label for="Traveller"></label>
+        <input class="midinput" type="text" id="Traveller" formControlName="Traveller" placeholder="Enter Traveller Rent">
+        <label for="Hatchback"></label>
+        <input class="midinput" type="text" id="Hatchback" formControlNames="Hatchback" placeholder="Enter Hatchback Rent">
+      </div>
+      <div class="btns">
+        <button mat-dialog-close (click)="onCancel()" class="outline-btn-red">Cancel</button>
+        <button mat-dialog-close  (click)="onSubmit()" class="solid-darkblue-button">Assign</button>
+      </div>
+    </form>
+  </div>
+
+</div>
