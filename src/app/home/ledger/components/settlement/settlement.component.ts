@@ -1,4 +1,4 @@
-import { DatabaseService } from './../../../../services/database/database.service';
+import { DatabaseService } from 'services/database/database.service';
 import { Component, Inject } from '@angular/core';
 import {
   MatDialog,

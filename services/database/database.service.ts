@@ -363,7 +363,29 @@ export class DatabaseService {
   getBanners(){
     return getDocs(query(collection(this.fs, 'banner-management')));
   }
+  
+  // Services
+  addVehiclePackage(data:any){
+    addDoc(collection(this.fs,'test/'),data).then((data)=>{
+      console.log('Doc added');
+    });
+  }
 
+  // ledger
+  today=new Date();
+  date=this.today.getDate()+'-'+this.today.getHours()+'-'+this.today.getFullYear();
+  addLedgerCredit(creditData:any){
+    // console.log(this.date);
+    addDoc(collection(this.fs,'ledgers/ledger/'+this.date+'/'),creditData).then((data)=>{
+        console.log('Doc added');
+    });
+  }
+  addLedgerDebit(debitData:any){
+    // console.log(this.date);
+    addDoc(collection(this.fs,'ledgers/ledger/'+this.date+'/'),debitData).then((data)=>{
+        console.log('Doc added');
+    });
+  }
 
 
 }
