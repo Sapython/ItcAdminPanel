@@ -1,3 +1,4 @@
+import { Commission } from './../../home/service/model/commission';
 import { Injectable } from '@angular/core';
 import {
   Firestore,
@@ -215,7 +216,7 @@ export class DatabaseService {
     return addDoc(collection(this.fs, 'area-management'), area);
   }
 
-  
+
 
   addBanner(banner: any) {
     return addDoc(collection(this.fs, 'banner-management'), banner);
@@ -336,7 +337,7 @@ export class DatabaseService {
   }
 
   updatePolicy( data:any) {
-    
+
     return setDoc(doc(this.fs, urls.policy), data);
   }
 

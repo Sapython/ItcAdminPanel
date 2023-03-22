@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { DatabaseService } from 'services/database/database.service';
 
 @Component({
   selector: 'app-add-vehicle-category',
@@ -10,7 +11,7 @@ import { MatDialog } from '@angular/material/dialog';
 export class AddVehicleCategoryComponent {
   form!: FormGroup;
 
-  constructor(private dialog:MatDialog){}
+  constructor(private dialog:MatDialog,private fs:DatabaseService){}
   ngOnInit(): void {
     this.form = new FormGroup({
       'image':new FormControl(null),
@@ -27,6 +28,7 @@ export class AddVehicleCategoryComponent {
 onCancel(){
 }
 onSubmit(){
-console.log(this.form);
+this.fs.addVehicleCategory(this.form.value);
+console.log(this.form.value);
 }
 }

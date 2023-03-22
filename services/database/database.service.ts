@@ -213,7 +213,7 @@ export class DatabaseService {
     return addDoc(collection(this.fs, 'area-management'), area);
   }
 
-  
+
 
   addBanner(banner: any) {
     return addDoc(collection(this.fs, 'banner-management'), banner);
@@ -335,7 +335,7 @@ export class DatabaseService {
   }
 
   updatePolicy( data:any) {
-    
+
     return setDoc(doc(this.fs, urls.policy), data);
   }
 
@@ -362,6 +362,23 @@ export class DatabaseService {
 
   getBanners(){
     return getDocs(query(collection(this.fs, 'banner-management')));
+  }
+
+
+  //gautam
+
+  //add commission in cab management
+  addCommsion(commission:any){
+    addDoc(collection(this.fs,'test/'),commission).then((data)=>{
+      console.log('Doc added');
+  });
+  }
+
+  //add new category in cab management
+  addVehicleCategory(vehicle:any){
+  addDoc(collection(this.fs,'test/'),vehicle).then((data)=>{
+    console.log('added doc');
+  })
   }
 
 
