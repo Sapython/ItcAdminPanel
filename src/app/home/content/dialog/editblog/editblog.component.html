@@ -1,25 +1,27 @@
 <div class="dialog-container">
   <div class="heading">
-    <h2>Edit Blog</h2>
+    <h2>{{title}}</h2>
     <div mat-dialog-close><i class="ri-close-circle-line"></i></div>
   </div>
- <div class="image-category">
-  <h3><i class="ri-image-line"></i> Upload Blog Image</h3>
- </div>
- <div class="vehicle-category">
-  <h3>Post Title</h3>
- </div>
- <div class="discription">
-  <h3>Discription</h3>
- </div>
- <div class="vehicle-category">
-  <h3>Written By</h3>
- </div>
- <div class="Schedule-post">
- <h3>  <i class="ri-calendar-2-line"></i>  Schedule Post</h3>
- </div>
-  <div class="btns">
-    <button class="outline-btn-red">Cancel</button>
-    <button class="solid-darkblue-button">Add Vehicle</button>
+  <div class="addpackageform">
+    <form [formGroup]="blogForm" (ngSubmit)="updateBlog()" class="d-flex flex-column align-items-center w-100 py-3">
+      <img [src]="this.dataProvider.updateBlog.photoURL" alt="">
+      <input type="file" placeholder="Upload Images">
+      <mat-form-field class="example-full-width  w-100">
+        <mat-label>Enter blog Title</mat-label>
+        <input matInput placeholder="Blog Title" formControlName="title">
+      </mat-form-field>
+    
+      <mat-form-field class="example-full-width  w-100">
+        <mat-label>Blog Description</mat-label>
+        <textarea matInput placeholder="Blog Description" formControlName="description" ></textarea>
+      </mat-form-field>
+    
+    <div class="btns">
+      <button mat-dialog-close (click)="onCancel()" type="button" class="outline-btn-red">Cancel</button>
+      <button mat-dialog-close  type="submit" class="solid-darkblue-button">update</button>
+    </div>
+  </form>
   </div>
+
 </div>

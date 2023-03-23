@@ -1,5 +1,5 @@
 import { UserDataService } from './../../services/user/user-data.service';
-import { DatabaseService } from './services/database/database.service';
+
 import { AuthenticationService } from './../../services/auth/authentication.service';
 import { AlertsAndNotificationsService } from './../../services/alerts-and-notification/alerts-and-notifications.service';
 import { NgModule } from '@angular/core';
@@ -18,6 +18,10 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideFunctions,getFunctions } from '@angular/fire/functions';
 import { providePerformance,getPerformance } from '@angular/fire/performance';
 import { provideStorage,getStorage } from '@angular/fire/storage';
+import { DatabaseService } from 'services/database/database.service';
+import { DataProvider } from './providers/data.provider';
+import { MaterialExampleModule } from './material/material.module';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -36,7 +40,7 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
     providePerformance(() => getPerformance()),
     provideStorage(() => getStorage())
   ],
-  providers: [AlertsAndNotificationsService,AuthenticationService,DatabaseService,UserDataService, ScreenTrackingService,UserTrackingService],
+  providers: [AlertsAndNotificationsService,AuthenticationService,DatabaseService,UserDataService, ScreenTrackingService,UserTrackingService, DataProvider, MaterialExampleModule,MatSnackBar],
   bootstrap: [AppComponent],
   entryComponents:[MatConfirmDialogComponent]
 })

@@ -1,0 +1,16 @@
+<div class="grid-item">
+    <div class="card-container">
+        <img [src]="blog.photoURL"
+            alt="">
+        <h3 class="Lato600 fs-22 py-2">{{blog.title}}</h3>
+        <p>{{blog.description | slice:0:200}}</p>
+        <div class="card-footer">
+            <p class="t-orange">{{blog.created.toDate() | date}}</p>
+            <div class="card-footer-btns">
+                <div (click)="editBlog(blog.id)"><i class="fa-sharp fa-solid fa-pen-to-square edit"></i></div>
+                <div><mat-slide-toggle [(ngModel)]="isChecked"></mat-slide-toggle></div>
+                <div (click)="onDelete()"><i class="fa-solid fa-trash-can trash"></i></div>
+            </div>
+        </div>
+    </div>
+</div>

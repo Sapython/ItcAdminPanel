@@ -14,5 +14,7 @@ export const urls = {
     contacts:'/sitedata/contacts',
     reasons:'/sitedata/reasons/reasons',
     reason:'/sitedata/reasons/reasons/{REASON_ID}',
+    blogs:'/blogs',
+    blog:'/blogs/{BLOG_ID}',
 
 }

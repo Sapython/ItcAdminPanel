@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
+
 @Injectable({
   providedIn: 'root',
+  
 })
 export class AlertsAndNotificationsService {
   toastAudio = new Audio();
@@ -29,7 +31,7 @@ export class AlertsAndNotificationsService {
     }
   }
 
-  constructor(private snackbar: MatSnackBar) {
+  constructor(public snackbar: MatSnackBar) {
     this.toastAudio.src = '/assets/audio/tones/toast.mp3';
     this.toastAudio.volume = 0.4;
     this.toastAudio.load();

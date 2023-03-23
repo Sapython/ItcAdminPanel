@@ -213,7 +213,7 @@ export class DatabaseService {
     return addDoc(collection(this.fs, 'area-management'), area);
   }
 
-  
+
 
   addBanner(banner: any) {
     return addDoc(collection(this.fs, 'banner-management'), banner);
@@ -326,16 +326,16 @@ export class DatabaseService {
   // Rohan
 
   bookings() {
-    return getDocs(collection(this.fs, urls.bookings) )
+    return getDocs(collection(this.fs, urls.bookings))
   }
 
-  updateBooking(BOOKING_ID: any, data:any) {
+  updateBooking(BOOKING_ID: any, data: any) {
     const bookingUrl = urls.booking.replace('{BOOKING_ID}', BOOKING_ID);
     return setDoc(doc(this.fs, bookingUrl), data);
   }
 
-  updatePolicy( data:any) {
-    
+  updatePolicy(data: any) {
+
     return setDoc(doc(this.fs, urls.policy), data);
   }
 
@@ -360,11 +360,51 @@ export class DatabaseService {
     return deleteDoc(doc(this.fs, reasonUrl));
   }
 
-  getBanners(){
+  getBanners() {
     return getDocs(query(collection(this.fs, 'banner-management')));
   }
 
+  // Services
+  addVehiclePackage(data: any) {
+    addDoc(collection(this.fs, 'test/'), data).then((data) => {
+      console.log('Doc added');
+    });
+  }
 
+  // ledger
+  today = new Date();
+  date = this.today.getDate() + '-' + this.today.getHours() + '-' + this.today.getFullYear();
+  addLedgerCredit(creditData: any) {
+    // console.log(this.date);
+    addDoc(collection(this.fs, 'ledgers/ledger/' + this.date + '/'), creditData).then((data) => {
+      console.log('Doc added');
+    });
+  }
+  addLedgerDebit(debitData: any) {
+    // console.log(this.date);
+    addDoc(collection(this.fs, 'ledgers/ledger/' + this.date + '/'), debitData).then((data) => {
+      console.log('Doc added');
+    });
+  }
+
+  // Blogs
+  addBlog(data: any) {
+    addDoc(collection(this.fs, urls.blogs), data)
+  }
+
+  updateBlog(BLOG_ID: any, data: any) {
+    const blogUrl = urls.blog.replace('{BLOG_ID}', BLOG_ID);
+    return setDoc(doc(this.fs, blogUrl), data);
+  }
+
+  getBlogs() {
+    return getDocs(query(collection(this.fs, urls.blogs)));
+  }
+
+  getSingleBlog(BLOG_ID: any) {
+    const blogUrl = urls.blog.replace('{BLOG_ID}', BLOG_ID);
+    return getDoc(doc(this.fs, blogUrl) );
+  }
 
 }
 

@@ -4,6 +4,8 @@ import { AddBannerComponent } from './../dialog/add-banner/add-banner.component'
 
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { AddNewBannerComponent } from 'src/components/add-new-banner/add-new-banner.component';
+import { DatabaseService } from 'services/database/database.service';
 
 @Component({
   selector: 'app-banners',
@@ -11,15 +13,34 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./banners.component.scss']
 })
 export class BannersComponent {
-  isChecked:boolean=true;
-constructor(private dialog:MatDialog){}
-addBanner(){
-  this.dialog.open(AddBannerComponent)
-}
-onDelete(){
-  this.dialog.open(DeleteBannerComponent)
-}
-editBanner(){
-  this.dialog.open(EditBannerComponent)
-}
+  isChecked: boolean = true;
+  banners: any[] = []
+
+  constructor(private dialog: MatDialog, private database:DatabaseService) { }
+
+
+  ngOnInit(): void {
+    this.getBanners();
+  }
+
+  getBanners(){
+    this.database.getBanners().then(res => {
+      this.banners = []
+      res.forEach((banner) => {
+        this.banners.push({...banner.data() as any,id:banner.id})
+      })
+      console.log("Banners",this.banners);
+    })
+  }
+
+
+  addNewBanner() {
+    this.dialog.open(AddNewBannerComponent, { data: { mode: 'add' } })
+  }
+  onDelete() {
+    this.dialog.open(DeleteBannerComponent)
+  }
+  editBanner() {
+    this.dialog.open(EditBannerComponent)
+  }
 }

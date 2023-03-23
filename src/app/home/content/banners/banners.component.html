@@ -1,75 +1,29 @@
 <div class="blog-header">
   <h2>Banner Management</h2>
-  <button (click)="addBanner()"  class="btn"><i class="fa-solid fa-plus"></i>Add New Banner</button>
+  <button (click)="addNewBanner()"  class="btn"><i class="fa-solid fa-plus"></i>Add New Banner</button>
 </div>
 
 <div class="grid-container">
-  <div class="grid-item">
+  <div class="grid-item" *ngFor="let banner of banners">
 
     <div class="card-container">
-      <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAHwBPQMBIgACEQEDEQH/xAAaAAADAQEBAQAAAAAAAAAAAAABAgMABAUH/8QAKRAAAwABAwQBBAMAAwAAAAAAAAECEQMhMRJBUWFxBDJCgRMikVKhsf/EABQBAQAAAAAAAAAAAAAAAAAAAAD/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwD6QqGl4JtOXuGWBR5e65NunuaWFz1LnADJjJ7klmXhjqgKNdQvHIZY33cgCWUTJOXO6ewVQFkx1RFPI6AomMTyMmA4QIIGMgmAxgmABgmAUwTAB7kqnG6RUzAhkD8rkpemuU9yTzL3AXr3wFvq5NWKW5NpxxuBmqn4MrMrBUdX2sB+s3URbcvDX7N1eQK5AxUzZAwrGbAAjND5CaAFpJ7MRy1xwU7jJICKKJmqO6E45Aqt1uLUtPbdGljpgLNFFQrhV6YuHPIHRLBWnndckprHJWaAXPS9xlQ+1LDQj08fa9gKSx0znTaeHyOqAsmOmRVIdMCqCTTGTAYxkEABNgwAMEAAAMAAMSpTWGhwMCFabS24Jv2dQHKfKQHI5muwlS5ex01pL8Xgm9OlyBJV2f8A2K5l8LBRp8Odhehdnj5ATpqeAdfkph9mmK/cgBUg9QrlPsK00BTKNL5J7hjuAZpV9tJ/A6wed8MrGtqT3ygO+TdE1yQj6hfmsfBeamt5pZ8ATem09t0ZPfB0c+gVCrtj2BNMZNeAPTc8boXOOQHen1cPcVqp5X+DJjpgJNFFQHEv0L0UuN0BbaluL/F/xf6EVNcpjzeQA1U8phm8lJo3RNegNNDpk/43+LMuqXugK5GyR6hkwLJmJpsZMBjYBkOQAAJgAAIOwCgCxW8cgZiN75Ge4jTAzZOmFsXIAePArwGmKwAxGFsVsAM0PkVs0dwObG4yQEP2AKSGkCHQFI1LXfKLTrJ7UQQyA65cv7WN0p8o5Z24KzqV8gO9FP7WK9Ol7RWbmuB5Ah+mMmWaT5QOiXxsAjw+QdEvjZlP4/DN/HXYCfRS4eRkq7ofppBSrwAip+BkxkvQcJ8r/oBcJ9g9K+BlE+0Ho8P/AECfT4Zuh+SnTj8g4Anh+DZfhlDMBMhGaWOBQAwMYUAMDSfIQASeZ5NnPJSsdyFy53W6/wDANU54JN4KKwNKvQEWxWx7lok2AGxWzNiNgZs0MVs01yABpRxLrn7aa/ZSdTUXLT+QOxIdI5Z+oa5n9plp19N98P2BdDISal8NMok/ABSGSMhkgCkPLa2wBBQFVQyZJIZAVCKgoAhQEFAExsmAJjGAxjGAwGYwGYrCwAYUIAAAL5AwAKwitgS1NP8AJf4S6/J0ZJXCrfhgL1bc7CXpq1/V4fsnbcP+xv5PDAnUuX/ZYJtnQ66lhrYlqaKe8PHoCLYIfIl9UPFLBpfIG6QqSvShlAEVIyj0W6Q9AElBSaueKY6kbp9AGNel9yTLRrQ++Pkj0h6QOtNVxuOkccprjYrOpa9gdMobBKdWcbpplJpVwA6CgGXIDIwAgFByAwDGByYDGMbIGMb4EqkuWAWBtCPUfZC8gUbAKggEBgAAWhb1pnbn4JVdV32Aarme+/gk7zwjOM7rkXGABU9f3bo570XO6y0dOQNgcqtdmHrG1tJVutmc1dUPD/0Dodq1iksE19PDbxTn1ySm/JSL5A5Z19X/AJFZ+p1PE/4QSHSA6Z+pf5Sv0Vn6ie8v9HJKKJZA61rab7tfopLmvyRyTPoZIDtU5W24yjJyS2uG0VnUtfkwL9IVKJrWfdIpOpPdAbo9sOMcbDJy+GMkuwAm6XspOou/IvSbpAqt1swkUmuB1TAoEXIQCbIM+si3qTKy2A+RL1Zh/wBt36Oetd3xshOUBatWq42+BU8vcCCgCMgBQBCyd6s6a/tv6Rz3q3ffC8AXvWU8bshWpV99vQOkZSAqkfBnttywgaUC5TXsZcGYHNWU9xGdNyqW5y0nHYAZwJWGsPgLeRGwIauk+YecdiU01lNHU3uaVLzlJ/IHKPKGWnPspOnPsBEh5Q6017GWmvYAwMkMtNexlC9gBDoySGwAEUkCSGSAy5KJtcMCQ6QDKvIyoXAUtwHyHAqQyQGSC3jdvCNg4NfUq7xT2XYDo1fqtmtNZ9nPlvdvIEtgpAEdASGSAZBBgZLYDOkllvCOe/qHWVCwvJF3WpbVPZFFKS2AEp43eR0gyikpAKkkt3hC9SbxPHk1rO2QSkAy5CZIKQGXAGOpTZnCAnliWupYx+yvQhXC9gcWrp1G/MkWz0npy13OP6nSmaeM7gc7ZofIXpr2aIW4H//Z" alt="">
-      <!-- <img src="https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8d2F0ZXJmYWxsfGVufDB8fDB8fA%3D%3D&w=1000&q=80" alt=""> -->
+      <img [src]="banner.bannerImage" alt="">
       <div class="card-top">
-        <h4>Title: <span>Lorem Ipsum</span></h4>
+        <h4>Title: <span>{{ banner.title }}</span></h4>
         <div class="card-footer-btns">
           <div (click)="editBanner()" ><i class="fa-sharp fa-solid fa-pen-to-square edit"></i></div>
           <div><mat-slide-toggle [(ngModel)]="isChecked"></mat-slide-toggle></div>
           <div (click)="onDelete()"><i class="fa-solid fa-trash-can trash"></i></div>
         </div>
       </div>
-      <h4>Banner 2</h4>
-      <h4>Banner URL: <span>www.google.com</span> </h4>
+      <h4>Banner URL: <span>{{ banner.bannerUrl }}</span> </h4>
       <div class="card-top">
-        <h4>Start: <span>21 Jan 2023</span></h4>
-        <h4>End: <span>26 Jan 2023</span></h4>
+        <h4>Start: <span>{{ banner.startDate ? (banner.startDate?.toDate() | date) : '' }}</span></h4>
+        <h4>End: <span>{{ banner.endDate ? (banner.endDate?.toDate() | date ) : ''}}</span></h4>
       </div>
 
   </div>
 </div>
 
-<div class="grid-item">
-
-  <div class="card-container">
-    <img src="data:image/jpeg;base64,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" alt="">
-    <!-- <img src="https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8d2F0ZXJmYWxsfGVufDB8fDB8fA%3D%3D&w=1000&q=80" alt=""> -->
-    <div class="card-top">
-      <h4>Title: <span>Lorem Ipsum</span></h4>
-      <div class="card-footer-btns">
-        <div (click)="editBanner()"><i class="fa-sharp fa-solid fa-pen-to-square edit"></i></div>
-        <div><mat-slide-toggle [(ngModel)]="isChecked"></mat-slide-toggle></div>
-        <div (click)="onDelete()"><i class="fa-solid fa-trash-can trash"></i></div>
-      </div>
-    </div>
-    <h4>Banner 2</h4>
-    <h4>Banner URL: <span>www.google.com</span> </h4>
-    <div class="card-top">
-      <h4>Start: <span>21 Jan 2023</span></h4>
-      <h4>End: <span>26 Jan 2023</span></h4>
-    </div>
-
-</div>
-</div>
-<div class="grid-item">
-
-  <div class="card-container">
-    <img src="data:image/jpeg;base64,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" alt="">
-    <!-- <img src="https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8d2F0ZXJmYWxsfGVufDB8fDB8fA%3D%3D&w=1000&q=80" alt=""> -->
-    <div class="card-top">
-      <h4>Title: <span>Lorem Ipsum</span></h4>
-      <div class="card-footer-btns">
-        <div (click)="editBanner()" ><i class="fa-sharp fa-solid fa-pen-to-square edit"></i></div>
-        <div><mat-slide-toggle [(ngModel)]="isChecked"></mat-slide-toggle></div>
-        <div (click)="onDelete()"><i class="fa-solid fa-trash-can trash"></i></div>
-      </div>
-    </div>
-    <h4>Banner 2</h4>
-    <h4>Banner URL: <span>www.google.com</span> </h4>
-    <div class="card-top">
-      <h4>Start: <span>21 Jan 2023</span></h4>
-      <h4>End: <span>26 Jan 2023</span></h4>
-    </div>
-
-</div>
-</div>
 </div>
 

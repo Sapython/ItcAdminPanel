@@ -13,6 +13,8 @@ export class DataProvider{
         spinner:false,
         messageType:'Error'
     };
+    public updateBlog:any;
+    public user:UserData | any;
     public electron:boolean = false;
     public userData:UserData | any;
     public authTokenId:string = "";

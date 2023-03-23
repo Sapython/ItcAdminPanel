@@ -1,7 +1,8 @@
 import { FormGroup, FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
-import { DatabaseService } from 'src/app/services/database/database.service';
+import { DatabaseService } from 'services/database/database.service';
+
 
 @Component({
   selector: 'app-addnewpackage',
