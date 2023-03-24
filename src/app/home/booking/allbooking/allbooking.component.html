@@ -1,145 +1,138 @@
 <div class="main scroll-cont">
   <div class="grid-container">
-    <div class="grid-item grid-item-card">
-      <div class="grid-item card">
-        <div class="card-header" id="allbooking">
-          <h4>All Booking</h4>
-        </div>
-        <!-- implementing expansion in cards -->
-        <div *ngFor="let item of data; let i = index">
-          <div class="card-detail-child" (click)="toggleAccordian($event, i)">
-            <div class="card-detail-sec">
-              <div class="card-detail-img"></div>
-              <div class="card-detail-name">
-                <p><i class="fa-solid fa-phone"></i> Rakesh Kumar</p>
-                <h6>#ITC25</h6>
+    <!-- implementing drag and drop -->
+    <div cdkDropListGroup class="card-container">
+      <div class="example-container">
+        <h4 id="allbooking">All Booking</h4>
+        <div
+          cdkDropList
+          [cdkDropListData]="ALLBOOKING"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)"
+        >
+          <div class="example-box" *ngFor="let item of ALLBOOKING ;let i = index" cdkDrag>
+            <!-- {{item}} -->
+            <div class="card-detail-child"  (click)="toggleAccordian($event, i)">
+              <div class="card-detail-sec">
+                <div class="card-detail-img"></div>
+                <div class="card-detail-name">
+                  <p><i class="fa-solid fa-phone"></i> {{ item.name }}</p>
+                  <h6>{{ item.id }}</h6>
+                </div>
+              </div>
+              <div class="card-detail-sec buttons">
+                <div>
+                  <button>{{ item.tour }}</button>
+                </div>
+                <div>
+                  <p>{{ item.fee | currency : "INR" }}</p>
+                </div>
+                <div><i class="fa-solid fa-angle-down"></i></div>
               </div>
             </div>
-            <div class="card-detail-sec buttons">
-              <div><button>Tour</button></div>
-              <div><p>₹ 2000</p></div>
-              <div><i class="fa-solid fa-angle-down"></i></div>
-            </div>
-          </div>
-          <div
-            class="panel"
-            *ngFor="let child of item.childProperties"
-            hide="!item.isActive"
-          >
-            <!-- <p> {{child.propertyName}} </p> -->
-            <div class="location">
-              <p>Start Time: 21 Jan 2024</p>
-              <p>
-                <i class="ri-map-pin-line"></i> 4140 Parker Rd. Allentown, New
-                Mexico 31134
-              </p>
-              <p>
-                <i class="ri-map-pin-line"></i> 2464 Royal Ln. Mesa, New Jersy
-                45463
-              </p>
-              <div class="panel-btns">
-                <button class="panel-cancel">Cancel</button>
-                <button class="panel-accept">Accept</button>
+            <div class="panel">
+              <!-- <p> {{child.propertyName}} </p> -->
+              <div class="location">
+                <p>Start Time: 21 Jan 2024</p>
+                <p><i class="ri-map-pin-line"></i> 4140 Parker Rd. Allentown, New Mexico 31134 </p>
+                <p><i class="ri-map-pin-line"></i> 2464 Royal Ln. Mesa, New Jersy 45463 </p>
+                <div class="panel-btns">
+                  <button class="panel-cancel">Cancel</button>
+                  <button class="panel-accept">Accept</button>
+                </div>
               </div>
             </div>
-
-          </div>
-        </div>
-        <!-- implementing expansion in cards -->
-      </div>
-
-      <!-- assigned cards -->
-      <div class="grid-item card">
-        <div class="card-header" id="assigned">
-          <h4>Assigned</h4>
-        </div>
-        <div *ngFor="let item of data; let i = index">
-          <div class="card-detail-child" (click)="toggleAccordian($event, i)">
-            <div class="card-detail-sec">
-              <div class="card-detail-img"></div>
-              <div class="card-detail-name">
-                <p><i class="fa-solid fa-phone"></i> Rakesh Kumar</p>
-                <h6>#ITC25</h6>
-              </div>
-            </div>
-            <div class="card-detail-sec buttons">
-              <div><button>Tour</button></div>
-              <div><p>₹ 2000</p></div>
-              <div><i class="fa-solid fa-angle-down"></i></div>
-            </div>
-          </div>
-          <div
-            class="panel"
-            *ngFor="let child of item.childProperties"
-            hide="!item.isActive"
-          >
-            <!-- <p> {{child.propertyName}} </p> -->
-            <div class="location">
-              <p>Start Time: 21 Jan 2024</p>
-              <p>
-                <i class="ri-map-pin-line"></i> 4140 Parker Rd. Allentown, New
-                Mexico 31134
-              </p>
-              <p>
-                <i class="ri-map-pin-line"></i> 2464 Royal Ln. Mesa, New Jersy
-                45463
-              </p>
-              <div class="panel-btns">
-                <button class="panel-cancel">Cancel</button>
-                <button class="panel-accept">Accept</button>
-              </div>
-            </div>
-
           </div>
         </div>
       </div>
-
-      <!-- completed cards -->
-      <div class="grid-item card">
-        <div class="card-header" id="completed">
-          <h4>Completed</h4>
-        </div>
-        <div *ngFor="let item of data; let i = index">
-          <div class="card-detail-child" (click)="toggleAccordian($event, i)">
-            <div class="card-detail-sec">
-              <div class="card-detail-img"></div>
-              <div class="card-detail-name">
-                <p><i class="fa-solid fa-phone"></i> Rakesh Kumar</p>
-                <h6>#ITC25</h6>
+      <div class="example-container">
+        <h4 id="assigned">Assigned</h4>
+        <div
+          cdkDropList
+          [cdkDropListData]="ASSIGNED"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)"
+        >
+          <div class="example-box" *ngFor="let item of ASSIGNED;let i = index" cdkDrag>
+            <!-- {{item}} -->
+            <div class="card-detail-child" (click)="toggleAccordian($event, i)">
+              <div class="card-detail-sec">
+                <div class="card-detail-img"></div>
+                <div class="card-detail-name">
+                  <p><i class="fa-solid fa-phone"></i> {{ item.name }}</p>
+                  <h6>{{ item.id }}</h6>
+                </div>
+              </div>
+              <div class="card-detail-sec buttons">
+                <div>
+                  <button>{{ item.tour }}</button>
+                </div>
+                <div>
+                  <p>{{ item.fee | currency : "INR" }}</p>
+                </div>
+                <div><i class="fa-solid fa-angle-down"></i></div>
               </div>
             </div>
-            <div class="card-detail-sec buttons">
-              <div><button>Tour</button></div>
-              <div><p>₹ 2000</p></div>
-              <div><i class="fa-solid fa-angle-down"></i></div>
+            <div class="panel">
+              <!-- <p> {{child.propertyName}} </p> -->
+              <div class="location">
+                <p>Start Time: 21 Jan 2024</p>
+                <p><i class="ri-map-pin-line"></i> 4140 Parker Rd. Allentown, New Mexico 31134 </p>
+                <p><i class="ri-map-pin-line"></i> 2464 Royal Ln. Mesa, New Jersy 45463 </p>
+                <div class="panel-btns">
+                  <button class="panel-cancel">Cancel</button>
+                  <button class="panel-accept">Accept</button>
+                </div>
+              </div>
             </div>
           </div>
-          <div
-            class="panel"
-            *ngFor="let child of item.childProperties"
-            hide="!item.isActive"
-          >
-            <!-- <p> {{child.propertyName}} </p> -->
-            <div class="location">
-              <p>Start Time: 21 Jan 2024</p>
-              <p>
-                <i class="ri-map-pin-line"></i> 4140 Parker Rd. Allentown, New
-                Mexico 31134
-              </p>
-              <p>
-                <i class="ri-map-pin-line"></i> 2464 Royal Ln. Mesa, New Jersy
-                45463
-              </p>
-              <div class="panel-btns">
-                <button class="panel-cancel">Cancel</button>
-                <button class="panel-accept">Accept</button>
+        </div>
+      </div>
+      <div class="example-container">
+        <h4 id="completed">Completed</h4>
+        <div
+          cdkDropList
+          [cdkDropListData]="COMPLETED"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)"
+        >
+          <div class="example-box" *ngFor="let item of COMPLETED;let i = index" cdkDrag>
+            <!-- {{item}} -->
+            <div class="card-detail-child" (click)="toggleAccordian($event, i)">
+              <div class="card-detail-sec">
+                <div class="card-detail-img"></div>
+                <div class="card-detail-name">
+                  <p><i class="fa-solid fa-phone"></i> {{ item.name }}</p>
+                  <h6>{{ item.id }}</h6>
+                </div>
+              </div>
+              <div class="card-detail-sec buttons">
+                <div>
+                  <button>{{ item.tour }}</button>
+                </div>
+                <div>
+                  <p>{{ item.fee | currency : "INR" }}</p>
+                </div>
+                <div><i class="fa-solid fa-angle-down"></i></div>
               </div>
             </div>
-
+            <div class="panel">
+              <!-- <p> {{child.propertyName}} </p> -->
+              <div class="location">
+                <p>Start Time: 21 Jan 2024</p>
+                <p><i class="ri-map-pin-line"></i> 4140 Parker Rd. Allentown, New Mexico 31134 </p>
+                <p><i class="ri-map-pin-line"></i> 2464 Royal Ln. Mesa, New Jersy 45463 </p>
+                <div class="panel-btns">
+                  <button class="panel-cancel">Cancel</button>
+                  <button class="panel-accept">Accept</button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
+    <!-- implementing drag and drop -->
   </div>
   <div class="grid-cancel">
     <div class="card-cancel" id="cancelled">

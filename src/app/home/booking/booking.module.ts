@@ -1,7 +1,6 @@
 import { MatMenuModule } from '@angular/material/menu';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { BookingRoutingModule } from './booking-routing.module';
 import { BookingComponent } from './booking.component';
 import {MatIconModule} from '@angular/material/icon';
@@ -25,6 +24,7 @@ import { OutstaionCompleteInfoComponent } from './dialogs/outstaion-complete-inf
 import { TourCompleteInfoComponent } from './dialogs/tour-complete-info/tour-complete-info.component';
 import { TourwiseBookingInfoComponent } from './dialogs/tourwise-booking-info/tourwise-booking-info.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 
 @NgModule({
@@ -55,7 +55,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatButtonModule,
     MatDialogModule,
     MatPaginatorModule,
-    MatMenuModule
+    MatMenuModule,
+    DragDropModule
   ],
   exports:[
 

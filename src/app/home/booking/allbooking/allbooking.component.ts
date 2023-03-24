@@ -2,6 +2,14 @@ import { AssignGuideDialogComponent } from './../dialogs/assign-guide-dialog/ass
 import { AssignDriverDialogComponent } from './../dialogs/assign-driver-dialog/assign-driver-dialog.component';
 import { Component,AfterViewInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+
+export interface Cards {
+  name:string;
+  id:string;
+  tour:string;
+  fee:number;
+}
 
 @Component({
   selector: 'app-allbooking',
@@ -38,10 +46,7 @@ export class AllbookingComponent  {
           ]
       }
     ]
-
-
   constructor(private dialog:MatDialog){}
-
   toggleAccordian(event:any, index:any) {
     var element = event.target;
     // element.classList.toggle("active");
@@ -58,5 +63,99 @@ export class AllbookingComponent  {
       panel.style.maxHeight = panel.scrollHeight + "px";
     }
 
-}
+  }
+   ALLBOOKING : Cards[] =[
+    {
+      name:'Rakesh Kumar',
+      id:'ITC25',
+      tour:'Tour',
+      fee:2000
+    },
+    {
+      name:'Gautam Kumar',
+      id:'ITC25',
+      tour:'Tour',
+      fee:2000
+    },
+    {
+      name:'Deep Kumar',
+      id:'ITC25',
+      tour:'Tour',
+      fee:2000
+    },
+    {
+      name:'Abhay Kumar',
+      id:'ITC25',
+      tour:'Tour',
+      fee:2000
+    },
+
+  ]
+
+  ASSIGNED : Cards[] =[
+    {
+      name:'Rakesh Kumar',
+      id:'ITC25',
+      tour:'Tour',
+      fee:2000
+    },
+    {
+      name:'Gautam Kumar',
+      id:'ITC25',
+      tour:'Tour',
+      fee:2000
+    },
+    {
+      name:'Deep Kumar',
+      id:'ITC25',
+      tour:'Tour',
+      fee:2000
+    },
+    {
+      name:'Abhay Kumar',
+      id:'ITC25',
+      tour:'Tour',
+      fee:2000
+    },
+
+  ]
+  COMPLETED : Cards[] =[
+    {
+      name:'Rakesh Kumar',
+      id:'ITC25',
+      tour:'Tour',
+      fee:2000
+    },
+    {
+      name:'Gautam Kumar',
+      id:'ITC25',
+      tour:'Tour',
+      fee:2000
+    },
+    {
+      name:'Deep Kumar',
+      id:'ITC25',
+      tour:'Tour',
+      fee:2000
+    },
+    {
+      name:'Abhay Kumar',
+      id:'ITC25',
+      tour:'Tour',
+      fee:2000
+    },
+
+  ]
+  drop(event: CdkDragDrop<Cards[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex,
+      );
+    }
+  }
 }
