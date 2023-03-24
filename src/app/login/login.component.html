@@ -1,6 +1,9 @@
 <div class="container">
     <div class="card">
-      <img src="assets/mainIcon.png" class="logo" />
+      <div class="outer-logo">
+        <img src="assets/logo.png"  />
+      </div>
+      
       <ng-container *ngIf="!dataProvider.gettingUserData && !this.dataProvider.loggedIn">
         <p class="text1">Sign In</p>
         <form
@@ -35,7 +38,7 @@
       <ng-container *ngIf="!dataProvider.gettingUserData && this.dataProvider.loggedIn">
         <p class="text1">You are Logged In</p>
         <img src="assets/noAccess.svg">
-        <button class="commonButton" routerLink="../admin">Continue To Admin Panel</button>
+        <button class="commonButton" routerLink="/">Continue To Admin Panel</button>
         <button class="commonButton" (click)="logout()">Logout</button>
       </ng-container>
       <ng-container *ngIf="dataProvider.gettingUserData">

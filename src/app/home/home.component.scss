@@ -22,15 +22,18 @@ main {
     display: flex;
     align-items: center;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    background: white;
 
     .logo_cont {
-      width: 15%;
+      width: auto;
+      height: 50px;
+      object-fit: cover;
       display: flex;
       align-items: center;
       justify-content: flex-start;
-      .logo {
-        height: 2rem;
-        width: 10rem;
+      img {
+        height: 100%;
+        width: 100%;
       }
       @media screen and (max-width: 900px) {
         display: flex;

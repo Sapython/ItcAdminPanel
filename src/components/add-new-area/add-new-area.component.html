@@ -1,0 +1,13 @@
+<section>
+    <form [formGroup]="areaForm" (ngSubmit)="submit()">
+        <h3>Add new area</h3>
+        <mat-form-field appearance="outline">
+            <mat-label>Area Name</mat-label>
+            <input matInput formControlName="name" placeholder="Area" value="value">
+        </mat-form-field>
+        <div class="actions">
+            <button color="primary" mat-flat-button>Submit</button>
+            <button mat-stroked-button>Cancel</button>
+        </div>
+    </form>
+</section>

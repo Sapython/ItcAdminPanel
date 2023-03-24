@@ -20,8 +20,9 @@ import { providePerformance,getPerformance } from '@angular/fire/performance';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { DatabaseService } from 'services/database/database.service';
 import { DataProvider } from './providers/data.provider';
-import { MaterialExampleModule } from './material/material.module';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MaterialModule } from 'services/material/material.module';
+import { ComponentModule } from 'src/components/component.module';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     AppRoutingModule,
     FontAwesomeModule,
     BrowserAnimationsModule,
+    ComponentModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAnalytics(() => getAnalytics()),
     provideAuth(() => getAuth()),
@@ -40,7 +42,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     providePerformance(() => getPerformance()),
     provideStorage(() => getStorage())
   ],
-  providers: [AlertsAndNotificationsService,AuthenticationService,DatabaseService,UserDataService, ScreenTrackingService,UserTrackingService, DataProvider, MaterialExampleModule,MatSnackBar],
+  providers: [AlertsAndNotificationsService,AuthenticationService,DatabaseService,UserDataService, ScreenTrackingService,UserTrackingService, DataProvider, MaterialModule,MatSnackBar],
   bootstrap: [AppComponent],
   entryComponents:[MatConfirmDialogComponent]
 })

@@ -210,7 +210,7 @@ export class DatabaseService {
   }
 
   addArea(area: any) {
-    return addDoc(collection(this.fs, 'area-management'), area);
+    return addDoc(collection(this.fs, 'location-management'), area);
   }
 
 
