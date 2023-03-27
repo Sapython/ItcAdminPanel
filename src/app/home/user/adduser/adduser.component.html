@@ -1,0 +1,73 @@
+
+<a routerLink="/user" routerLinkActive="active" class="back-arrow-tag"><i class="ri-arrow-left-line back-arrow"></i></a>
+
+
+<form [formGroup]="form" (ngSubmit)="addUser()">
+<!-- Upload Image -->
+<div class="image-upload">
+    <input type="file" id="myfile" name="myfile" formControlName="profilePhoto">
+</div>
+
+<div class="about">
+    <h1>About Driver</h1>
+    <div class="container-about">
+        <div class="item">
+            <input type="text" formControlName="name">
+        </div>
+        <div class="item">
+            <input type="text" formControlName="lastName">
+        </div>
+        <div class="item">
+            <input type="text" formControlName="phoneNumber">
+        </div>
+        <div class="item base-location">
+            <input type="text" formControlName="baseLocation">
+        </div>
+        <div class="item">
+            <input type="text" formControlName="email">
+        </div>
+        <div class="item language">
+            <input type="text" formControlName="language">
+        </div>
+    </div>
+</div>
+<hr class="end-line">
+<div class="identification">
+    <h1>Identification Info</h1>
+    <div class="container-identification">
+        <div class="item">
+            <input type="text" formControlName="driverLicense">
+        </div>
+        <div class="item">
+            <input type="text" formControlName="dateOfBirth">
+        </div>
+        <div class="item">
+            <input type="text" formControlName="licenseNumber">
+        </div>
+        <div class="item expire-date">
+            <input type="text" formControlName="licenseExpireDate">
+        </div>
+    </div>
+    <div class="add-photo">
+        <button><i class="ri-add-line"></i>Add photo</button>
+        <p>The Photo should pe less than 100 MB in size</p>
+    </div>
+</div>
+<hr class="end-line">
+<div class="extra">
+    <div class="container-extra">
+        <div class="item">
+            <input type="text" formControlName="carRegistrationNumber">
+        </div>
+        <div class="item">
+            <input type="text" formControlName="carCompany">
+        </div>
+        <div class="item salary-range">
+            <input type="text" formControlName="salaryRange">
+        </div>
+    </div>
+    <div class="add-driver">
+        <button>Add Driver</button>
+    </div>
+</div>
+</form>

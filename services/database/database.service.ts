@@ -370,6 +370,13 @@ export class DatabaseService {
       console.log('Doc added');
     });
   }
+  // add user-driver-guide
+  addDriver(data:any){
+    addDoc(collection(this.fs,'test/'),data).then((data)=>{
+      console.log('Doc added');
+    });
+  }
+
 
   // ledger
   today=new Date();

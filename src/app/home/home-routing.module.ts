@@ -39,6 +39,7 @@ const routes: Routes = [
       },
       { path: 'content', loadChildren: () => import('./content/content.module').then(m => m.ContentModule) },
 
+      { path: 'user/adduser', loadChildren: () => import('./user/adduser/adduser.module').then(m => m.AdduserModule) },
     ],
   },
 ];
