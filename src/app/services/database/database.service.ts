@@ -30,7 +30,7 @@ import {
 } from '@angular/fire/storage';
 import { UserData } from 'src/structures/user.structure';
 import { urls } from '../url';
-import { MapLocation, RentalPackage, VehicleCategory, VehicleCommissionPackages, VehiclePricingPackages } from 'src/structures/service.structure';
+import { GuideRentalPackage, MapLocation, RentalPackage, VehicleCategory, VehicleCommissionPackages, VehiclePricingPackages } from 'src/structures/service.structure';
 
 @Injectable({
   providedIn: 'root',
@@ -391,6 +391,14 @@ export class DatabaseService {
     return getDocs(query(collection(this.fs,'service/rental/packages')));
   }
 
+  addGuideServicePackage(packageData:GuideRentalPackage){
+    return addDoc(collection(this.fs,'service/rental/packages'),packageData)
+  }
+
+  getGuideServicePackages(){
+    return getDocs(query(collection(this.fs,'service/rental/packages')));
+  }
+
   getLocations(){
     return getDocs(query(collection(this.fs,'locations')));
   }
@@ -407,35 +415,47 @@ export class DatabaseService {
     return deleteDoc(doc(this.fs,'locations/'+location.id));
   }
 
-  addVehicleCategory(mode:'rental',categoryData:VehicleCategory){
+  addVehicleCategory(mode:'rental'|'cab'|'outstation',categoryData:VehicleCategory){
     return addDoc(collection(this.fs,'service/'+mode+'/vehicleCategories'),categoryData);
   }
 
-  getVehicleCategories(mode:'rental'){
+  getVehicleCategories(mode:'rental'|'cab'|'outstation'){
     return getDocs(query(collection(this.fs,'service/'+mode+'/vehicleCategories')));
   }
 
-  deleteVehicleCategory(mode:'rental',category:VehicleCategory){
+  deleteVehicleCategory(mode:'rental'|'cab'|'outstation',category:VehicleCategory){
     return deleteDoc(doc(this.fs,'service/'+mode+'/vehicleCategories/'+category.id));
   }
 
-  updateVehicleCategory(mode:'rental',category:VehicleCategory){
+  updateVehicleCategory(mode:'rental'|'cab'|'outstation',category:VehicleCategory){
     return updateDoc(doc(this.fs,'service/'+mode+'/vehicleCategories/'+category.id),{...category});
   }
 
-  addVehiclePricingPackage(mode:'rental',pricingPackageData:VehiclePricingPackages){
+  addVehiclePricingPackage(mode:'rental'|'cab'|'outstation',pricingPackageData:VehiclePricingPackages){
     return addDoc(collection(this.fs,'service/'+mode+'/vehiclePricingPackages'),pricingPackageData);
   }
 
-  saveVehiclePricingPackages(mode:'rental',packages:VehiclePricingPackages[]){
+  saveVehiclePricingPackages(mode:'rental'|'cab'|'outstation',packages:VehiclePricingPackages[]){
     return setDoc(doc(this.fs,'service/'+mode),{packages:packages},{merge:true});
   }
 
-  saveCommissionPackages(mode:'rental',packages:VehicleCommissionPackages[]){
+  saveCommissionPackages(mode:'rental'|'cab'|'outstation',packages:VehicleCommissionPackages[]){
     return setDoc(doc(this.fs,'service/'+mode),{commissionPackages:packages},{merge:true});
   }
 
   getRentalService(){
     return getDoc(doc(this.fs,'service/rental'));
+  }
+
+  getGuideService(){
+    return getDoc(doc(this.fs,'service/guide'));
+  }
+
+  getOutStationService(){
+    return getDoc(doc(this.fs,'service/outstation'));
+  }
+
+  getCabService(){
+    return getDoc(doc(this.fs,'service/cab'));
   }
 }

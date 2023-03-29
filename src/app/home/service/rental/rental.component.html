@@ -73,9 +73,6 @@
 <div class="vehicle-container">
   <div class="vehicle-header">
     <div class="heading"><p>Vehicle Management</p></div>
-    <!-- <button (click)="addVehicleCategory()" class="btn">
-      <i class="fa-solid fa-plus"></i>Add New Category
-    </button> -->
     <button mat-stroked-button (click)="addVehicleCategory()">
       <mat-icon>add</mat-icon>
       Add New Vehicle
@@ -195,7 +192,7 @@
             <input matInput type="number" [(ngModel)]="item.value" />
           </mat-form-field>
           <mat-form-field appearance="outline">
-            <mat-label>Price Per Hour</mat-label>
+            <mat-label>Type</mat-label>
             <mat-select placeholder="Select Type" [(ngModel)]="item.type" name="mode">
               <mat-option value="percentage">
                 Percentage

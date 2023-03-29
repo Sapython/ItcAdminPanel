@@ -23,6 +23,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { AddlocationComponent } from './addlocation/addlocation.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { NewPackageComponent } from './rental/new-package/new-package.component';
+import { NewGuidePackageComponent } from './guide/new-package/new-package.component';
 import { DialogModule } from '@angular/cdk/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
@@ -40,7 +41,8 @@ import { MatSelectModule } from '@angular/material/select';
     EditVehicleCategoryComponent,
     EditPackageComponent,
     AddlocationComponent,
-    NewPackageComponent
+    NewPackageComponent,
+    NewGuidePackageComponent
   ],
   imports: [
     CommonModule,

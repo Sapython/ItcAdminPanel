@@ -1,0 +1,17 @@
+<form [formGroup]="newPackageForm" (ngSubmit)="submit()">
+    <h1>Add New Package</h1>
+    <mat-form-field appearance="outline">
+        <mat-label>Enter Days</mat-label>
+        <input type="number" matInput placeholder="Enter Day" formControlName="hours">
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline">
+        <mat-label>Enter Price</mat-label>
+        <input type="number" matInput placeholder="Enter Price" formControlName="distance">
+    </mat-form-field>
+
+    <div class="actions">
+        <button mat-stroked-button color="warn" type="button" (click)="cancel()">Cancel</button>
+        <button mat-flat-button color="primary" [disabled]="!newPackageForm.valid" type="submit">Submit</button>
+    </div>
+</form>

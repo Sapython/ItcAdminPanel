@@ -4,6 +4,12 @@ export interface RentalPackage {
   distance: number;
   enabled: boolean;
 }
+export interface GuideRentalPackage {
+  id?:string;
+  days: number;
+  price: number;
+  enabled: boolean;
+}
 export interface MapLocation {
   id?:string;
   lat: number;
