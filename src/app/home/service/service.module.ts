@@ -14,7 +14,7 @@ import { MatIconModule } from '@angular/material/icon';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
-import { AddVehicleCategoryComponent } from './dialog/add-vehicle-category/add-vehicle-category.component';
+import { AddVehicleCategoryComponent } from '../../../components/add-vehicle-category/add-vehicle-category.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { DeleteWarnComponent } from './dialog/delete-warn/delete-warn.component';
 import { EditVehicleCategoryComponent } from './dialog/edit-vehicle-category/edit-vehicle-category.component';
@@ -29,7 +29,6 @@ import { GoogleMapsModule } from '@angular/google-maps';
     OutstationComponent,
     TourComponent,
     GuideComponent,
-    AddVehicleCategoryComponent,
     DeleteWarnComponent,
     EditVehicleCategoryComponent,
     EditPackageComponent,

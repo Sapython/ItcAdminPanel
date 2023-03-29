@@ -32,13 +32,10 @@ export class EditblogComponent {
 
 
   getBlog(){
-    
     this.database.getSingleBlog(this.id).then((res:any)=>{
       console.log(res.data())
       console.log(this.dataProvider.updateBlog)
-      this.blogForm.patchValue(res)
-
-      
+      this.blogForm.patchValue(res.data())
     })
   }
   async uploadFile(files: FileList | null) {

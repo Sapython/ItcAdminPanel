@@ -4,11 +4,12 @@
     margin: 0;
     padding: 0;
   
-    background-image: url("../../assets/login.png");
-    background-size: cover;
-    background-position: center;
+    background-image: url("../../assets/images/loginBackground.png");
+    background-size: auto;
+    background-position: right;
     background-repeat: no-repeat;
     padding: 5rem 7rem;
+    position: fixed;
   
     .card {
       height: 80vh;

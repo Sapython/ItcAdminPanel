@@ -7,13 +7,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddNewBannerComponent } from './add-new-banner/add-new-banner.component';
 import { MaterialModule } from 'services/material/material.module';
 import { AddNewAreaComponent } from './add-new-area/add-new-area.component';
+import { AddVehicleCategoryComponent } from './add-vehicle-category/add-vehicle-category.component';
 
 
 const components = [
   BlogCardComponent,
   SpotCardComponent,
   AddNewBannerComponent,
-  AddNewAreaComponent
+  AddNewAreaComponent,
+  AddVehicleCategoryComponent
 ];
 
 @NgModule({

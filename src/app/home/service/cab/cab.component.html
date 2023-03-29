@@ -12,72 +12,18 @@
   </div>
   <div class="card-parent">
     <div class="grid-container">
-      <div class="grid-item">
-        <div class="ctns">
-          <h4>3/203 AVAS VIKAS</h4>
-          <h5>ALLAHABAD Allahabad UP 211019 IN</h5>
+      <div class="grid-item" *ngFor="let area of areas">
+        <div class="ctns" *ngIf="area.mode == 'cab'">
+          <h4>{{ area.title }}</h4>
+          <h5>{{ area.nearBy }}</h5>
         </div>
         <div class="btns">
-          <div id="edit"><i class="fa-sharp fa-solid fa-pen-to-square"></i></div>
+          <!-- <div id="edit" (click)="editArea(area)"><i class="fa-sharp fa-solid fa-pen-to-square"></i></div> -->
           <div><mat-slide-toggle ></mat-slide-toggle></div>
-          <div id="trash"><i class="fa-solid fa-trash-can"></i></div>
+          <div id="trash" (click)="deleteArea(area.id || '')"><i class="fa-solid fa-trash-can"></i></div>
         </div>
       </div>
-      <div class="grid-item">
-        <div class="ctns">
-          <h4>3/203 AVAS VIKAS</h4>
-          <h5>ALLAHABAD Allahabad UP 211019 IN</h5>
-        </div>
-        <div class="btns">
-          <div id="edit"><i class="fa-sharp fa-solid fa-pen-to-square"></i></div>
-          <div><mat-slide-toggle   ></mat-slide-toggle></div>
-          <div id="trash"><i class="fa-solid fa-trash-can"></i></div>
-        </div>
-      </div>
-      <div class="grid-item">
-        <div class="ctns">
-          <h4>3/203 AVAS VIKAS</h4>
-          <h5>ALLAHABAD Allahabad UP 211019 IN</h5>
-        </div>
-        <div class="btns">
-          <div id="edit"><i class="fa-sharp fa-solid fa-pen-to-square"></i></div>
-          <div><mat-slide-toggle   ></mat-slide-toggle></div>
-          <div id="trash"><i class="fa-solid fa-trash-can"></i></div>
-        </div>
-      </div>
-      <div class="grid-item">
-        <div class="ctns">
-          <h4>3/203 AVAS VIKAS</h4>
-          <h5>ALLAHABAD Allahabad UP 211019 IN</h5>
-        </div>
-        <div class="btns">
-          <div id="edit"><i class="fa-sharp fa-solid fa-pen-to-square"></i></div>
-          <div><mat-slide-toggle   ></mat-slide-toggle></div>
-          <div id="trash"><i class="fa-solid fa-trash-can"></i></div>
-        </div>
-      </div>
-      <div class="grid-item">
-        <div class="ctns">
-          <h4>3/203 AVAS VIKAS</h4>
-          <h5>ALLAHABAD Allahabad UP 211019 IN</h5>
-        </div>
-        <div class="btns">
-          <div id="edit"><i class="fa-sharp fa-solid fa-pen-to-square"></i></div>
-          <div><mat-slide-toggle   ></mat-slide-toggle></div>
-          <div id="trash"><i class="fa-solid fa-trash-can"></i></div>
-        </div>
-      </div>
-      <div class="grid-item">
-        <div class="ctns">
-          <h4>3/203 AVAS VIKAS</h4>
-          <h5>ALLAHABAD Allahabad UP 211019 IN</h5>
-        </div>
-        <div class="btns">
-          <div id="edit"><i class="fa-sharp fa-solid fa-pen-to-square"></i></div>
-          <div><mat-slide-toggle   ></mat-slide-toggle></div>
-          <div id="trash"><i class="fa-solid fa-trash-can"></i></div>
-        </div>
-      </div>
+     
     </div>
   </div>
 </div>
@@ -87,55 +33,26 @@
    <button (click)="addVehicleCategory()" class="btn"><i class="fa-solid fa-plus"></i>Add New Category</button>
   </div>
   <div class="vehicle-parent">
-      <div class="vehicle-card">
-        <div class="vehicle-img"><img src="https://i.pinimg.com/564x/fb/5d/d5/fb5dd51807074b6ab5619c44c3438a2f.jpg" alt=""></div>
+    <ng-container *ngFor="let vehicle of vehicles">
+      <div class="vehicle-card"  *ngIf="vehicle.mode == 'cab'">
+        <div class="vehicle-img"><img [src]="vehicle.bannerImage" alt=""></div>
         <div class="vehicle-cont">
           <div class="vc-one">
-            <h4>SUV</h4><h5>₹ 1502/h</h5>
+            <h4>{{ vehicle?.vehicleCategory }}</h4><h5>₹ 1502/h</h5>
           </div>
-          <div class="vc-two"><h5>Scorpio-N XUV 500, Bolero</h5></div>
+          <div class="vc-two"><h5>{{ vehicle?.description }}</h5></div>
           <div class="vc-three">
 
               <div (click)="editVehicle()" class="edit"><i class="fa-sharp fa-solid fa-pen-to-square"></i></div>
-              <div><mat-slide-toggle   ></mat-slide-toggle></div>
+              <div><mat-slide-toggle ></mat-slide-toggle></div>
               <div class="trash"><i class="fa-solid fa-trash-can"></i></div>
 
           </div>
         </div>
       </div>
-      <div class="vehicle-card">
-        <div class="vehicle-img"><img src="data:image/jpeg;base64,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" alt=""></div>
-        <div class="vehicle-cont">
-          <div class="vc-one">
-            <h4>Sedan</h4><h5>₹ 1502/h</h5>
-          </div>
-          <div class="vc-two"><h5>Hyundai Sonata, Nissan Altima</h5></div>
-          <div class="vc-three">
-
-              <div  (click)="editVehicle()" class="edit"><i class="fa-sharp fa-solid fa-pen-to-square"></i></div>
-              <div><mat-slide-toggle   ></mat-slide-toggle></div>
-              <div class="trash"><i class="fa-solid fa-trash-can"></i></div>
-
-          </div>
-        </div>
-      </div>
-      <div class="vehicle-card">
-        <div class="vehicle-img"><img src="https://www.drivespark.com/car-image/640x480x100/car/x39311112-force_motors_traveller.jpg.pagespeed.ic.zQRFGvN6ey.jpg" alt=""></div>
-        <div class="vehicle-cont">
-          <div class="vc-one">
-            <h4>Traveller</h4><h5>₹ 1502/h</h5>
-          </div>
-          <div class="vc-two"><h5>Toyota Innova, Mahindra Maraza</h5></div>
-          <div class="vc-three">
-
-              <div  (click)="editVehicle()" class="edit"><i class="fa-sharp fa-solid fa-pen-to-square"></i></div>
-              <div><mat-slide-toggle   ></mat-slide-toggle></div>
-              <div class="trash"><i class="fa-solid fa-trash-can"></i></div>
-
-          </div>
-        </div>
-      </div>
-
+    </ng-container>
+      
+      
   </div>
 </div>
 <div class="vehicle-container">

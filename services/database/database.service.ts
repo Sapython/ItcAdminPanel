@@ -213,6 +213,21 @@ export class DatabaseService {
     return addDoc(collection(this.fs, 'location-management'), area);
   }
 
+  updateArea(id: any, area: any) {
+    return updateDoc(doc(this.fs, 'location-management/' + id), area);
+  }
+
+  addVehiclePackage(vehiclePackage: any) {
+    return addDoc(collection(this.fs, 'vehicle-management'), vehiclePackage);
+  }
+
+  updateVehiclePackage(id: any, banner: any) {
+    return updateDoc(doc(this.fs, 'vehicle-management/' + id), banner);
+  }
+
+  getVehicles() {
+    return getDocs(query(collection(this.fs, 'vehicle-management')));
+  }
 
 
   addBanner(banner: any) {
@@ -347,6 +362,10 @@ export class DatabaseService {
     return getDocs(query(collection(this.fs, urls.area)));
   }
 
+  deleteArea(areaId: string) {
+    return deleteDoc(doc(this.fs, urls.area + "/" + areaId));
+  }
+
   addReasons(reason: any) {
     return addDoc(collection(this.fs, urls.reasons), reason);
   }
@@ -365,11 +384,11 @@ export class DatabaseService {
   }
 
   // Services
-  addVehiclePackage(data: any) {
-    addDoc(collection(this.fs, 'test/'), data).then((data) => {
-      console.log('Doc added');
-    });
-  }
+  // addVehiclePackage(data: any) {
+  //   addDoc(collection(this.fs, 'test/'), data).then((data) => {
+  //     console.log('Doc added');
+  //   });
+  // }
 
   // ledger
   today = new Date();

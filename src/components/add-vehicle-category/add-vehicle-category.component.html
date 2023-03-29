@@ -1,0 +1,104 @@
+<section>
+  <h4>Vehicle Management</h4>
+  <hr />
+  <form [formGroup]="newVehicleCategoryForm" (ngSubmit)="submit()">
+    <mat-slide-toggle formControlName="enabled">Enable/Disable</mat-slide-toggle>
+    <div class="row">
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Vehicle category:</mat-label>
+        <input type="text" formControlName="vehicleCategory" matInput />
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Description about Vehicle</mat-label>
+        <textarea matInput placeholder="Ex. It makes me feel..." formControlName="description"></textarea>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <div class="d-flex align-items-center justify-content-between w-100">
+        <mat-form-field appearance="outline" class="w-100">
+          <input type="text" formControlName="seats" placeholder="Seats" matInput />
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-select placeholder="AC" formControlName="acNonAc" name="type" #linkType>
+            <mat-option *ngFor="let ac of ac" [value]="ac">
+              {{ ac }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-select placeholder="luggage Space" formControlName="luggageSpace" name="type" >
+          <mat-option *ngFor="let luggageSpace of luggageSpaces" [value]="luggageSpace">
+            {{ luggageSpace }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </div>
+    <div class="row">
+      <strong> Action Type: </strong>
+      <mat-form-field appearance="outline">
+        <mat-label>Action Type</mat-label>
+        <mat-select placeholder="Type" formControlName="bannerUrlType" name="type" #linkType>
+          <mat-option *ngFor="let type of types" [value]="type">
+            {{ type }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="row" *ngIf="linkType.value == 'App'">
+      <strong> Action Type: </strong>
+      <mat-form-field appearance="outline">
+        <mat-label>Action Type</mat-label>
+        <mat-select placeholder="Type" formControlName="bannerUrlType" name="type">
+          <mat-option *ngFor="let type of types" [value]="type">
+            {{ type }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="row" *ngIf="linkType.value == 'Url'">
+      <strong> URL: </strong>
+      <mat-form-field appearance="outline">
+        <mat-label>Title</mat-label>
+        <input formControlName="bannerUrl" type="text" matInput />
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <strong> Banner Image: </strong>
+      <input hidden type="file" (change)="setImage($event)" #imageInput>
+      <button mat-flat-button (click)="imageInput.click()" type="button" color="primary">Upload</button>
+      <button mat-stroked-button color="primary" type="button" (click)="clearImage()">Remove</button>
+    </div>
+    <div class="row">
+      <strong> Date Range: </strong>
+      <mat-form-field appearance="outline">
+        <mat-label>Enter a date range</mat-label>
+        <mat-date-range-input [rangePicker]="picker">
+          <input matStartDate formControlName="startDate" placeholder="Start date" />
+          <input matEndDate formControlName="endDate" placeholder="End date" />
+        </mat-date-range-input>
+        <mat-hint>MM/DD/YYYY - MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+      </mat-form-field>
+    </div>
+    <div class="actions">
+      <button mat-flat-button type="submit" color="primary">Save</button>
+      <button mat-stroked-button type="button" color="primary">Cancel</button>
+    </div>
+  </form>
+  <div class="preview">
+    <img [src]="imageSource" *ngIf="imageSource">
+    <ng-container *ngIf="!imageSource">
+      <mat-icon>image</mat-icon>
+      <p>Image Preview</p>
+    </ng-container>
+  </div>
+  <p></p>
+</section>

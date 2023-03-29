@@ -10,7 +10,7 @@ export const urls = {
     service:`/services/{SERVICE_ID}`,
     settings:'/sitedata/settings',
     policy:'/sitedata/policy',
-    area:'/area-management',
+    area:'/location-management',
     contacts:'/sitedata/contacts',
     reasons:'/sitedata/reasons/reasons',
     reason:'/sitedata/reasons/reasons/{REASON_ID}',

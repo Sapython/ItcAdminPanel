@@ -50,6 +50,7 @@ export class LoginComponent {
           this.loginForm.value.password
         );
         this.alertify.presentToast('Login Successful');
+      
       } else {
         alert('Invalid Login Credentials');
       }

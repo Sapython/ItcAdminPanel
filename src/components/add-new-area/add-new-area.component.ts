@@ -12,9 +12,13 @@ import { DatabaseService } from 'services/database/database.service';
 export class AddNewAreaComponent {
   areaForm:FormGroup = new FormGroup({
     name: new FormControl(''),
+    nearBy: new FormControl(''),
+    mode: new FormControl('')
   });
   constructor(public dialogRef: DialogRef,@Inject(DIALOG_DATA) public title: string) { }
   submit(){
     this.dialogRef.close(this.areaForm.value);
   }
+
+  
 }

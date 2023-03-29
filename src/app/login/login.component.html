@@ -37,9 +37,9 @@
       </ng-container>
       <ng-container *ngIf="!dataProvider.gettingUserData && this.dataProvider.loggedIn">
         <p class="text1">You are Logged In</p>
-        <img src="assets/noAccess.svg">
-        <button class="commonButton" routerLink="/">Continue To Admin Panel</button>
-        <button class="commonButton" (click)="logout()">Logout</button>
+        <!-- <img src="assets/noAccess.svg"> -->
+        <button mat-raised-button color="primary" class="w-75 my-3 py-4" routerLink="/">Continue To Admin Panel</button>
+        <button mat-raised-button color="warn" class="w-75  py-3" (click)="auth.logout()">Logout</button>
       </ng-container>
       <ng-container *ngIf="dataProvider.gettingUserData">
         <p class="text1">Getting User Data</p>
