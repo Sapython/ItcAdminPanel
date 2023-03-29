@@ -30,6 +30,7 @@ import {
 } from '@angular/fire/storage';
 import { UserData } from 'src/structures/user.structure';
 import { urls } from '../url';
+import { MapLocation, RentalPackage, VehicleCategory, VehicleCommissionPackages, VehiclePricingPackages } from 'src/structures/service.structure';
 
 @Injectable({
   providedIn: 'root',
@@ -366,7 +367,6 @@ export class DatabaseService {
     return getDocs(query(collection(this.fs, 'banner-management')));
   }
 
-
   // ledger
   today=new Date();
   date=this.today.getDate()+'-'+this.today.getHours()+'-'+this.today.getFullYear();
@@ -381,5 +381,61 @@ export class DatabaseService {
     addDoc(collection(this.fs,'ledgers/ledger/'+this.date+'/'),debitData).then((data)=>{
         console.log('Doc added');
     });
+  }
+
+  addRentalServicePackage(packageData:RentalPackage){
+    return addDoc(collection(this.fs,'service/rental/packages'),packageData)
+  }
+
+  getRentalServicePackages(){
+    return getDocs(query(collection(this.fs,'service/rental/packages')));
+  }
+
+  getLocations(){
+    return getDocs(query(collection(this.fs,'locations')));
+  }
+
+  addLocation(locationData:MapLocation){
+    return addDoc(collection(this.fs,'locations'),locationData);
+  }
+
+  updateLocation(locationData:MapLocation){
+    return updateDoc(doc(this.fs,'locations/'+locationData.id),{...locationData});
+  }
+
+  deleteLocation(location:MapLocation){
+    return deleteDoc(doc(this.fs,'locations/'+location.id));
+  }
+
+  addVehicleCategory(mode:'rental',categoryData:VehicleCategory){
+    return addDoc(collection(this.fs,'service/'+mode+'/vehicleCategories'),categoryData);
+  }
+
+  getVehicleCategories(mode:'rental'){
+    return getDocs(query(collection(this.fs,'service/'+mode+'/vehicleCategories')));
+  }
+
+  deleteVehicleCategory(mode:'rental',category:VehicleCategory){
+    return deleteDoc(doc(this.fs,'service/'+mode+'/vehicleCategories/'+category.id));
+  }
+
+  updateVehicleCategory(mode:'rental',category:VehicleCategory){
+    return updateDoc(doc(this.fs,'service/'+mode+'/vehicleCategories/'+category.id),{...category});
+  }
+
+  addVehiclePricingPackage(mode:'rental',pricingPackageData:VehiclePricingPackages){
+    return addDoc(collection(this.fs,'service/'+mode+'/vehiclePricingPackages'),pricingPackageData);
+  }
+
+  saveVehiclePricingPackages(mode:'rental',packages:VehiclePricingPackages[]){
+    return setDoc(doc(this.fs,'service/'+mode),{packages:packages},{merge:true});
+  }
+
+  saveCommissionPackages(mode:'rental',packages:VehicleCommissionPackages[]){
+    return setDoc(doc(this.fs,'service/'+mode),{commissionPackages:packages},{merge:true});
+  }
+
+  getRentalService(){
+    return getDoc(doc(this.fs,'service/rental'));
   }
 }

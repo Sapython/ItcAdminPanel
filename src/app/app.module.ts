@@ -1,7 +1,7 @@
-import { UserDataService } from './../../services/user/user-data.service';
+import { UserDataService } from './services/user/user-data.service';
 import { DatabaseService } from './services/database/database.service';
-import { AuthenticationService } from './../../services/auth/authentication.service';
-import { AlertsAndNotificationsService } from './../../services/alerts-and-notification/alerts-and-notifications.service';
+import { AuthenticationService } from './services/auth/authentication.service';
+import { AlertsAndNotificationsService } from './services/alerts-and-notification/alerts-and-notifications.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -18,6 +18,8 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideFunctions,getFunctions } from '@angular/fire/functions';
 import { providePerformance,getPerformance } from '@angular/fire/performance';
 import { provideStorage,getStorage } from '@angular/fire/storage';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { DataProvider } from './providers/data.provider';
 
 @NgModule({
   declarations: [
@@ -34,9 +36,10 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
     provideFirestore(() => getFirestore()),
     provideFunctions(() => getFunctions()),
     providePerformance(() => getPerformance()),
-    provideStorage(() => getStorage())
+    provideStorage(() => getStorage()),
+    MatSnackBarModule
   ],
-  providers: [AlertsAndNotificationsService,AuthenticationService,DatabaseService,UserDataService, ScreenTrackingService,UserTrackingService],
+  providers: [AlertsAndNotificationsService,AuthenticationService,DatabaseService,UserDataService, ScreenTrackingService,UserTrackingService,DataProvider],
   bootstrap: [AppComponent],
   entryComponents:[MatConfirmDialogComponent]
 })

@@ -1,57 +1,214 @@
 <div class="vehicle-container">
   <div class="vehicle-header">
     <div class="heading"><p>Package Management</p></div>
-   <button class="btn"><i class="fa-solid fa-plus"></i>Add New Category</button>
+    <button (click)="newPackage()" mat-stroked-button color="primary">
+      <mat-icon>add</mat-icon> Add New Package
+    </button>
   </div>
   <div class="vehicle-parent">
-      <div class="vehicle-card">
-        <div class="card-km">
-          <h4>1 hr <br> 50 Km</h4>
-        </div>
-        <div class="vehicle-cont">
-          <div class="vc-three">
-              <div (click)="editPackage()" class="edit"><i class="fa-sharp fa-solid fa-pen-to-square"></i></div>
-              <div><mat-slide-toggle   ></mat-slide-toggle></div>
-              <div class="trash"><i class="fa-solid fa-trash-can"></i></div>
+    <div class="vehicle-card" *ngFor="let package of packages">
+      <div class="card-km">
+        <h4>
+          {{ package.hours }} hr <br />
+          {{ package.distance }} Km
+        </h4>
+      </div>
+      <div class="vehicle-cont">
+        <div class="vc-three">
+          <div class="edit">
+            <i class="fa-sharp fa-solid fa-pen-to-square"></i>
           </div>
+          <div>
+            <mat-slide-toggle [checked]="package.enabled"></mat-slide-toggle>
+          </div>
+          <div class="trash"><i class="fa-solid fa-trash-can"></i></div>
         </div>
       </div>
-      <div class="vehicle-card">
-        <div class="card-km">
-          <h4>2 hr <br> 100 Km</h4>
-        </div>
-        <div class="vehicle-cont">
-          <div class="vc-three">
-              <div (click)="editPackage()" class="edit"><i class="fa-sharp fa-solid fa-pen-to-square"></i></div>
-              <div><mat-slide-toggle   ></mat-slide-toggle></div>
-              <div class="trash"><i class="fa-solid fa-trash-can"></i></div>
-          </div>
-        </div>
-      </div>
-      <div class="vehicle-card">
-        <div class="card-km">
-          <h4>4 hr <br> 200 Km</h4>
-        </div>
-        <div class="vehicle-cont">
-          <div class="vc-three">
-              <div (click)="editPackage()" class="edit"><i class="fa-sharp fa-solid fa-pen-to-square"></i></div>
-              <div><mat-slide-toggle   ></mat-slide-toggle></div>
-              <div class="trash"><i class="fa-solid fa-trash-can"></i></div>
-          </div>
-        </div>
-      </div>
-      <div class="vehicle-card">
-        <div class="card-km">
-          <h4>8 hr <br> 400 Km</h4>
-        </div>
-        <div class="vehicle-cont">
-          <div class="vc-three">
-              <div class="edit"><i class="fa-sharp fa-solid fa-pen-to-square"></i></div>
-              <div><mat-slide-toggle   ></mat-slide-toggle></div>
-              <div class="trash"><i class="fa-solid fa-trash-can"></i></div>
-          </div>
-        </div>
-      </div>
+    </div>
   </div>
 </div>
-<app-cab></app-cab>
+<div class="cab-container">
+  <div class="heading"><p>Locations Management</p></div>
+  <div class="search-addnew">
+    <div>
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" placeholder="Search Area To Add" />
+    </div>
+
+    <button (click)="addLocation()" mat-stroked-button color="primary">
+      <mat-icon>add</mat-icon> Add Location
+    </button>
+  </div>
+  <div class="card-parent">
+    <div class="grid-container">
+      <div class="grid-item" *ngFor="let location of locations">
+        <div class="ctns">
+          <h4>{{ location.name | titlecase }}</h4>
+          <!-- <h5>ALLAHABAD Allahabad UP 211019 IN</h5> -->
+        </div>
+        <div class="btns">
+          <!-- <div id="edit"><i class="fa-sharp fa-solid fa-pen-to-square"></i></div> -->
+          <button
+            (click)="editLocation(location)"
+            mat-icon-button
+            color="primary"
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+          <div>
+            <mat-slide-toggle [checked]="location.enabled"></mat-slide-toggle>
+          </div>
+          <button
+            mat-icon-button
+            color="warn"
+            (click)="deleteLocation(location)"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="vehicle-container">
+  <div class="vehicle-header">
+    <div class="heading"><p>Vehicle Management</p></div>
+    <!-- <button (click)="addVehicleCategory()" class="btn">
+      <i class="fa-solid fa-plus"></i>Add New Category
+    </button> -->
+    <button mat-stroked-button (click)="addVehicleCategory()">
+      <mat-icon>add</mat-icon>
+      Add New Vehicle
+    </button>
+  </div>
+  <div class="vehicle-parent">
+    <div class="vehicle-card" *ngFor="let package of vehiclePackages">
+      <div class="vehicle-img">
+        <img [src]="package.image" alt="" />
+      </div>
+      <div class="vehicle-cont">
+        <div class="vc-one">
+          <h4>{{ package.vehicleCategory }}</h4>
+          <h5>₹ {{ package.pricePerHour }}/h</h5>
+        </div>
+        <div class="vc-two">
+          <h5>{{ package.description }}</h5>
+        </div>
+        <div class="vc-three">
+          <!-- <div (click)="editVehicle()" class="edit">
+            <i class="fa-sharp fa-solid fa-pen-to-square"></i>
+          </div> -->
+          <button
+            mat-icon-button
+            (click)="editVehicle(package)"
+            color="primary"
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+          <div><mat-slide-toggle></mat-slide-toggle></div>
+          <!-- <div class="trash"><i class="fa-solid fa-trash-can"></i></div> -->
+          <button mat-icon-button (click)="deleteVehicle(package)" color="warn">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="vehicle-container">
+  <div class="vehicle-header">
+    <div class="heading"><p>Vehicle Package</p></div>
+  </div>
+  <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+    <mat-tab
+      [label]="vehicle.vehicleCategory"
+      *ngFor="let vehicle of vehiclePackages"
+    >
+      <div class="tabActions">
+        <button (click)="addVehiclePricingPackage(vehicle)" mat-stroked-button color="primary">
+          <mat-icon>add</mat-icon>
+          Add Package
+        </button>
+        <button *ngIf="savePackages" (click)="saveVehiclePackages()" mat-stroked-button color="primary">
+          <mat-icon>save</mat-icon>
+          Save Packages
+        </button>
+      </div>
+      <ng-container  *ngFor="let item of vehiclePricingPackages; let i = index">
+        <div class="pricingPackages" *ngIf="item.vehicleCategory == vehicle.id">
+          <!-- <button>Min hr.</button> -->
+          <mat-form-field appearance="outline">
+            <mat-label>Min Hr.</mat-label>
+            <input matInput type="number" [(ngModel)]="item.minimumHours" />
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Max Hr.</mat-label>
+            <input matInput type="number" [(ngModel)]="item.maximumHour" />
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Price Per Hour</mat-label>
+            <input matInput type="number" [(ngModel)]="item.pricePerHour" />
+          </mat-form-field>
+          <mat-slide-toggle [checked]="item.enabled" color="primary"></mat-slide-toggle>
+          <button mat-icon-button (click)="deleteVehiclePackage(i)" color="warn"><mat-icon>delete</mat-icon></button>
+        </div>
+      </ng-container>
+    </mat-tab>
+  </mat-tab-group>
+</div>
+<div class="vehicle-container">
+  <div class="vehicle-header">
+    <div class="heading"><p>Commission</p></div>
+  </div>
+  <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+    <mat-tab
+      [label]="vehicle.vehicleCategory"
+      *ngFor="let vehicle of vehiclePackages"
+    >
+      <div class="tabActions">
+        <button (click)="addVehicleCommissionPackage(vehicle)" mat-stroked-button color="primary">
+          <mat-icon>add</mat-icon>
+          Add Commission
+        </button>
+        <button *ngIf="saveCommission" (click)="saveCommissionPackages()" mat-stroked-button color="primary">
+          <mat-icon>save</mat-icon>
+          Save Commissions
+        </button>
+      </div>
+      <ng-container  *ngFor="let item of commissions; let i = index;">
+        <div class="pricingPackages" *ngIf="item.vehicleCategory == vehicle.id">
+          <!-- <button>Min hr.</button> -->
+          <mat-form-field appearance="outline">
+            <mat-label>Min Hr.</mat-label>
+            <input matInput type="number" [(ngModel)]="item.minimumHours" />
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Max Hr.</mat-label>
+            <input matInput type="number" [(ngModel)]="item.maximumHour" />
+          </mat-form-field>
+          <mat-form-field appearance="outline" *ngIf="item.type == 'percentage'">
+            <mat-label>Enter %</mat-label>
+            <input matInput type="number" [(ngModel)]="item.value" />
+          </mat-form-field>
+          <mat-form-field appearance="outline" *ngIf="item.type == 'fixed'">
+            <mat-label>Enter Amount</mat-label>
+            <input matInput type="number" [(ngModel)]="item.value" />
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Price Per Hour</mat-label>
+            <mat-select placeholder="Select Type" [(ngModel)]="item.type" name="mode">
+              <mat-option value="percentage">
+                Percentage
+              </mat-option>
+              <mat-option value="fixed">
+                Fixed
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-slide-toggle [checked]="item.enabled" color="primary"></mat-slide-toggle>
+          <button mat-icon-button (click)="deleteCommissionPackage(i)" color="warn"><mat-icon>delete</mat-icon></button>
+        </div>
+      </ng-container>
+    </mat-tab>
+  </mat-tab-group>
+</div>
