@@ -1,9 +1,7 @@
-import { Component } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
-import { Router } from '@angular/router';
-import { AlertsAndNotificationsService } from 'services/alerts-and-notification/alerts-and-notifications.service';
-import { DatabaseService } from 'services/database/database.service';
-import { UserData } from 'src/structures/user.structure';
+import { DialogRef, DIALOG_DATA } from '@angular/cdk/dialog';
+import { Component, Inject } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MapLocation } from 'src/structures/service.structure';
 
 @Component({
   selector: 'app-addlocation',
@@ -11,94 +9,75 @@ import { UserData } from 'src/structures/user.structure';
   styleUrls: ['./addlocation.component.scss']
 })
 export class AddlocationComponent {
-  // areas: any[] = []
-  // public addressForm: FormGroup = new FormGroup({
-  //   address: new FormControl(''),
-  //   nearBy: new FormControl(''),
-  //   pincode: new FormControl(''),
-  //   area: new FormControl(''),
-  // });
-  // coordinates:Position;
-  // constructor(private user: UserService, public dataProvider: DataProviderService, private databaseService: DatabaseService, private router: Router,private alertify:AlertsAndNotificationsService) { }
-  // currentPosition:google.maps.LatLngLiteral;
-  // center: google.maps.LatLngLiteral;
-  // zoom = 18;
-  // mapOptions: google.maps.MapOptions = {
-  //   zoom: 18,
-  //   mapTypeId: 'roadmap',
-  //   disableDefaultUI: true,
-  // }
-  // markerOptions: google.maps.MarkerOptions = {draggable: false};
-  // centerMarkerOptions: google.maps.MarkerOptions = {draggable: false, icon: './assets/circle.png',};
-  // moveMap(event: google.maps.MapMouseEvent) {
-  //   // console.log(event);
-  //   if (event.latLng != null) {
-  //     this.currentPosition = event.latLng.toJSON();
-  //   }
-  // }
-  // async ngOnInit() {
-  //   this.coordinates = await Geolocation.getCurrentPosition();
-  //   this.currentPosition = {
-  //     lat: this.coordinates.coords.latitude,
-  //     lng: this.coordinates.coords.longitude,
-  //   }
-  //   this.center = this.currentPosition;
-  //   console.log(this.dataProvider.user)
-  //   const data = {
-  //     ...this.dataProvider.user?.currentAddress,
-  //     area: this.dataProvider.user?.currentAddress?.area?.id || ''
-  //   }
-  //   this.dataProvider.user?.currentAddress
-  //   console.log("data", data);
-  //   this.addressForm.patchValue(data)
-  //   this.databaseService.getAreas().then((res: any) => {
-  //     res.forEach((element: any) => {
-  //       this.areas.push({
-  //         ...element.data(),
-  //         id: element.id,
-  //       });
-  //       console.log(this.areas);
-  //     });
-  //   })
-  // }
-
-  // pickupAddress() {
-  //   if(!this.coordinates.coords){
-  //     this.alertify.presentToast("Location Not Found. Please Enable GPS.",'error');
-  //   }
-  //   this.dataProvider.loading = true;
-  //   const data:UserData = {
-  //     currentAddress: {
-  //       ...this.addressForm.value,
-  //       latitude: this.currentPosition.lat,
-  //       longitude: this.currentPosition.lng,
-  //       area: this.areas.find((area: any) => area.id == this.addressForm.value.area)
-  //     }
-  //   } as UserData
-  //   console.log(data, this.addressForm.value)
-  //   this.user.updateUser(this.dataProvider.user?.id, data).then((res:any) => {
-  //     this.router.navigateByUrl('root/home')
-  //   }).finally(()=>{
-  //     this.dataProvider.loading = false;
-  //   })
-  // }
-
-  // information(){
-  //   this.alertify.presentToast("Red marker is your new location. Blue circle is your currrent location. Click anywhere to set new location",'info',10000)
-  // }
-
-  constructor() {}
-  ngOnInit(): void {}
+  constructor(private dialogRef:DialogRef,@Inject(DIALOG_DATA) private dialogData:{mode:'add'|'edit',value:MapLocation}) {}
+  currentPosition:google.maps.LatLngLiteral | undefined;
   display: any;
   center: google.maps.LatLngLiteral = {
       lat: 24,
       lng: 12
   };
-  zoom = 4;
+  markerOptions: google.maps.MarkerOptions = {draggable: true};
+  zoom = 20;
+  locationForm:FormGroup = new FormGroup({
+    name:new FormControl('',Validators.required),
+    hours:new FormControl(0,Validators.required),
+  })
+  ngOnInit(): void {
+    // get current location
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.currentPosition = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+        this.center = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+      });
+    }
+
+    if (this.dialogData.mode=='edit'){
+      this.currentPosition = {
+        lat:this.dialogData.value.lat,
+        lng:this.dialogData.value.lng
+      }
+      this.center = {
+        lat:this.dialogData.value.lat,
+        lng:this.dialogData.value.lng
+      }
+      this.locationForm.patchValue({
+        name:this.dialogData.value.name,
+        hours:this.dialogData.value.spotTime
+      })
+    }
+  }
   moveMap(event: google.maps.MapMouseEvent) {
-      if (event.latLng != null) this.center = (event.latLng.toJSON());
+      if (event.latLng != null) {
+        this.center = (event.latLng.toJSON())
+        this.currentPosition = (event.latLng.toJSON())
+      };
   }
   move(event: google.maps.MapMouseEvent) {
       if (event.latLng != null) this.display = event.latLng.toJSON();
+  }
+  newPosition(event:any){
+    console.log(event);
+    this.currentPosition = event.latLng.toJSON();
+  }
+
+  cancel(){
+    this.dialogRef.close()
+  }
+
+  submit(){
+    let data:MapLocation = {
+      lat:this.currentPosition!.lat,
+      lng:this.currentPosition!.lng,
+      name:this.locationForm.value.name,
+      spotTime:this.locationForm.value.hours,
+      enabled:true
+    }
+    this.dialogRef.close(data)
   }
 }
