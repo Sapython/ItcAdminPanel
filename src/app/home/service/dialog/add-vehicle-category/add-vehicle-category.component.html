@@ -7,38 +7,33 @@
   <div class="addpackageform">
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <!-- <i class="ri-image-line"></i> -->
-      <input  class="image-category" type="file" name="image" id="image" formControlName="image" >
+      <input  class="image-category" (change)="setImage($event)" type="file" name="image" id="image" >
       <label for="hour"></label><br>
-      <input class="fullinput" type="text" id="hour" formControlName="VehicleCategory"  placeholder="Vehicle Category"><br>
+      <input class="fullinput" type="text" id="hour" formControlName="vehicleCategory"  placeholder="Vehicle Category"><br>
       <label for="km"></label><br>
-      <input  class="fullinput" type="text" id="km" formControlName="Discription" placeholder="Discription"><br><br>
+      <input  class="fullinput" type="text" id="km" formControlName="description" placeholder="Discription"><br><br>
 
       <div class="smallinput">
-
         <label for="SUV">Seats</label>
         <input class="midinput" type="text" id="SUV" formControlName="seats" value="8">
         <label for="Sedan">Luggage Space</label>
         <input class="midinput" type="text" id="Sedan" formControlName="capacity" value="13Ltr.">
         <label for="Traveller">AC/Non AC</label>
-        <select class="midinput" name="ac-nonac" id="ac-nonac" formControlName="ac-nonac">
+        <select class="midinput" name="ac-nonac" id="ac-nonac" formControlName="acNonac">
           <option value="ac">AC</option>
           <option value="nonac">Non AC</option>
         </select>
-
       </div>
       <div class="bottominput" >
       <label for="fullprice"></label><br>
-      <input style="width: 47%;margin-right: 5px;" class="fullinput" type="text" id="fullprice" formControlName="fullprice"  placeholder="Full Price">
+      <input style="width: 47%;margin-right: 5px;" class="fullinput" type="text" id="fullprice" formControlName="fullPrice"  placeholder="Full Price">
       <label for="priceperhour"></label><br>
-      <input  style="width: 47%;" class="fullinput" type="text" id="priceperhour" formControlName="priceperhour" placeholder="Price Per Hour"><br><br>
+      <input  style="width: 47%;" class="fullinput" type="text" id="priceperhour" formControlName="pricePerHour" placeholder="Price Per Hour"><br><br>
       </div>
       <div class="btns">
-        <button mat-dialog-close (click)="onCancel()" class="outline-btn-red">Cancel</button>
-        <button mat-dialog-close  (click)="onSubmit()" class="solid-darkblue-button">Add Vehicle</button>
+        <button mat-stroked-button color="warn" (click)="onCancel()" type="button">Cancel</button>
+        <button mat-flat-button color="primary">Add Vehicle</button>
       </div>
     </form>
   </div>
-
-
-
 </div>

@@ -1,7 +1,6 @@
 import { DatabaseService } from 'src/app/services/database/database.service';
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { DeleteWarnComponent } from '../dialog/delete-warn/delete-warn.component';
 import { home } from '../../model/home.model';
 
 @Component({

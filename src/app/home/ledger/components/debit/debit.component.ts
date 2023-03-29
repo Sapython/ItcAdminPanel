@@ -7,7 +7,6 @@ import {
 } from '@angular/material/dialog';
 import { DatabaseService } from 'src/app/services/database/database.service';
 
-
 export interface DebitData {
   animal: string;
   name: string;

@@ -20,6 +20,13 @@ import { DeleteWarnComponent } from './dialog/delete-warn/delete-warn.component'
 import { EditVehicleCategoryComponent } from './dialog/edit-vehicle-category/edit-vehicle-category.component';
 import { EditPackageComponent } from './dialog/edit-package/edit-package.component';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { AddlocationComponent } from './addlocation/addlocation.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { NewPackageComponent } from './rental/new-package/new-package.component';
+import { NewGuidePackageComponent } from './guide/new-package/new-package.component';
+import { DialogModule } from '@angular/cdk/dialog';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -32,7 +39,9 @@ import { GoogleMapsModule } from '@angular/google-maps';
     DeleteWarnComponent,
     EditVehicleCategoryComponent,
     EditPackageComponent,
-
+    AddlocationComponent,
+    NewPackageComponent,
+    NewGuidePackageComponent,
   ],
   imports: [
     CommonModule,
@@ -44,7 +53,11 @@ import { GoogleMapsModule } from '@angular/google-maps';
     ReactiveFormsModule,
     FormsModule,
     MatDialogModule,
-    GoogleMapsModule
+    DialogModule,
+    GoogleMapsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
   ]
 })
 export class ServiceModule { }
