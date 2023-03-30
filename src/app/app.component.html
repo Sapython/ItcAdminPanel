@@ -1,6 +1,8 @@
 <div class="osahan-home-page bg-light hidden-Overflow-x">
-  <router-outlet></router-outlet>
-  <!-- <div class="overlay" *ngIf="dataProvider.pageSetting.blur"> -->
+  <div class="overlay" *ngIf="dataProvider.pageSetting.blur">
+    <!-- <mat-spinner></mat-spinner> -->
+    <!-- <div uk-spinner></div> -->
     <div class="spinner"></div>
   </div>
-<!-- </div> -->
+  <router-outlet></router-outlet>
+</div>

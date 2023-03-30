@@ -1,0 +1,44 @@
+<form [formGroup]="newAgentForm" (ngSubmit)="submit()">
+    <input type="file" hidden #filePicker>
+    <button mat-flat-button color="primary" (click)="filePicker.click()" type="button">Choose Image</button>
+    <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input type="text" matInput formControlName="name">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Phone</mat-label>
+        <input type="text" matInput formControlName="phone">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Preferred Location For Work</mat-label>
+        <input type="text" matInput formControlName="preferredLocationForWork">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input type="text" matInput formControlName="email">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Languages</mat-label>
+        <input type="text" matInput formControlName="languages">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Work Experience</mat-label>
+        <input type="text" matInput formControlName="workExperience">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Date Of Birth</mat-label>
+        <input type="text" matInput formControlName="dateOfBirth">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Education</mat-label>
+        <input type="text" matInput formControlName="education">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Tour Agency Name</mat-label>
+        <input type="text" matInput formControlName="tourAgencyName">
+    </mat-form-field>
+    <div class="actions">
+        <button mat-stroked-button color="warn" type="submit">Cancel</button>
+        <button mat-raised-button color="primary" [disabled]="!newAgentForm.valid" type="submit">Submit</button>
+    </div>
+</form>

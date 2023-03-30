@@ -373,13 +373,6 @@ export class DatabaseService {
     });
   }
 
-  // add user-driver-guide
-  addDriver(data:any){
-    addDoc(collection(this.fs,'test/'),data).then((data)=>{
-      console.log('Doc added');
-    });
-  }
-
   // ledger
   today=new Date();
   date=this.today.getDate()+'-'+this.today.getHours()+'-'+this.today.getFullYear();
@@ -459,7 +452,7 @@ export class DatabaseService {
     return setDoc(doc(this.fs,'service/'+mode),{packages:packages},{merge:true});
   }
 
-  saveCommissionPackages(mode:'rental'|'cab'|'outstation',packages:VehicleCommissionPackages[]){
+  saveCommissionPackages(mode:'rental'|'cab'|'outstation'|'tours',packages:VehicleCommissionPackages[]){
     return setDoc(doc(this.fs,'service/'+mode),{commissionPackages:packages},{merge:true});
   }
 
@@ -477,5 +470,45 @@ export class DatabaseService {
 
   getCabService(){
     return getDoc(doc(this.fs,'service/cab'));
+  }
+
+  addTourAgent(agentData:any){
+    return addDoc(collection(this.fs,'tour-agents'),agentData);
+  }
+
+  getTourAgents(){
+    return getDocs(query(collection(this.fs,'tour-agents')));
+  }
+
+  addGuide(guideData:any){
+    return addDoc(collection(this.fs,'guides'),guideData);
+  }
+
+  getGuides(){
+    return getDocs(query(collection(this.fs,'guides')));
+  }
+
+  addDriver(driverData:any){
+    return addDoc(collection(this.fs,'drivers'),driverData);
+  }
+
+  getDrivers(){
+    return getDocs(query(collection(this.fs,'drivers')));
+  }
+
+  getCustomers(){
+    return getDocs(query(collection(this.fs,'customers')));
+  }
+
+  addTour(tourData:any){
+    return addDoc(collection(this.fs,'services/tours/tours'),tourData);
+  }
+
+  getTours(){
+    return getDocs(query(collection(this.fs,'services/tours/tours')));
+  }
+
+  getTour(){
+    return getDoc(doc(this.fs,'services/tours'));
   }
 }

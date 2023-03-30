@@ -1,1 +1,33 @@
-<p>customer works!</p>
+<div class="grid-table">
+      <table>
+        <thead>
+          <tr class="table-heading">
+            <th>Driver</th>
+            <th>Phone</th>
+            <th>No. of Bookings</th>
+            <th>Total Amount</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let guide of customers">
+            <td><img [src]="guide.image" alt=""> {{guide.name}}</td>
+            <td><i class="fa-solid fa-phone"></i> {{guide.phone}}</td>
+            <td> {{guide.noOfBookings}}</td>
+            <td ><button class="green-button">{{guide.totalBooking | currency:'INR'}} </button></td>
+            <td>
+              <mat-slide-toggle></mat-slide-toggle>
+              <button (click)="onDelete()" class="delete-btn"><i class="ri-delete-bin-line"></i></button>
+              <button (click)="driverInfo()" class="info-btn"><i class="ri-information-line"></i></button>
+            </td>
+          </tr>
+      </tbody>
+    
+      </table>
+      <mat-paginator [length]="100"
+      [pageSize]="10"
+      [pageSizeOptions]="[5, 10, 25, 100]"
+      aria-label="Select page">
+    </mat-paginator>
+    </div>
+    
