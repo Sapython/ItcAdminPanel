@@ -14,7 +14,6 @@ import { MatIconModule } from '@angular/material/icon';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
-import { AddVehicleCategoryComponent } from '../../../components/add-vehicle-category/add-vehicle-category.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { DeleteWarnComponent } from './dialog/delete-warn/delete-warn.component';
 import { EditVehicleCategoryComponent } from './dialog/edit-vehicle-category/edit-vehicle-category.component';
@@ -27,6 +26,7 @@ import { NewGuidePackageComponent } from './guide/new-package/new-package.compon
 import { DialogModule } from '@angular/cdk/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { AddVehicleCategoryComponent } from './dialog/add-vehicle-category/add-vehicle-category.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +42,7 @@ import { MatSelectModule } from '@angular/material/select';
     AddlocationComponent,
     NewPackageComponent,
     NewGuidePackageComponent,
+    AddVehicleCategoryComponent
   ],
   imports: [
     CommonModule,

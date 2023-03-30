@@ -246,84 +246,84 @@ export class CabComponent implements OnInit {
     })
   }
 
-  addAreas() {
-    const addAreaDialog = this.dialog.open(AddNewAreaComponent, { data: 'Add New Area' })
-    addAreaDialog.closed.subscribe((area: any) => {
-      const areaData = {
-        ...area,
-        mode: 'cab',
-        active: true,
-      };
-      console.log('adad', areaData);
+  // addAreas() {
+  //   const addAreaDialog = this.dialog.open(AddNewAreaComponent, { data: 'Add New Area' })
+  //   addAreaDialog.closed.subscribe((area: any) => {
+  //     const areaData = {
+  //       ...area,
+  //       mode: 'cab',
+  //       active: true,
+  //     };
+  //     console.log('adad', areaData);
 
-      if (area?.name) {
-        this.dataProvider.pageSetting.blur = true
-        this.databaseService.addArea(areaData).then(res => {
-          this.alertify.presentToast('Area Added Successfully')
-        }).catch(err => {
-          this.alertify.presentToast('Error Adding Area')
-        }).finally(() => {
-          this.dataProvider.pageSetting.blur = false;
-        })
-        this.areas.push({ title: area.name, nearBy: area.nearBy, mode: 'cab', active: true })
-      }
-    })
-  }
+  //     if (area?.name) {
+  //       this.dataProvider.pageSetting.blur = true
+  //       this.databaseService.addArea(areaData).then(res => {
+  //         this.alertify.presentToast('Area Added Successfully')
+  //       }).catch(err => {
+  //         this.alertify.presentToast('Error Adding Area')
+  //       }).finally(() => {
+  //         this.dataProvider.pageSetting.blur = false;
+  //       })
+  //       this.areas.push({ title: area.name, nearBy: area.nearBy, mode: 'cab', active: true })
+  //     }
+  //   })
+  // }
 
-  getAreas() {
-    this.databaseService.getAreas().then((res) => {
-      res.forEach((area) => {
-        this.areas.push({ title: area.data()['name'], nearBy: area.data()['nearBy'], id: area.id, mode: 'cab', active: true })
-      })
-      console.log("this.areas", this.areas);
+  // getAreas() {
+  //   this.databaseService.getAreas().then((res) => {
+  //     res.forEach((area) => {
+  //       this.areas.push({ title: area.data()['name'], nearBy: area.data()['nearBy'], id: area.id, mode: 'cab', active: true })
+  //     })
+  //     console.log("this.areas", this.areas);
 
-    })
-  }
+  //   })
+  // }
 
-  deleteArea(id: string) {
-    this.dataProvider.pageSetting.blur = true
-    this.databaseService.deleteArea(id).then(res => {
-      this.areas = this.areas.filter(area => area.id !== id)
-    }).finally(() => {
-      this.dataProvider.pageSetting.blur = false
-    })
-  }
+  // deleteArea(id: string) {
+  //   this.dataProvider.pageSetting.blur = true
+  //   this.databaseService.deleteArea(id).then(res => {
+  //     this.areas = this.areas.filter(area => area.id !== id)
+  //   }).finally(() => {
+  //     this.dataProvider.pageSetting.blur = false
+  //   })
+  // }
 
-  // Vehicle
-  getVehicle() {
-    this.databaseService.getVehicles().then(res => {
-      this.vehicles = []
-      res.forEach((vehicle) => {
-        this.vehicles.push({ ...vehicle.data() as any, id: vehicle.id })
-      })
-      console.log("vehicle", this.vehicles);
-    })
-  }
+  // // Vehicle
+  // getVehicle() {
+  //   this.databaseService.getVehicles().then(res => {
+  //     this.vehicles = []
+  //     res.forEach((vehicle) => {
+  //       this.vehicles.push({ ...vehicle.data() as any, id: vehicle.id })
+  //     })
+  //     console.log("vehicle", this.vehicles);
+  //   })
+  // }
 
 
-  addVehicleCategory() {
-    const addVehicle = this.dialog.open(AddVehicleCategoryComponent, { data: { mode: 'add' } })
-    addVehicle.closed.subscribe((vehicle: any) => {
+  // addVehicleCategory() {
+  //   const addVehicle = this.dialog.open(AddVehicleCategoryComponent, { data: { mode: 'add' } })
+  //   addVehicle.closed.subscribe((vehicle: any) => {
 
-      const vehicleData = {
-        ...vehicle,
-        mode: 'cab',
-      };
-      console.log('adad', vehicleData);
+  //     const vehicleData = {
+  //       ...vehicle,
+  //       mode: 'cab',
+  //     };
+  //     console.log('adad', vehicleData);
 
-      if (vehicle?.name) {
-        this.dataProvider.pageSetting.blur = true
-        this.databaseService.addVehiclePackage(vehicleData).then(res => {
-          this.alertify.presentToast('Area Added Successfully')
-        }).catch(err => {
-          this.alertify.presentToast('Error Adding Area')
-        }).finally(() => {
-          this.dataProvider.pageSetting.blur = false;
-        })
-        this.vehicles.push({ title: vehicle.name, mode: 'cab', active: true })
-      }
-    })
-  }
+  //     if (vehicle?.name) {
+  //       this.dataProvider.pageSetting.blur = true
+  //       this.databaseService.addVehiclePackage(vehicleData).then(res => {
+  //         this.alertify.presentToast('Area Added Successfully')
+  //       }).catch(err => {
+  //         this.alertify.presentToast('Error Adding Area')
+  //       }).finally(() => {
+  //         this.dataProvider.pageSetting.blur = false;
+  //       })
+  //       this.vehicles.push({ title: vehicle.name, mode: 'cab', active: true })
+  //     }
+  //   })
+  // }
 
 
 }

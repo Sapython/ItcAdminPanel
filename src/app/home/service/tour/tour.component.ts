@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DataProvider } from 'src/app/providers/data.provider';
 import { AlertsAndNotificationsService } from 'src/app/services/alerts-and-notification/alerts-and-notifications.service';
-import { DatabaseService } from 'src/app/services/database/database.service';
 import { VehicleCommissionPackages } from 'src/structures/service.structure';
 import { home } from '../../model/home.model';
 
