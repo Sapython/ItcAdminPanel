@@ -1,7 +1,7 @@
-import { UserDataService } from './../../services/user/user-data.service';
+import { UserDataService } from './services/user/user-data.service';
 
-import { AuthenticationService } from './../../services/auth/authentication.service';
-import { AlertsAndNotificationsService } from './../../services/alerts-and-notification/alerts-and-notifications.service';
+import { AuthenticationService } from './services/auth/authentication.service';
+import { AlertsAndNotificationsService } from './services/alerts-and-notification/alerts-and-notifications.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -18,10 +18,10 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideFunctions,getFunctions } from '@angular/fire/functions';
 import { providePerformance,getPerformance } from '@angular/fire/performance';
 import { provideStorage,getStorage } from '@angular/fire/storage';
-import { DatabaseService } from 'services/database/database.service';
+import { DatabaseService } from 'src/app/services/database/database.service';
 import { DataProvider } from './providers/data.provider';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MaterialModule } from 'services/material/material.module';
+import { MaterialModule } from 'src/app/services/material/material.module';
 import { ComponentModule } from 'src/components/component.module';
 
 @NgModule({

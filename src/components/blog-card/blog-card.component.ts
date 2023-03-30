@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { DatabaseService } from 'services/database/database.service';
+import { DatabaseService } from 'src/app/services/database/database.service';
 import { AddblogComponent } from 'src/app/home/content/dialog/addblog/addblog.component';
 import { DeleteBannerComponent } from 'src/app/home/content/dialog/delete-blog/delete-banner.component';
 import { EditblogComponent } from 'src/app/home/content/dialog/editblog/editblog.component';

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { UntypedFormGroup, UntypedFormControl, Validators, FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AlertsAndNotificationsService } from 'services/alerts-and-notification/alerts-and-notifications.service';
-import { AuthenticationService } from 'services/auth/authentication.service';
+import { AlertsAndNotificationsService } from 'src/app/services/alerts-and-notification/alerts-and-notifications.service';
+import { AuthenticationService } from 'src/app/services/auth/authentication.service';
 import { DataProvider } from '../providers/data.provider';
 
 

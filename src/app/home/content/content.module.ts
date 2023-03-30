@@ -18,7 +18,7 @@ import { AddBannerComponent } from './dialog/add-banner/add-banner.component';
 import { EditBannerComponent } from './dialog/edit-banner/edit-banner.component';
 import { ComponentModule } from 'src/components/component.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MaterialModule } from 'services/material/material.module';
+import { MaterialModule } from 'src/app/services/material/material.module';
 
 
 @NgModule({

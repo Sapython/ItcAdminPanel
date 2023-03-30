@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AlertsAndNotificationsService } from 'services/alerts-and-notification/alerts-and-notifications.service';
-import { DatabaseService } from 'services/database/database.service';
+import { AlertsAndNotificationsService } from 'src/app/services/alerts-and-notification/alerts-and-notifications.service';
+import { DatabaseService } from 'src/app/services/database/database.service';
 import { UserData } from 'src/structures/user.structure';
 
 @Component({

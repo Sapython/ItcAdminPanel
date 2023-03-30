@@ -7,8 +7,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { Component } from '@angular/core';
 import { Dialog } from '@angular/cdk/dialog';
 import { DataProvider } from 'src/app/providers/data.provider';
-import { DatabaseService } from 'services/database/database.service';
-import { AlertsAndNotificationsService } from 'services/alerts-and-notification/alerts-and-notifications.service';
+import { DatabaseService } from 'src/app/services/database/database.service';
+import { AlertsAndNotificationsService } from 'src/app/services/alerts-and-notification/alerts-and-notifications.service';
 import { AddNewAreaComponent } from 'src/components/add-new-area/add-new-area.component';
 
 @Component({

@@ -5,7 +5,7 @@ import { AddBannerComponent } from './../dialog/add-banner/add-banner.component'
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AddNewBannerComponent } from 'src/components/add-new-banner/add-new-banner.component';
-import { DatabaseService } from 'services/database/database.service';
+import { DatabaseService } from 'src/app/services/database/database.service';
 
 @Component({
   selector: 'app-banners',

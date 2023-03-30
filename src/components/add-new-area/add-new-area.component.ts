@@ -1,8 +1,8 @@
 import { DialogRef, DIALOG_DATA } from '@angular/cdk/dialog';
 import { Component, Inject } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { AlertsAndNotificationsService } from 'services/alerts-and-notification/alerts-and-notifications.service';
-import { DatabaseService } from 'services/database/database.service';
+import { AlertsAndNotificationsService } from 'src/app/services/alerts-and-notification/alerts-and-notifications.service';
+import { DatabaseService } from 'src/app/services/database/database.service';
 
 @Component({
   selector: 'app-add-new-area',

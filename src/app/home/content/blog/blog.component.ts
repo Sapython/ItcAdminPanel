@@ -2,7 +2,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
 import { AddblogComponent } from '../dialog/addblog/addblog.component';
 
-import { DatabaseService } from 'services/database/database.service';
+import { DatabaseService } from 'src/app/services/database/database.service';
 
 @Component({
   selector: 'app-blog',
