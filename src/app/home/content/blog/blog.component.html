@@ -1,6 +1,6 @@
 <div class="blog-header">
   <h2>Blog Management</h2>
-  <button (click)="addBlog()" class="btn"><i class="fa-solid fa-plus"></i>Add New Blog</button>
+  <button (click)="addBlog()" mat-stroked-button color="primary"><mat-icon>add</mat-icon> Add New Blog</button>
 </div>
 <div class="grid-container">
   <ng-container *ngFor="let blog of blogs">

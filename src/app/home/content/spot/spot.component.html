@@ -1,8 +1,7 @@
 <div class="blog-header">
     <h2>Spot Management</h2>
-    <button (click)="addBlog()" class="btn"><i class="fa-solid fa-plus"></i>Add New Blog</button>
+    <button (click)="addBlog()" mat-stroked-button color="primary"><mat-icon>add</mat-icon> Add New Spot</button>
 </div>
 <div class="grid-container">
-    <app-spot-card></app-spot-card>
+    <app-spot-card *ngFor="let spot of spots" [address]="spot.address" [image]="spot.images[0]" [enabled]="spot.enabled" [name]="spot.name"></app-spot-card>
 </div>
-

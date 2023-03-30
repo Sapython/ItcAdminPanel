@@ -48,3 +48,18 @@ export interface VehicleCommissionPackages {
   value:number;
   enabled:boolean;
 }
+
+export interface Spot {
+  id?:string;
+  name: string;
+  rating: number;
+  category: string;
+  connectedTours: string[];
+  connectedGuides: string[];
+  latitude: number;
+  longitude: number;
+  address: string;
+  description: string;
+  images: string[];
+  enabled: boolean;
+}

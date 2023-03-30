@@ -29,7 +29,7 @@ import {
 } from '@angular/fire/storage';
 import { UserData } from 'src/structures/user.structure';
 import { urls } from '../url';
-import { RentalPackage, GuideRentalPackage, MapLocation, VehicleCategory, VehiclePricingPackages, VehicleCommissionPackages } from 'src/structures/service.structure';
+import { RentalPackage, GuideRentalPackage, MapLocation, VehicleCategory, VehiclePricingPackages, VehicleCommissionPackages, Spot } from 'src/structures/service.structure';
 
 @Injectable({
   providedIn: 'root',
@@ -541,15 +541,23 @@ export class DatabaseService {
   }
 
   addTour(tourData:any){
-    return addDoc(collection(this.fs,'services/tours/tours'),tourData);
+    return addDoc(collection(this.fs,'service/tours/tours'),tourData);
   }
 
   getTours(){
-    return getDocs(query(collection(this.fs,'services/tours/tours')));
+    return getDocs(query(collection(this.fs,'service/tours/tours')));
   }
 
   getTour(){
-    return getDoc(doc(this.fs,'services/tours'));
+    return getDoc(doc(this.fs,'service/tours'));
+  }
+
+  addSpot(spotData:Spot){
+    return addDoc(collection(this.fs,'spots'),spotData);
+  }
+
+  getSpots(){
+    return getDocs(query(collection(this.fs,'spots')));
   }
 }
 

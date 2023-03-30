@@ -1,15 +1,14 @@
 <div class="grid-item">
     <div class="card-container">
         <div class="img-outer">
-            <img src="https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8d2F0ZXJmYWxsfGVufDB8fDB8fA%3D%3D&w=1000&q=80" alt="">
+            <img [src]="image" alt="">
         </div>
-        <h3 class="Lato600 fs-18 pt-2">Tromso</h3>
-        <p>Norway, Finnmark</p>
+        <h3 class="Lato600 fs-18 pt-2">{{name}}</h3>
+        <p>{{address}}</p>
         <div class="card-footer">
-            
             <div class="card-footer-btns">
                 <div (click)="editBlog()"><i class="fa-sharp fa-solid fa-pen-to-square edit"></i></div>
-                <div><mat-slide-toggle ></mat-slide-toggle></div>
+                <div><mat-slide-toggle [checked]="enabled"></mat-slide-toggle></div>
                 <div (click)="onDelete()"><i class="fa-solid fa-trash-can trash"></i></div>
             </div>
         </div>

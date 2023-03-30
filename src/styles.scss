@@ -1,8 +1,44 @@
 /* You can add global styles to this file, and also import other style files */
-
+@use '@angular/material' as mat;
 @import url('./assets/scss/Fonts.scss');
 @import url('./assets/scss/Responsive.scss');
 @import url('./assets/scss/Text.scss');
+
+$ssspay-palette: (
+ 50: #d0d8ed,
+ 100: #a9b5d2,
+ 200: #949eb8,
+ 300: #717c94,
+ 400:#626c85,
+ 500:#636c89,
+ 600:#5a647f,
+ 700:#404b69,
+ 800:#303a54,
+ 900:#222b43,
+ contrast: (
+   50: rgba(black, 0.87),
+   100: rgba(black, 0.87),
+   200: rgba(black, 0.87),
+   300: white,
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+ )
+);
+$my-primary: mat.define-palette($ssspay-palette, 700);
+$my-accent: mat.define-palette(mat.$cyan-palette, A200, A100, A400);
+
+$my-theme: mat.define-light-theme((
+ color: (
+   primary: $my-primary,
+   accent:$my-accent,
+   foreground: $ssspay-palette,
+ )
+));
+@include mat.all-component-themes($my-theme);
 
 .example::-webkit-scrollbar {
   display: none;
