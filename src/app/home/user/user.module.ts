@@ -15,6 +15,13 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { ConfirmDeleteComponent } from './dialog/confirm-delete/confirm-delete.component';
 import { DriverInfoComponent } from './dialog/driver-info/driver-info.component';
+import { NewAgentComponent } from './touragent/new-agent/new-agent.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { NewGuideComponent } from './guide/new-guide/new-guide.component';
+import { NewDriverComponent } from './driver/new-driver/new-driver.component';
+import { NewCustomerComponent } from './customer/new-customer/new-customer.component';
 
 
 @NgModule({
@@ -25,7 +32,11 @@ import { DriverInfoComponent } from './dialog/driver-info/driver-info.component'
     GuideComponent,
     TouragentComponent,
     ConfirmDeleteComponent,
-    DriverInfoComponent
+    DriverInfoComponent,
+    NewAgentComponent,
+    NewGuideComponent,
+    NewDriverComponent,
+    NewCustomerComponent
   ],
   imports: [
     CommonModule,
@@ -35,7 +46,11 @@ import { DriverInfoComponent } from './dialog/driver-info/driver-info.component'
     MatButtonModule,
     MatSlideToggleModule,
     MatPaginatorModule,
-    MatDialogModule
+    MatDialogModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule
   ]
 })
 export class UserModule { }

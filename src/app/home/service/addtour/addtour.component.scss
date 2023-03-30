@@ -1,0 +1,77 @@
+.holidays{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    span{
+        display: flex;
+        align-items:center;
+        font-size: 13px;
+        border: 2px solid #404b69;
+        padding: 0px 10px;
+        border-radius: 10px;
+        strong{
+            margin:0px;
+        }
+    }
+}
+textarea{
+    height: 100%;
+}
+.row{
+    display: grid;
+    width: 100%;
+    gap:20px;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 20px;
+    .images{
+        border: 2px dashed #ccc;
+        padding: 15px;
+        border-radius: 10px;
+        span{
+            width: 100%;
+        }
+    }
+    .multiImages{
+        display: flex;
+        flex-direction: column;
+        gap:10px;
+        .moreImages{
+            display: flex;
+            flex-wrap: wrap;
+            gap:10px;
+            img{
+                width: 100px;
+            }
+        }
+    }
+}
+.names{
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap:20px;
+}
+.about{
+    width: 100%;
+    height: 200px;
+}
+.two-row{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap:20px;
+}
+.itineary{
+    mat-form-field{
+        width: 100%;
+    }
+    .three-row{
+        display: grid;
+        grid-template-columns: 1fr 1fr 2fr;
+        gap:20px;
+    }
+}
+.actions{
+    display: flex;
+    justify-content: center;
+    gap:30px;
+}

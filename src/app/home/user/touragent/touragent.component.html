@@ -1,1 +1,37 @@
-<p>touragent works!</p>
+<div class="grid-table">
+    <button mat-stroked-button color="primary" (click)="addNewAgent()">Add New Agent</button>
+    <table>
+      <thead>
+        <tr class="table-heading">
+          <th>Tour Agent</th>
+          <th>Phone</th>
+          <th>Last Booking</th>
+          <th>No. of Bookings</th>
+          <th>Rating</th>
+          <th>Total Amount</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let agent of tourAgents">
+          <td><img [src]="agent.image"> {{agent.name}}</td>
+          <td><i class="fa-solid fa-phone"></i> {{agent.phone}}</td>
+          <td><button class="orange-button">{{agent.lastBooking}}</button></td>
+          <td>{{agent.noOfBookings}}</td>
+          <td> <button  class="orange-button">{{agent.rating}}</button> </td>
+          <td ><button class="green-button">₹{{agent.totalBooking}}</button></td>
+          <td>
+            <mat-slide-toggle [checked]=""></mat-slide-toggle>
+            <button (click)="onDelete()" class="delete-btn"><i class="ri-delete-bin-line"></i></button>
+            <button (click)="driverInfo()" class="info-btn"><i class="ri-information-line"></i></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <mat-paginator [length]="100"
+    [pageSize]="10"
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    aria-label="Select page">
+  </mat-paginator>
+  </div>
+  

@@ -1,1 +1,214 @@
-<p>addtour works!</p>
+<form [formGroup]="tourForm" (ngSubmit)="submit()">
+  <div class="title">
+    <button type="button" mat-icon-button>
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+  </div>
+  <div class="row">
+    <div class="images" (drop)="imagesDropped($event)">
+        <input type="file" hidden #filePicker multiple (change)="imagesSelected($event)">
+      <ng-container *ngIf="images.length == 0">
+        <span>
+          <button type="button" (click)="filePicker.click()" mat-flat-button color="primary">
+            Browse Files
+          </button>
+          or drop files (Upto 4)
+        </span>
+      </ng-container>
+      <ng-container *ngIf="images.length == 1">
+        <div class="row">
+          <img [src]="images[0].url" />
+          <span>
+            <button type="button" (click)="filePicker.click()" mat-flat-button color="primary">
+              Browse Files
+            </button>
+            or drop files (Upto 4)
+          </span>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="images.length > 1">
+        <div class="row">
+          <img [src]="images[0].url" />
+          <div class="multiImages">
+            <span>
+              <button type="button" (click)="filePicker.click()" mat-flat-button color="primary">
+                Browse Files
+              </button>
+              or drop files (Upto 4)
+            </span>
+            <div class="moreImages">
+              <img [src]="images[1].url" />
+              <img [src]="images[2].url" *ngIf="images[2]" />
+              <img [src]="images[3].url" *ngIf="images[3]" />
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+    <div class="timeSlot">
+      <h4>Holiday Management</h4>
+      <div class="selectDate">
+        <mat-form-field appearance="outline">
+          <input
+            [matDatepickerFilter]="myFilter"
+            matInput
+            (dateChange)="addHoliday($event)"
+            placeholder="New Holiday Date"
+            [matDatepicker]="picker"
+          />
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="holidays">
+        <span *ngFor="let date of holidays">
+          <strong>{{ date | date }}</strong>
+          <button
+            type="button"
+            mat-icon-button
+            (click)="deleteHoliday(date)"
+            color="primary"
+          >
+            <mat-icon>close</mat-icon>
+          </button>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="names">
+    <mat-form-field appearance="outline">
+      <mat-label>Tour Name</mat-label>
+      <input type="text" formControlName="tourName" matInput />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Tour Price</mat-label>
+      <input type="number" formControlName="tourPrice" matInput />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Select Tour Agent</mat-label>
+      <mat-select
+        placeholder="Tour Agent"
+        formControlName="tourAgent"
+        name="agent"
+      >
+        <mat-option *ngFor="let agent of tourAgents" [value]="agent">
+          {{ agent.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <mat-form-field appearance="outline" class="about">
+    <mat-label>About Tour</mat-label>
+    <textarea matInput formControlName="aboutTour"></textarea>
+  </mat-form-field>
+  <div class="two-row">
+    <mat-form-field appearance="outline">
+      <mat-label>No Of Days</mat-label>
+      <input
+        matInput
+        formControlName="noOfDays"
+        type="number"
+        placeholder="Start Date"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>No Of Nights</mat-label>
+      <input
+        matInput
+        formControlName="noOfNights"
+        type="number"
+        placeholder="Start Date"
+      />
+    </mat-form-field>
+  </div>
+  <div class="two-row">
+    <mat-form-field appearance="outline">
+      <mat-label>Pickup Location</mat-label>
+      <mat-select
+        formControlName="pickupLocation"
+        placeholder="Select Location"
+        name="location"
+      >
+        <mat-option *ngFor="let location of locations" [value]="location">
+          {{ location.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Drop Off Location</mat-label>
+      <mat-select
+        formControlName="dropOffLocation"
+        placeholder="Select Location"
+        name="location"
+      >
+        <mat-option *ngFor="let location of locations" [value]="location">
+          {{ location.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <h2>Itinerary</h2>
+  <div class="itineary" *ngFor="let day of days; let i = index">
+    <h3>Day {{ i }}</h3>
+    <mat-form-field appearance="outline">
+      <mat-label>Location Name</mat-label>
+      <mat-select
+        [(ngModel)]="day.locationName"
+        [ngModelOptions]="{ standalone: true }"
+        placeholder="Select Location"
+        name="location"
+      >
+        <mat-option *ngFor="let location of locations" [value]="location">
+          {{ location.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div class="three-row">
+      <mat-form-field appearance="outline">
+        <mat-label>Start Time</mat-label>
+        <input
+          matInput
+          type="time"
+          placeholder="Start Time"
+          [(ngModel)]="day.startTime"
+          [ngModelOptions]="{ standalone: true }"
+        />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>End Time</mat-label>
+        <input
+          matInput
+          type="time"
+          placeholder="End Time"
+          [(ngModel)]="day.endTime"
+          [ngModelOptions]="{ standalone: true }"
+        />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Activity</mat-label>
+        <input
+          matInput
+          type="text"
+          placeholder="Activity"
+          [(ngModel)]="day.activity"
+          [ngModelOptions]="{ standalone: true }"
+        />
+      </mat-form-field>
+    </div>
+    <mat-form-field appearance="outline">
+      <mat-label>Description</mat-label>
+      <textarea
+        matInput
+        [(ngModel)]="day.description"
+        [ngModelOptions]="{ standalone: true }"
+      ></textarea>
+    </mat-form-field>
+  </div>
+  <div class="actions">
+    <button mat-stroked-button color="warn" (click)="cancel()" type="button">Cancel</button>
+    <button mat-flat-button [disabled]="!tourForm.valid" color="primary" type="submit">Save</button>
+  </div>
+</form>

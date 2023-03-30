@@ -23,6 +23,8 @@ import { DatabaseService } from './services/database/database.service';
 import { UserDataService } from './services/user/user-data.service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { DataProvider } from './providers/data.provider';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { DataProvider } from './providers/data.provider';
     provideFunctions(() => getFunctions()),
     providePerformance(() => getPerformance()),
     provideStorage(() => getStorage()),
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatNativeDateModule,
+    MatProgressSpinnerModule
   ],
   providers: [AlertsAndNotificationsService,AuthenticationService,DatabaseService,UserDataService, ScreenTrackingService,UserTrackingService, DataProvider, MaterialModule,MatSnackBar],
   bootstrap: [AppComponent],

@@ -1,96 +1,33 @@
-<div class="table-div">
-    <div class="table-div-data">
-        <table class="table-center-div">
-            <tr class="head-row">
-                <th scope="col">Driver</th>
-                <th scope="col">Phone</th>
-                <th scope="col">address</th>
-                <th scope="col">No of bookings</th>
-                <th scope="col">Last booking</th>
-                <th scope="col">Total Amount</th>
-                <th scope="col">Action</th>
-            </tr>
-
-            <tr>
-                <td class="table_data">Arun Arora</td>
-                <td class="table_data">
-                    <div class="d-flex aling-items-center justify-content-center">
-                        <i class="ri-phone-fill phone"></i><span class="ms-1">9566332544</span>
-                    </div>
-                </td>
-                <td class="table_data">2972 Westheimer Rd. Santa Ana, Illinois 85486 </td>
-                <td class="table_data">15 </td>
-                <td class="table_data">
-                    <div class="yellow-div">
-                        <p>Rental</p>
-                    </div>
-                </td>
-                <td class="table_data">
-                    <div class="green-div">
-                        <p>12,999</p>
-                    </div>
-                </td>
-                <td class="table_data d-flex justify-content-center">
-                    <div><mat-slide-toggle></mat-slide-toggle></div>
-                    <div class="yellow-error-div">
-                        <i class="ri-error-warning-line"></i>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td class="table_data">Arun Arora</td>
-                <td class="table_data">
-                    <div class="d-flex aling-items-center justify-content-center">
-                        <i class="ri-phone-fill phone"></i><span class="ms-1">9566332544</span>
-                    </div>
-                </td>
-                <td class="table_data">2972 Westheimer Rd. Santa Ana, Illinois 85486 </td>
-                <td class="table_data">15 </td>
-                <td class="table_data">
-                    <div class="yellow-div">
-                        <p>Rental</p>
-                    </div>
-                </td>
-                <td class="table_data">
-                    <div class="green-div">
-                        <p>12,999</p>
-                    </div>
-                </td>
-                <td class="table_data d-flex justify-content-center">
-                    <div><mat-slide-toggle></mat-slide-toggle></div>
-                    <div class="yellow-error-div">
-                        <i class="ri-error-warning-line"></i>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td class="table_data">Arun Arora</td>
-                <td class="table_data">
-                    <div class="d-flex aling-items-center justify-content-center">
-                        <i class="ri-phone-fill phone"></i><span class="ms-1">9566332544</span>
-                    </div>
-                </td>
-                <td class="table_data">2972 Westheimer Rd. Santa Ana, Illinois 85486 </td>
-                <td class="table_data">15 </td>
-                <td class="table_data">
-                    <div class="yellow-div">
-                        <p>Rental</p>
-                    </div>
-                </td>
-                <td class="table_data">
-                    <div class="green-div">
-                        <p>12,999</p>
-                    </div>
-                </td>
-                <td class="table_data d-flex justify-content-center">
-                    <div><mat-slide-toggle></mat-slide-toggle></div>
-                    <div class="yellow-error-div">
-                        <i class="ri-error-warning-line"></i>
-                    </div>
-                </td>
-            </tr>
-
-        </table>
+<div class="grid-table">
+      <table>
+        <thead>
+          <tr class="table-heading">
+            <th>Driver</th>
+            <th>Phone</th>
+            <th>No. of Bookings</th>
+            <th>Total Amount</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let guide of customers">
+            <td><img [src]="guide.image" alt=""> {{guide.name}}</td>
+            <td><i class="fa-solid fa-phone"></i> {{guide.phone}}</td>
+            <td> {{guide.noOfBookings}}</td>
+            <td ><button class="green-button">{{guide.totalBooking | currency:'INR'}} </button></td>
+            <td>
+              <mat-slide-toggle></mat-slide-toggle>
+              <button (click)="onDelete()" class="delete-btn"><i class="ri-delete-bin-line"></i></button>
+              <button (click)="driverInfo()" class="info-btn"><i class="ri-information-line"></i></button>
+            </td>
+          </tr>
+      </tbody>
+    
+      </table>
+      <mat-paginator [length]="100"
+      [pageSize]="10"
+      [pageSizeOptions]="[5, 10, 25, 100]"
+      aria-label="Select page">
+    </mat-paginator>
     </div>
-
-</div>
+    
