@@ -1,0 +1,19 @@
+<mat-tab-group>
+    <mat-tab label="Taxes">
+        <mat-card>
+            <form [formGroup]="taxForm" (ngSubmit)="saveTaxSettings()">
+                <mat-form-field appearance="outline">
+                    <mat-label>Total Taxes</mat-label>
+                    <input matInput type="text" formControlName="tax">
+                </mat-form-field>
+                <div class="actions">
+                    <button mat-raised-button color="primary" [disabled]="!this.taxForm.valid" type="submit">Save</button>
+                    <button mat-stroked-button color="warn" type="button">Cancel</button>
+                </div>
+            </form>
+        </mat-card>
+    </mat-tab>
+    <mat-tab label="Other">
+
+    </mat-tab>
+</mat-tab-group>

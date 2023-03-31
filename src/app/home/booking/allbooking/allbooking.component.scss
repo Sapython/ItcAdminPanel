@@ -199,6 +199,11 @@
     border-radius: 12px 12px 0 0;
     border: 1px solid rgba(212, 212, 212, 0.8);
     margin-bottom: 20px;
+    .example-list{
+      .draggableBooking{
+        max-width: 350px;
+      }
+    }
   }
 
   .card-cancel {
@@ -486,21 +491,72 @@
   background: white;
   overflow: hidden;
   display: block;
+  padding: 5px;
 }
 
-.example-box {
-  // padding: 20px 10px;
-  // border-bottom: solid 1px #ccc;
-  color: rgba(0, 0, 0, 0.87);
-  display: block;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  box-sizing: border-box;
-  cursor: move;
-  background: white;
-  font-size: 14px;
+.draggableBooking{
+  background-color: white;
+  padding: 10px;
+  border-radius: 8px;
+  border: 2px solid #3cac11;
+  margin-bottom: 10px;
+  .heading{
+    display: flex;
+    align-items: center;
+    gap:7px;
+    img{
+      width: 50px;
+      height: 50px;
+      border-radius: 50px;
+      cursor: move;
+    }
+    .detail{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      p{
+        margin:0px;
+      }
+    }
+    .badge{
+      background-color: #507bcc;
+      color: white;
+      padding: 2px 5px;
+      border-radius: 5px;
+      margin-left: 5px;
+      border:2px solid #1d3b72;
+    }
+    .price{
+      color:#3cac11;
+      font-size: 16px;
+      margin:0px;
+    }
 
+  }
+  .body{
+    .startEnd{
+      display: flex;
+      align-items: center;
+      span{
+        display: flex;
+        flex-direction: column;
+        padding-block: 10px;
+        gap:10px;
+        p{
+          margin:0px;
+        }
+      }
+    }
+    .actions{
+      display: flex;
+      gap:15px;
+      justify-content: center;
+    }
+    .guideDriver{
+      display: flex;
+      justify-content: space-between;
+    }
+  }
 }
 
 .cdk-drag-preview {

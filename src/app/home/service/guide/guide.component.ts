@@ -27,7 +27,6 @@ export class GuideComponent {
   ngOnInit(): void {
     this.getPackages()
     this.getLocations();
-    this.getVehicles();
     this.databaseService.getGuideService().then((res)=>{
       if (res.exists()){
         this.commissions = res.data()['commissionPackages']
@@ -40,12 +39,7 @@ export class GuideComponent {
       this.packages = res.docs.map((doc)=>{return {...doc.data(),id:doc.id} as GuideRentalPackage})
     })
   }
-  getVehicles(){
-    this.databaseService.getVehicleCategories('rental').then((res)=>{
-      this.vehiclePackages = res.docs.map((doc)=>{return {...doc.data(),id:doc.id} as VehicleCategory})
-      console.log("this.vehiclePackages",this.vehiclePackages);
-    })
-  }
+  
 
   getLocations(){
     this.databaseService.getLocations().then((res)=>{
@@ -62,7 +56,7 @@ export class GuideComponent {
           return;
         }
         let rentalPackage:GuideRentalPackage = {
-          days:data.days,
+          hours:data.hours,
           price:data.price,
           enabled:true
         }
@@ -80,12 +74,12 @@ export class GuideComponent {
     const dialog = this.dialog.open(NewGuidePackageComponent,{data:{mode:'add'}})
     dialog.closed.subscribe((data:any)=>{
       if (data){
-        if (!(data.days && data.price)){
+        if (!(data.hours && data.price)){
           alert('Please enter all the fields')
           return;
         }
         let rentalPackage:GuideRentalPackage = {
-          days:data.days,
+          hours:data.hours,
           price:data.price,
           enabled:true
         }
@@ -97,6 +91,17 @@ export class GuideComponent {
         })
       }
     })
+  }
+
+  deletePackage(guidePackage:GuideRentalPackage){
+    if (confirm('Are you sure you want to delete this package?')){
+      this.databaseService.deleteGuideServicePackage(guidePackage).then((res)=>{
+        this.getPackages();
+        this.alertify.presentToast('Package deleted successfully');
+      }).catch((e)=>{
+        this.alertify.presentToast('Error deleting package');
+      })
+    }
   }
 
   addLocation(){
@@ -148,103 +153,17 @@ export class GuideComponent {
     }
   }
 
-  addVehicleCategory(){
-    const dialog = this.dialog.open(AddVehicleCategoryComponent,{data:{mode:'add',type:'rental'}})
-    dialog.closed.subscribe((data:any)=>{
-      if (data){
-        if (data.image && data.description){
-          this.dataProvider.pageSetting.blur = true;
-          let vehicleData:VehicleCategory = {
-            ...data
-          }
-          if (vehicleData.image){
-            this.databaseService.addVehicleCategory('rental',data).then((res)=>{
-              this.alertify.presentToast('Vehicle category added successfully')
-              this.getVehicles();
-            }).catch((e)=>{
-              this.alertify.presentToast('Error adding vehicle category')
-            }).finally(()=>{
-              this.dataProvider.pageSetting.blur = false;
-            })
-          }
-        } else {
-          this.alertify.presentToast('Please enter all the fields')
-        }
-      }
-    })
-  }
 
-  editVehicle(vehiclePackage:VehicleCategory){
-    const dialog = this.dialog.open(EditVehicleCategoryComponent,{data:{mode:'add',type:'rental',value:vehiclePackage}})
-    dialog.closed.subscribe((data:any)=>{
-      if (data){
-        if (data.image && data.description){
-          this.dataProvider.pageSetting.blur = true;
-          let vehicleData:VehicleCategory = {
-            ...data
-          }
-          if (vehicleData.image){
-            this.databaseService.updateVehicleCategory('rental',data).then((res)=>{
-              this.alertify.presentToast('Vehicle category updated successfully')
-            }).catch((e)=>{
-              this.alertify.presentToast('Error updating vehicle category')
-            }).finally(()=>{
-              this.dataProvider.pageSetting.blur = false;
-            })
-          }
-        } else {
-          this.alertify.presentToast('Please enter all the fields')
-        }
-      }
-    })
-  }
-
-  deleteVehicle(vehiclePackage:VehicleCategory){
-    this.databaseService.deleteVehicleCategory('rental',vehiclePackage).then((res)=>{
-      this.alertify.presentToast('Vehicle category deleted successfully')
-    }).catch((e)=>{
-      this.alertify.presentToast('Error deleting vehicle category')
-    })
-  }
-
-  addVehiclePricingPackage(vehicleCategory:VehicleCategory){
-    this.savePackages = true;
-    this.vehiclePricingPackages.push({
-      enabled:true,
-      maximumHour:0,
-      minimumHours:0,
-      pricePerHour:0,
-      vehicleCategory:vehicleCategory.id!
-    })
-  }
-  
-  deleteVehiclePackage(index:number){
-    this.savePackages = true;
-    this.vehiclePricingPackages.splice(index,1)
-  }
-
-  saveVehiclePackages(){
-    this.dataProvider.pageSetting.blur = true;
-    this.databaseService.saveVehiclePricingPackages('rental',this.vehiclePricingPackages).then((res)=>{
-      this.alertify.presentToast('Vehicle pricing packages saved successfully')
-      this.savePackages = false;
-    }).catch((e)=>{
-      this.alertify.presentToast('Error saving vehicle pricing packages')
-    }).finally(()=>{
-      this.dataProvider.pageSetting.blur = false;
-    })
-  }
-
-  addVehicleCommissionPackage(vehicleCategory:VehicleCategory){
+  addVehicleCommissionPackage() {
     this.saveCommission = true;
     this.commissions.push({
-      enabled:true,
-      maximumHour:0,
-      minimumHours:0,
-      vehicleCategory:vehicleCategory.id!,
-      type:'fixed',
-      value:0
-    }) 
+      enabled: true,
+      maximumHour: 0,
+      minimumHours: 0,
+      vehicleCategory: '',
+      type: 'fixed',
+      value: 0,
+    });
   }
 
   deleteCommissionPackage(index:number){
@@ -254,7 +173,7 @@ export class GuideComponent {
 
   saveCommissionPackages(){
     this.dataProvider.pageSetting.blur = true;
-    this.databaseService.saveCommissionPackages('rental',this.commissions).then((res)=>{
+    this.databaseService.saveCommissionPackages('guide',this.commissions).then((res)=>{
       this.alertify.presentToast('Vehicle pricing packages saved successfully')
       this.saveCommission = false;
     }).catch((e)=>{

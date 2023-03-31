@@ -6,42 +6,45 @@
         <h4 id="allbooking">All Booking</h4>
         <div
           cdkDropList
-          [cdkDropListData]="ALLBOOKING"
+          [cdkDropListData]="newBookings"
           class="example-list"
           (cdkDropListDropped)="drop($event)"
         >
-          <div class="example-box" *ngFor="let item of ALLBOOKING ;let i = index" cdkDrag>
-            <!-- {{item}} -->
-            <div class="card-detail-child"  (click)="toggleAccordian($event, i)">
-              <div class="card-detail-sec">
-                <div class="card-detail-img"></div>
-                <div class="card-detail-name">
-                  <p><i class="fa-solid fa-phone"></i> {{ item.name }}</p>
-                  <h6>{{ item.id }}</h6>
-                </div>
-              </div>
-              <div class="card-detail-sec buttons">
-                <div>
-                  <button>{{ item.tour }}</button>
-                </div>
-                <div>
-                  <p>{{ item.fee | currency : "INR" }}</p>
-                </div>
-                <div><i class="fa-solid fa-angle-down"></i></div>
-              </div>
+          <div
+            class="draggableBooking"
+            *ngFor="let item of newBookings; let i = index"
+            cdkDrag
+          >
+          <div class="heading">
+            <img [src]="item.user.photoURL" alt="" cdkDragHandle />
+            <div class="detail">
+              <p><mat-icon>call</mat-icon><span>{{item.user.displayName}}</span></p>
+              <p>#{{item.id.slice(0,4)}}</p>
             </div>
-            <div class="panel">
-              <!-- <p> {{child.propertyName}} </p> -->
-              <div class="location">
-                <p>Start Time: 21 Jan 2024</p>
-                <p><i class="ri-map-pin-line"></i> 4140 Parker Rd. Allentown, New Mexico 31134 </p>
-                <p><i class="ri-map-pin-line"></i> 2464 Royal Ln. Mesa, New Jersy 45463 </p>
-                <div class="panel-btns">
-                  <button class="panel-cancel">Cancel</button>
-                  <button class="panel-accept">Accept</button>
-                </div>
-              </div>
+            <div class="badge">{{item.type | titlecase}}</div>
+            <p class="price">{{ item.grandTotal| currency : "INR" }}</p>
+            <button
+              mat-icon-button
+              color="primary"
+              (click)="item.expanded = !item.expanded"
+            >
+              <mat-icon *ngIf="!item.expanded">expand_more</mat-icon>
+              <mat-icon *ngIf="item.expanded">expand_less</mat-icon>
+            </button>
+          </div>
+          <div class="body" *ngIf="item.expanded">
+            <div class="startEnd">
+              <img src="assets/startEnd.png" />
+              <span>
+                <p>Start: {{item.pickupLocation?.name}}</p>
+                <p>End: {{item.dropLocation?.name}}</p>
+              </span>
             </div>
+            <div class="actions">
+              <button mat-stroked-button color="warn">Cancel</button>
+              <button mat-flat-button color="primary">Accept</button>
+            </div>
+          </div>
           </div>
         </div>
       </div>
@@ -49,42 +52,45 @@
         <h4 id="assigned">Assigned</h4>
         <div
           cdkDropList
-          [cdkDropListData]="ASSIGNED"
+          [cdkDropListData]="assignedBookings"
           class="example-list"
           (cdkDropListDropped)="drop($event)"
         >
-          <div class="example-box" *ngFor="let item of ASSIGNED;let i = index" cdkDrag>
-            <!-- {{item}} -->
-            <div class="card-detail-child" (click)="toggleAccordian($event, i)">
-              <div class="card-detail-sec">
-                <div class="card-detail-img"></div>
-                <div class="card-detail-name">
-                  <p><i class="fa-solid fa-phone"></i> {{ item.name }}</p>
-                  <h6>{{ item.id }}</h6>
-                </div>
-              </div>
-              <div class="card-detail-sec buttons">
-                <div>
-                  <button>{{ item.tour }}</button>
-                </div>
-                <div>
-                  <p>{{ item.fee | currency : "INR" }}</p>
-                </div>
-                <div><i class="fa-solid fa-angle-down"></i></div>
-              </div>
+          <div
+            class="draggableBooking"
+            *ngFor="let item of assignedBookings; let i = index"
+            cdkDrag
+          >
+          <div class="heading">
+            <img [src]="item.user.photoURL" alt="" cdkDragHandle />
+            <div class="detail">
+              <p><mat-icon>call</mat-icon><span>{{item.user.displayName}}</span></p>
+              <p>#{{item.id.slice(0,4)}}</p>
             </div>
-            <div class="panel">
-              <!-- <p> {{child.propertyName}} </p> -->
-              <div class="location">
-                <p>Start Time: 21 Jan 2024</p>
-                <p><i class="ri-map-pin-line"></i> 4140 Parker Rd. Allentown, New Mexico 31134 </p>
-                <p><i class="ri-map-pin-line"></i> 2464 Royal Ln. Mesa, New Jersy 45463 </p>
-                <div class="panel-btns">
-                  <button class="panel-cancel">Cancel</button>
-                  <button class="panel-accept">Accept</button>
-                </div>
-              </div>
+            <div class="badge">{{item.type | titlecase}}</div>
+            <p class="price">{{ item.grandTotal| currency : "INR" }}</p>
+            <button
+              mat-icon-button
+              color="primary"
+              (click)="item.expanded = !item.expanded"
+            >
+              <mat-icon *ngIf="!item.expanded">expand_more</mat-icon>
+              <mat-icon *ngIf="item.expanded">expand_less</mat-icon>
+            </button>
+          </div>
+          <div class="body" *ngIf="item.expanded">
+            <div class="startEnd">
+              <img src="assets/startEnd.png" />
+              <span>
+                <p>Start: {{item.pickupLocation?.name}}</p>
+                <p>End: {{item.dropLocation?.name}}</p>
+              </span>
             </div>
+            <div class="actions">
+              <button mat-stroked-button color="warn">Cancel</button>
+              <button mat-flat-button color="primary">Accept</button>
+            </div>
+          </div>
           </div>
         </div>
       </div>
@@ -92,42 +98,45 @@
         <h4 id="completed">Completed</h4>
         <div
           cdkDropList
-          [cdkDropListData]="COMPLETED"
+          [cdkDropListData]="completedBookings"
           class="example-list"
           (cdkDropListDropped)="drop($event)"
         >
-          <div class="example-box" *ngFor="let item of COMPLETED;let i = index" cdkDrag>
-            <!-- {{item}} -->
-            <div class="card-detail-child" (click)="toggleAccordian($event, i)">
-              <div class="card-detail-sec">
-                <div class="card-detail-img"></div>
-                <div class="card-detail-name">
-                  <p><i class="fa-solid fa-phone"></i> {{ item.name }}</p>
-                  <h6>{{ item.id }}</h6>
-                </div>
-              </div>
-              <div class="card-detail-sec buttons">
-                <div>
-                  <button>{{ item.tour }}</button>
-                </div>
-                <div>
-                  <p>{{ item.fee | currency : "INR" }}</p>
-                </div>
-                <div><i class="fa-solid fa-angle-down"></i></div>
-              </div>
+          <div
+            class="draggableBooking"
+            *ngFor="let item of completedBookings; let i = index"
+            cdkDrag
+          >
+          <div class="heading">
+            <img [src]="item.user.photoURL" alt="" cdkDragHandle />
+            <div class="detail">
+              <p><mat-icon>call</mat-icon><span>{{item.user.displayName}}</span></p>
+              <p>#{{item.id.slice(0,4)}}</p>
             </div>
-            <div class="panel">
-              <!-- <p> {{child.propertyName}} </p> -->
-              <div class="location">
-                <p>Start Time: 21 Jan 2024</p>
-                <p><i class="ri-map-pin-line"></i> 4140 Parker Rd. Allentown, New Mexico 31134 </p>
-                <p><i class="ri-map-pin-line"></i> 2464 Royal Ln. Mesa, New Jersy 45463 </p>
-                <div class="panel-btns">
-                  <button class="panel-cancel">Cancel</button>
-                  <button class="panel-accept">Accept</button>
-                </div>
-              </div>
+            <div class="badge">{{item.type | titlecase}}</div>
+            <p class="price">{{ item.grandTotal| currency : "INR" }}</p>
+            <button
+              mat-icon-button
+              color="primary"
+              (click)="item.expanded = !item.expanded"
+            >
+              <mat-icon *ngIf="!item.expanded">expand_more</mat-icon>
+              <mat-icon *ngIf="item.expanded">expand_less</mat-icon>
+            </button>
+          </div>
+          <div class="body" *ngIf="item.expanded">
+            <div class="startEnd">
+              <img src="assets/startEnd.png" />
+              <span>
+                <p>Start: {{item.pickupLocation?.name}}</p>
+                <p>End: {{item.dropLocation?.name}}</p>
+              </span>
             </div>
+            <div class="actions">
+              <button mat-stroked-button color="warn">Cancel</button>
+              <button mat-flat-button color="primary">Accept</button>
+            </div>
+          </div>
           </div>
         </div>
       </div>
@@ -138,179 +147,46 @@
     <div class="card-cancel" id="cancelled">
       <h4>Cancelled</h4>
     </div>
-    <div class="grid-container-cancel">
-      <div class="grid-item-cancel">
-        <div class="card-detail-child">
-          <div class="card-detail-sec">
-            <div class="card-detail-img"></div>
-            <div class="card-detail-name">
-              <p>Rakesh Kumar</p>
-              <h6>#ITC25</h6>
-            </div>
+    <div
+      cdkDropList
+      [cdkDropListData]="cancelledBookings"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <div
+        class="draggableBooking"
+        *ngFor="let item of cancelledBookings; let i = index"
+        cdkDrag
+      >
+        <div class="heading">
+          <img src="https://i.pravatar.cc/300" alt="" cdkDragHandle />
+          <div class="detail">
+            <p><mat-icon>call</mat-icon><span>Manoj Rawat</span></p>
+            <p>#ITC125</p>
           </div>
-          <div class="card-detail-sec buttons">
-            <div><button>Ride</button></div>
-            <div><i class="fa-solid fa-phone"></i></div>
+          <div class="badge">Tour</div>
+          <p class="price">{{ 12000 | currency : "INR" }}</p>
+          <button
+            mat-icon-button
+            color="primary"
+            (click)="item.expanded = !item.expanded"
+          >
+            <mat-icon *ngIf="!item.expanded">expand_more</mat-icon>
+            <mat-icon *ngIf="item.expanded">expand_less</mat-icon>
+          </button>
+        </div>
+        <div class="body" *ngIf="item.expanded">
+          <div class="startEnd">
+            <img src="assets/startEnd.png" />
+            <span>
+              <p>Start Time: 12 Jan 2023</p>
+              <p>Start Time: 21 Jan 2023</p>
+            </span>
           </div>
-        </div>
-        <div class="location">
-          <p>Start Time: 21 Jan 2024</p>
-          <p>
-            <i class="ri-map-pin-line"></i> 4140 Parker Rd. Allentown, New
-            Mexico 31134
-          </p>
-          <p>
-            <i class="ri-map-pin-line"></i> 2464 Royal Ln. Mesa, New Jersy 45463
-          </p>
-        </div>
-        <div class="driver-guide">
-          <p>Guide : Yadav Rahil</p>
-          <p>Driver : Jani Raviraj</p>
-        </div>
-      </div>
-      <div class="grid-item-cancel">
-        <div class="card-detail-child">
-          <div class="card-detail-sec">
-            <div class="card-detail-img"></div>
-            <div class="card-detail-name">
-              <p>Rakesh Kumar</p>
-              <h6>#ITC25</h6>
-            </div>
-          </div>
-          <div class="card-detail-sec buttons">
-            <div><button>Ride</button></div>
-            <div><i class="fa-solid fa-phone"></i></div>
-          </div>
-        </div>
-        <div class="location">
-          <p>Start Time: 21 Jan 2024</p>
-          <p>
-            <i class="ri-map-pin-line"></i> 4140 Parker Rd. Allentown, New
-            Mexico 31134
-          </p>
-          <p>
-            <i class="ri-map-pin-line"></i> 2464 Royal Ln. Mesa, New Jersy 45463
-          </p>
-        </div>
-        <div class="driver-guide">
-          <p>Guide : Yadav Rahil</p>
-          <p>Driver : Jani Raviraj</p>
-        </div>
-      </div>
-      <div class="grid-item-cancel">
-        <div class="card-detail-child">
-          <div class="card-detail-sec">
-            <div class="card-detail-img"></div>
-            <div class="card-detail-name">
-              <p>Rakesh Kumar</p>
-              <h6>#ITC25</h6>
-            </div>
-          </div>
-          <div class="card-detail-sec buttons">
-            <div><button>Ride</button></div>
-            <div><i class="fa-solid fa-phone"></i></div>
-          </div>
-        </div>
-        <div class="location">
-          <p>Start Time: 21 Jan 2024</p>
-          <p>
-            <i class="ri-map-pin-line"></i> 4140 Parker Rd. Allentown, New
-            Mexico 31134
-          </p>
-          <p>
-            <i class="ri-map-pin-line"></i> 2464 Royal Ln. Mesa, New Jersy 45463
-          </p>
-        </div>
-        <div class="driver-guide">
-          <p>Guide : Yadav Rahil</p>
-          <p>Driver : Jani Raviraj</p>
-        </div>
-      </div>
-      <div class="grid-item-cancel">
-        <div class="card-detail-child">
-          <div class="card-detail-sec">
-            <div class="card-detail-img"></div>
-            <div class="card-detail-name">
-              <p>Rakesh Kumar</p>
-              <h6>#ITC25</h6>
-            </div>
-          </div>
-          <div class="card-detail-sec buttons">
-            <div><button>Ride</button></div>
-            <div><i class="fa-solid fa-phone"></i></div>
-          </div>
-        </div>
-        <div class="location">
-          <p>Start Time: 21 Jan 2024</p>
-          <p>
-            <i class="ri-map-pin-line"></i> 4140 Parker Rd. Allentown, New
-            Mexico 31134
-          </p>
-          <p>
-            <i class="ri-map-pin-line"></i> 2464 Royal Ln. Mesa, New Jersy 45463
-          </p>
-        </div>
-        <div class="driver-guide">
-          <p>Guide : Yadav Rahil</p>
-          <p>Driver : Jani Raviraj</p>
-        </div>
-      </div>
-      <div class="grid-item-cancel">
-        <div class="card-detail-child">
-          <div class="card-detail-sec">
-            <div class="card-detail-img"></div>
-            <div class="card-detail-name">
-              <p>Rakesh Kumar</p>
-              <h6>#ITC25</h6>
-            </div>
-          </div>
-          <div class="card-detail-sec buttons">
-            <div><button>Ride</button></div>
-            <div><i class="fa-solid fa-phone"></i></div>
-          </div>
-        </div>
-        <div class="location">
-          <p>Start Time: 21 Jan 2024</p>
-          <p>
-            <i class="ri-map-pin-line"></i> 4140 Parker Rd. Allentown, New
-            Mexico 31134
-          </p>
-          <p>
-            <i class="ri-map-pin-line"></i> 2464 Royal Ln. Mesa, New Jersy 45463
-          </p>
-        </div>
-        <div class="driver-guide">
-          <p>Guide : Yadav Rahil</p>
-          <p>Driver : Jani Raviraj</p>
-        </div>
-      </div>
-      <div class="grid-item-cancel">
-        <div class="card-detail-child">
-          <div class="card-detail-sec">
-            <div class="card-detail-img"></div>
-            <div class="card-detail-name">
-              <p>Rakesh Kumar</p>
-              <h6>#ITC25</h6>
-            </div>
-          </div>
-          <div class="card-detail-sec buttons">
-            <div><button>Ride</button></div>
-            <div><i class="fa-solid fa-phone"></i></div>
-          </div>
-        </div>
-        <div class="location">
-          <p>Start Time: 21 Jan 2024</p>
-          <p>
-            <i class="ri-map-pin-line"></i> 4140 Parker Rd. Allentown, New
-            Mexico 31134
-          </p>
-          <p>
-            <i class="ri-map-pin-line"></i> 2464 Royal Ln. Mesa, New Jersy 45463
-          </p>
-        </div>
-        <div class="driver-guide">
-          <p>Guide : Yadav Rahil</p>
-          <p>Driver : Jani Raviraj</p>
+          <span class="guideDriver">
+            <p>Guide: <strong>Yadav Rahil</strong></p>
+            <p>Driver: <strong>Hani Raviraj</strong></p>
+          </span>
         </div>
       </div>
     </div>

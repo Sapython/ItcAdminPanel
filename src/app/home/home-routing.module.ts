@@ -40,7 +40,7 @@ const routes: Routes = [
       { path: 'content', loadChildren: () => import('./content/content.module').then(m => m.ContentModule) },
       { path: 'reports', loadChildren: () => import('./reports/reports/reports.module').then(m => m.ReportsModule) },
       { path: 'reportDetails', loadChildren: () => import('./reports/report-details/report-details.module').then(m => m.ReportDetailsModule) },
-
+      { path: 'settings', loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule) },
     ],
   },
 ];

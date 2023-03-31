@@ -6,7 +6,7 @@ export interface RentalPackage {
 }
 export interface GuideRentalPackage {
   id?:string;
-  days: number;
+  hours: number;
   price: number;
   enabled: boolean;
 }
@@ -62,4 +62,9 @@ export interface Spot {
   description: string;
   images: string[];
   enabled: boolean;
+}
+
+export interface TaxSettings {
+  id?:string;
+  tax: number;
 }

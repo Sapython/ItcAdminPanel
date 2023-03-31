@@ -18,6 +18,7 @@ import {
   limitToLast,
   orderBy,
   startAfter,
+  collectionData,
 } from '@angular/fire/firestore';
 
 
@@ -29,7 +30,7 @@ import {
 } from '@angular/fire/storage';
 import { UserData } from 'src/structures/user.structure';
 import { urls } from '../url';
-import { RentalPackage, GuideRentalPackage, MapLocation, VehicleCategory, VehiclePricingPackages, VehicleCommissionPackages, Spot } from 'src/structures/service.structure';
+import { RentalPackage, GuideRentalPackage, MapLocation, VehicleCategory, VehiclePricingPackages, VehicleCommissionPackages, Spot, TaxSettings } from 'src/structures/service.structure';
 
 @Injectable({
   providedIn: 'root',
@@ -492,7 +493,7 @@ export class DatabaseService {
     return setDoc(doc(this.fs,'service/'+mode),{packages:packages},{merge:true});
   }
 
-  saveCommissionPackages(mode:'rental'|'cab'|'outstation'|'tours',packages:VehicleCommissionPackages[]){
+  saveCommissionPackages(mode:'rental'|'cab'|'outstation'|'tours'|'guide',packages:VehicleCommissionPackages[]){
     return setDoc(doc(this.fs,'service/'+mode),{commissionPackages:packages},{merge:true});
   }
 
@@ -558,6 +559,22 @@ export class DatabaseService {
 
   getSpots(){
     return getDocs(query(collection(this.fs,'spots')));
+  }
+
+  saveTaxSettings(taxSettings:TaxSettings){
+    return setDoc(doc(this.fs,'siteData/settings'),taxSettings,{merge:true});
+  }
+
+  getTaxSettings(){
+    return getDoc(doc(this.fs,'siteData/settings'));
+  }
+
+  deleteGuideServicePackage(packageData:GuideRentalPackage){
+    return deleteDoc(doc(this.fs,'service/guide/packages/'+packageData.id));
+  }
+
+  getBookings(){
+    return collectionData(query(collection(this.fs,'bookings')),{idField:'id'});
   }
 }
 

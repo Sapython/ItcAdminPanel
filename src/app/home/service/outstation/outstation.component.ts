@@ -1,9 +1,5 @@
-import { AddnewcommissionComponent } from './../../dashboard/dialogs/addnewcommission/addnewcommission.component';
-import { AddnewpackageComponent } from './../../dashboard/dialogs/addnewpackage/addnewpackage.component';
 import { AddVehicleCategoryComponent } from './../dialog/add-vehicle-category/add-vehicle-category.component';
-import { DeleteWarnComponent } from './../dialog/delete-warn/delete-warn.component';
 import { EditVehicleCategoryComponent } from './../dialog/edit-vehicle-category/edit-vehicle-category.component';
-import { MatDialog } from '@angular/material/dialog';
 import { Component } from '@angular/core';
 import { Dialog } from '@angular/cdk/dialog';
 import { DataProvider } from 'src/app/providers/data.provider';

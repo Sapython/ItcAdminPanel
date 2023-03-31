@@ -11,7 +11,7 @@ import { GuideRentalPackage } from 'src/structures/service.structure';
 export class NewGuidePackageComponent implements OnInit {
   constructor(private dialogRef:DialogRef,@Inject(DIALOG_DATA) private dialogData:{mode:'edit'|'add',value:GuideRentalPackage}){}
   newPackageForm:FormGroup = new FormGroup({
-    days:new FormControl(0,Validators.required),
+    hours:new FormControl(0,Validators.required),
     price:new FormControl(0,Validators.required),
   })
   ngOnInit(): void {

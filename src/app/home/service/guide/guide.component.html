@@ -9,7 +9,7 @@
     <div class="vehicle-card" *ngFor="let package of packages">
       <div class="card-km">
         <h4>
-          {{ package.days }} Days <br />
+          {{ package.hours }} hr <br />
           {{ package.price | currency:'INR' }}
         </h4>
       </div>
@@ -24,7 +24,7 @@
           <div>
             <mat-slide-toggle [checked]="package.enabled"></mat-slide-toggle>
           </div>
-          <button mat-icon-button color="warn"><mat-icon>delete</mat-icon></button>
+          <button mat-icon-button color="warn" (click)="deletePackage(package)"><mat-icon>delete</mat-icon></button>
         </div>
       </div>
     </div>
@@ -73,7 +73,7 @@
     </div>
   </div>
 </div>
-<div class="vehicle-container">
+<!-- <div class="vehicle-container">
   <div class="vehicle-header">
     <div class="heading"><p>Vehicle Management</p></div>
     <button mat-stroked-button (click)="addVehicleCategory()">
@@ -95,9 +95,6 @@
           <h5>{{ package.description }}</h5>
         </div>
         <div class="vc-three">
-          <!-- <div (click)="editVehicle()" class="edit">
-            <i class="fa-sharp fa-solid fa-pen-to-square"></i>
-          </div> -->
           <button
             mat-icon-button
             (click)="editVehicle(package)"
@@ -106,7 +103,6 @@
             <mat-icon>edit</mat-icon>
           </button>
           <div><mat-slide-toggle></mat-slide-toggle></div>
-          <!-- <div class="trash"><i class="fa-solid fa-trash-can"></i></div> -->
           <button mat-icon-button (click)="deleteVehicle(package)" color="warn">
             <mat-icon>delete</mat-icon>
           </button>
@@ -136,7 +132,6 @@
       </div>
       <ng-container  *ngFor="let item of vehiclePricingPackages; let i = index">
         <div class="pricingPackages" *ngIf="item.vehicleCategory == vehicle.id">
-          <!-- <button>Min hr.</button> -->
           <mat-form-field appearance="outline">
             <mat-label>Min Hr.</mat-label>
             <input matInput type="number" [(ngModel)]="item.minimumHours" />
@@ -155,60 +150,54 @@
       </ng-container>
     </mat-tab>
   </mat-tab-group>
-</div>
+</div> -->
 <div class="vehicle-container">
   <div class="vehicle-header">
     <div class="heading"><p>Commission</p></div>
   </div>
-  <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
-    <mat-tab
-      [label]="vehicle.vehicleCategory"
-      *ngFor="let vehicle of vehiclePackages"
-    >
-      <div class="tabActions">
-        <button (click)="addVehicleCommissionPackage(vehicle)" mat-stroked-button color="primary">
-          <mat-icon>add</mat-icon>
-          Add Commission
-        </button>
-        <button *ngIf="saveCommission" (click)="saveCommissionPackages()" mat-stroked-button color="primary">
-          <mat-icon>save</mat-icon>
-          Save Commissions
-        </button>
-      </div>
-      <ng-container  *ngFor="let item of commissions; let i = index;">
-        <div class="pricingPackages" *ngIf="item.vehicleCategory == vehicle.id">
-          <!-- <button>Min hr.</button> -->
-          <mat-form-field appearance="outline">
-            <mat-label>Min Hr.</mat-label>
-            <input matInput type="number" [(ngModel)]="item.minimumHours" />
-          </mat-form-field>
-          <mat-form-field appearance="outline">
-            <mat-label>Max Hr.</mat-label>
-            <input matInput type="number" [(ngModel)]="item.maximumHour" />
-          </mat-form-field>
-          <mat-form-field appearance="outline" *ngIf="item.type == 'percentage'">
-            <mat-label>Enter %</mat-label>
-            <input matInput type="number" [(ngModel)]="item.value" />
-          </mat-form-field>
-          <mat-form-field appearance="outline" *ngIf="item.type == 'fixed'">
-            <mat-label>Enter Amount</mat-label>
-            <input matInput type="number" [(ngModel)]="item.value" />
-          </mat-form-field>
-          <mat-form-field appearance="outline">
-            <mat-label>Type</mat-label>
-            <mat-select placeholder="Select Type" [(ngModel)]="item.type" name="mode">
-              <mat-option value="percentage">
-                Percentage
-              </mat-option>
-              <mat-option value="fixed">
-                Fixed
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-          <mat-slide-toggle [checked]="item.enabled" color="primary"></mat-slide-toggle>
-          <button mat-icon-button (click)="deleteCommissionPackage(i)" color="warn"><mat-icon>delete</mat-icon></button>
-        </div>
-      </ng-container>
-    </mat-tab>
-  </mat-tab-group>
+  <div class="tabActions">
+    <button (click)="addVehicleCommissionPackage()" mat-stroked-button color="primary">
+      <mat-icon>add</mat-icon>
+      Add Commission
+    </button>
+    <button *ngIf="saveCommission" (click)="saveCommissionPackages()" mat-stroked-button color="primary">
+      <mat-icon>save</mat-icon>
+      Save Commissions
+    </button>
+  </div>
+  <ng-container  *ngFor="let item of commissions; let i = index;">
+    <div class="pricingPackages">
+      <!-- <button>Min hr.</button> -->
+      <mat-form-field appearance="outline">
+        <mat-label>Min Hr.</mat-label>
+        <input matInput type="number" [(ngModel)]="item.minimumHours" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Max Hr.</mat-label>
+        <input matInput type="number" [(ngModel)]="item.maximumHour" />
+      </mat-form-field>
+      <mat-form-field appearance="outline" *ngIf="item.type == 'percentage'">
+        <mat-label>Enter %</mat-label>
+        <input matInput type="number" [(ngModel)]="item.value" />
+      </mat-form-field>
+      <mat-form-field appearance="outline" *ngIf="item.type == 'fixed'">
+        <mat-label>Enter Amount</mat-label>
+        <input matInput type="number" [(ngModel)]="item.value" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Type</mat-label>
+        <mat-select placeholder="Select Type" [(ngModel)]="item.type" name="mode">
+          <mat-option value="percentage">
+            Percentage
+          </mat-option>
+          <mat-option value="fixed">
+            Fixed
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-slide-toggle [checked]="item.enabled" color="primary"></mat-slide-toggle>
+      <button mat-icon-button (click)="deleteCommissionPackage(i)" color="warn"><mat-icon>delete</mat-icon></button>
+    </div>
+  </ng-container>
 </div>
+
