@@ -2,26 +2,25 @@
 <div class="main scroll-cont">
   <div class="grid-container">
     <div class="grid-item">
-      <div class="tablename">
-        <P>Pending </P><button><p>40</p></button>
+      <div class="tablename ">
+        <P class="Lato600 fs-16">Pending </P><button><p>40</p></button>
       </div>
       <div class="grid-table">
         <table>
           <tr>
             <th>Booking ID</th>
             <th>Customer</th>
-            <th>Service</th>
+            <!-- <th>Service</th> -->
             <th>Start Location</th>
             <th>Start Time</th>
             <th>Trip Fair</th>
             <th>Actions</th>
           </tr>
-          <tr>
-            <td>#ITC25</td>
-            <td><i class="fa-solid fa-phone"></i> Ankit Vaja</td>
-            <td ><button class="red-button">Rental</button></td>
-            <td> <button class="orange-button">Rampur</button></td>
-            <td>09 Jan 23 <br />10:50 am</td>
+          <tr *ngFor="let guide of guideBookingList">
+            <td>#{{guide?.id | slice:0:5 }}</td>
+            <td><i class="fa-solid fa-phone"></i> {{guide.user.displayName}}</td>
+            <td> <button class="orange-button">{{guide.pickupLocation.name}}</button></td>
+            <td>{{guide.pickupStartDate.toDate() | date:'M/d/yy'}}<br />{{guide.pickupStartDate.toDate() | date:'h:mm a'}}</td>
             <td><button class="green-button">₹1502</button></td>
             <td>
               <button class="scs-btn" (click)="onSucc()"><i class="fa-solid fa-check"></i></button>
@@ -29,57 +28,30 @@
               <button class="info-btn" (click)="onInfo()"><i class="ri-information-line"></i></button>
             </td>
           </tr>
-          <tr>
-            <td>#ITC25</td>
-            <td><i class="fa-solid fa-phone"></i> Ankit Vaja</td>
-            <td ><button class="red-button">Rental</button></td>
-            <td> <button class="orange-button">Rampur</button></td>
-            <td>09 Jan 23 <br />10:50 am</td>
-            <td><button class="green-button">₹1502</button></td>
-            <td>
-              <button (click)="onSucc()" class="scs-btn"><i class="fa-solid fa-check"></i></button>
-              <button (click)="onCancel()" class="can-btn" ><i class="fa-solid fa-xmark"></i></button>
-              <button (click)="onInfo()" class="info-btn"><i class="ri-information-line"></i></button>
-            </td>
-          </tr>
-          <tr>
-            <td>#ITC25</td>
-            <td><i class="fa-solid fa-phone"></i> Ankit Vaja</td>
-            <td ><button class="darkblue-button">Ride</button></td>
-            <td> <button class="skyblue-button">Delhi</button></td>
-            <td>09 Jan 23 <br />10:50 am</td>
-            <td><button class="green-button">₹1502</button></td>
-            <td>
-              <button (click)="onSucc()" class="scs-btn"><i class="fa-solid fa-check"></i></button>
-              <button (click)="onCancel()" class="can-btn"><i class="fa-solid fa-xmark"></i></button>
-              <button (click)="onInfo()" class="info-btn"><i class="ri-information-line"></i></button>
-            </td>
-          </tr>
+          
         </table>
       </div>
     </div>
     <div class="grid-item">
       <div class="tablename">
-        <P>Assigned </P><button><p>20</p></button>
+        <P class="Lato600 fs-16">Assigned </P><button><p>20</p></button>
       </div>
       <div class="grid-table">
         <table>
           <tr>
             <th>Booking ID</th>
             <th>Customer</th>
-            <th>Service</th>
             <th>Start Location</th>
             <th>Start Time</th>
             <th>Trip Fair</th>
             <th>Driver</th>
             <th>Actions</th>
           </tr>
-          <tr>
-            <td>#ITC25</td>
-            <td><i class="fa-solid fa-phone"></i> Ankit Vaja</td>
-            <td ><button class="red-button">Rental</button></td>
-            <td> <button class="orange-button">Rampur</button></td>
-            <td>09 Jan 23 <br />10:50 am</td>
+          <tr *ngFor="let guide of guideBookingList">
+            <td>#{{guide?.id | slice:0:5 }}</td>
+            <td><i class="fa-solid fa-phone"></i> {{guide.user.displayName}}</td>
+            <td> <button class="orange-button">{{guide.pickupLocation.name}}</button></td>
+            <td>{{guide.pickupStartDate.toDate() | date:'M/d/yy'}}<br />{{guide.pickupStartDate.toDate() | date:'h:mm a'}}</td>
             <td><button class="green-button">₹1502</button></td>
             <td>Abhijeet</td>
             <td>
@@ -89,42 +61,10 @@
                 <button mat-dialog-close (click)="onCancel()" mat-menu-item>Cancel</button>
                 <button mat-dialog-close (click)="onReassignMenu()" mat-menu-item>Reassign</button>
                 <button mat-dialog-close (click)="onInfoMenu()" mat-menu-item>More Info</button>
-              </mat-menu>              </td>
+              </mat-menu>              
+            </td>
           </tr>
-          <tr>
-            <td>#ITC25</td>
-            <td><i class="fa-solid fa-phone"></i> Ankit Vaja</td>
-            <td ><button class="red-button">Rental</button></td>
-            <td> <button class="orange-button">Rampur</button></td>
-            <td>09 Jan 23 <br />10:50 am</td>
-            <td><button class="green-button">₹1502</button></td>
-            <td>Abhijeet</td>
-            <td>
-              <button mat-button [matMenuTriggerFor]="menu"><i style="font-size: 30px;" class="ri-arrow-drop-down-line"></i></button>
-              <mat-menu #menu="matMenu">
-                <button mat-dialog-close (click)="onComplete()" mat-menu-item>Complete</button>
-                <button mat-dialog-close (click)="onCancel()" mat-menu-item>Cancel</button>
-                <button mat-dialog-close (click)="onReassignMenu()" mat-menu-item>Reassign</button>
-                <button mat-dialog-close (click)="onInfoMenu()" mat-menu-item>More Info</button>
-              </mat-menu>              </td>
-          </tr>
-          <tr>
-            <td>#ITC25</td>
-            <td><i class="fa-solid fa-phone"></i> Ankit Vaja</td>
-            <td ><button class="darkblue-button">Ride</button></td>
-            <td> <button class="skyblue-button">Delhi</button></td>
-            <td>09 Jan 23 <br />10:50 am</td>
-            <td><button class="green-button">₹1502</button></td>
-            <td>Abhijeet</td>
-            <td>
-              <button mat-button [matMenuTriggerFor]="menu"><i style="font-size: 30px;" class="ri-arrow-drop-down-line"></i></button>
-              <mat-menu #menu="matMenu">
-                <button mat-dialog-close (click)="onComplete()" mat-menu-item>Complete</button>
-                <button mat-dialog-close (click)="onCancel()" mat-menu-item>Cancel</button>
-                <button mat-dialog-close (click)="onReassignMenu()" mat-menu-item>Reassign</button>
-                <button mat-dialog-close (click)="onInfoMenu()" mat-menu-item>More Info</button>
-              </mat-menu>              </td>
-          </tr>
+          
         </table>
       </div>
     </div>
@@ -144,42 +84,18 @@
             <th>Driver</th>
             <th>Actions</th>
           </tr>
-          <tr>
-            <td>#ITC25</td>
-            <td><i class="fa-solid fa-phone"></i> Ankit Vaja</td>
-            <td ><button class="red-button">Rental</button></td>
-            <td> <button class="orange-button">Rampur</button></td>
-            <td>09 Jan 23 <br />10:50 am</td>
+          <tr *ngFor="let guide of guideBookingList">
+            <td>#{{guide?.id | slice:0:5 }}</td>
+            <td><i class="fa-solid fa-phone"></i> {{guide.user.displayName}}</td>
+            <td> <button class="orange-button">{{guide.pickupLocation.name}}</button></td>
+            <td>{{guide.pickupStartDate.toDate() | date:'M/d/yy'}}<br />{{guide.pickupStartDate.toDate() | date:'h:mm a'}}</td>
             <td><button class="green-button">₹1502</button></td>
             <td>Abhijeet</td>
             <td>
               <button (click)="completedBookingInfo()" class="info-btn"><i class="ri-information-line"></i></button>
             </td>
           </tr>
-          <tr>
-            <td>#ITC25</td>
-            <td><i class="fa-solid fa-phone"></i> Ankit Vaja</td>
-            <td ><button class="red-button">Rental</button></td>
-            <td> <button class="orange-button">Rampur</button></td>
-            <td>09 Jan 23 <br />10:50 am</td>
-            <td><button class="green-button">₹1502</button></td>
-            <td>Abhijeet</td>
-            <td>
-              <button (click)="completedBookingInfo()" class="info-btn"><i class="ri-information-line"></i></button>
-            </td>
-          </tr>
-          <tr>
-            <td>#ITC25</td>
-            <td><i class="fa-solid fa-phone"></i> Ankit Vaja</td>
-            <td ><button class="darkblue-button">Ride</button></td>
-            <td> <button class="skyblue-button">Delhi</button></td>
-            <td>09 Jan 23 <br />10:50 am</td>
-            <td><button class="green-button">₹1502</button></td>
-            <td>Abhijeet</td>
-            <td>
-              <button (click)="completedBookingInfo()" class="info-btn"><i class="ri-information-line"></i></button>
-            </td>
-          </tr>
+          
         </table>
       </div>
     </div>
@@ -198,36 +114,16 @@
             <th>Trip Fair</th>
             <th>Driver</th>
           </tr>
-          <tr>
-            <td>#ITC25</td>
-            <td><i class="fa-solid fa-phone"></i> Ankit Vaja</td>
-            <td ><button class="red-button">Rental</button></td>
-            <td> <button class="orange-button">Rampur</button></td>
-            <td>09 Jan 23 <br />10:50 am</td>
+          <tr *ngFor="let guide of guideBookingList">
+            <td>#{{guide?.id | slice:0:5 }}</td>
+            <td><i class="fa-solid fa-phone"></i> {{guide.user.displayName}}</td>
+            <td> <button class="orange-button">{{guide.pickupLocation.name}}</button></td>
+            <td>{{guide.pickupStartDate.toDate() | date:'M/d/yy'}}<br />{{guide.pickupStartDate.toDate() | date:'h:mm a'}}</td>
             <td><button class="green-button">₹1502</button></td>
             <td>Abhijeet</td>
 
           </tr>
-          <tr>
-            <td>#ITC25</td>
-            <td><i class="fa-solid fa-phone"></i> Ankit Vaja</td>
-            <td ><button class="red-button">Rental</button></td>
-            <td> <button class="orange-button">Rampur</button></td>
-            <td>09 Jan 23 <br />10:50 am</td>
-            <td><button class="green-button">₹1502</button></td>
-            <td>Abhijeet</td>
-
-          </tr>
-          <tr>
-            <td>#ITC25</td>
-            <td><i class="fa-solid fa-phone"></i> Ankit Vaja</td>
-            <td ><button class="darkblue-button">Ride</button></td>
-            <td> <button class="skyblue-button">Delhi</button></td>
-            <td>09 Jan 23 <br />10:50 am</td>
-            <td><button class="green-button">₹1502</button></td>
-            <td>Abhijeet</td>
-
-          </tr>
+          
         </table>
       </div>
     </div>

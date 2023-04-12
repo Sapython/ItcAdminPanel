@@ -11,18 +11,17 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
 import {MatExpansionModule} from '@angular/material/expansion';
-import { CreditComponent } from './components/credit/credit.component';
-import { DebitComponent } from './components/debit/debit.component';
+import { CreditComponent } from './credit/credit.component';
 import {MatDialogModule} from '@angular/material/dialog';
-import { SettlementComponent } from './components/settlement/settlement.component';
+import { AddtransactionComponent } from './addtransaction/addtransaction.component';
+import { MaterialModule } from 'src/app/services/material/material.module';
 
 
 @NgModule({
   declarations: [
     LedgerComponent,
     CreditComponent,
-    DebitComponent,
-    SettlementComponent,
+    AddtransactionComponent
   ],
   imports: [
     CommonModule,
@@ -38,6 +37,7 @@ import { SettlementComponent } from './components/settlement/settlement.componen
     MatCardModule,
     MatExpansionModule,
     MatDialogModule,
+    MaterialModule
   ]
 })
 export class LedgerModule { }

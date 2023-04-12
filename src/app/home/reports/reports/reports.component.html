@@ -1,21 +1,14 @@
-<div class="d-flex">
-    <div class="card">
-        <div class="img-outer">
-            <img src="assets/images/reportsCurrency.png" alt="">
-        </div>
-        <div class="ms-3">
-            <div class="Lato600 fs-25 ">Full Bookings data</div>
-            <button class="voilet-button-div p-2 mt-2 w-75" routerLink="/reportDetails">View</button>
-        </div>
-    </div>
-
-    <div class="card">
-        <div class="img-outer">
-            <img src="assets/images/reportsDb.png" alt="">
-        </div>
-        <div class="ms-3">
-            <div class="Lato600 fs-25 ">Pending settlement</div>
-            <button class="voilet-button-div p-2 mt-2 w-75" routerLink="/reportDetails">View</button>
-        </div>
-    </div>
-</div>
+<section class="d-flex">
+        <mat-card *ngFor="let report of reports" class="mx-3">
+            <mat-card-header>
+              <mat-icon color="primary">{{report.icon}}</mat-icon>
+              <mat-card-title>{{report.title}}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <p>{{report.description}}</p>
+              <button mat-stroked-button routerLink="/reportDetails/order-reports" color="primary">See Report</button>
+            </mat-card-content>
+          </mat-card>
+  </section> 
+  
+  

@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ReportDetailsRoutingModule } from './report-details-routing.module';
 import { ReportDetailsComponent } from './report-details.component';
 import { MaterialModule } from 'src/app/services/material/material.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { MaterialModule } from 'src/app/services/material/material.module';
   imports: [
     CommonModule,
     ReportDetailsRoutingModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule
   ]
 })
 export class ReportDetailsModule { }

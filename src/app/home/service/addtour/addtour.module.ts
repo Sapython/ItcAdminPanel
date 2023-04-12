@@ -12,6 +12,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MaterialModule } from 'src/app/services/material/material.module';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     GoogleMapsModule,
     MatDatepickerModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MaterialModule
   ]
 })
 export class AddtourModule { }

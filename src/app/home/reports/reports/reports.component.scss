@@ -1,41 +1,39 @@
-// Buttons
-.voilet-button-div {
+.grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+.w-set{
+    width: 100%;
+    min-width: 200px;
+    max-width: 200px;
+}
 
-    background: #404B69;
+.grid-2 {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 0.6fr 1fr 1fr 1fr 1fr 1fr;
+    background: #FFFFFF;
+    border: 1px solid #d7d4d4;
     border-radius: 5px;
-    color: #FFFFFF;
-    border: none;
+}
+
+.grid-3 {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 0.6fr 1fr 1fr 1fr 1fr 1fr;
+    background: #FFFFFF;
+    border-top: 1px solid #d7d4d4;
+    border-left: 1px solid #d7d4d4;
+    border-right: 1px solid #d7d4d4;
+    padding: 6px 0;
+    border-radius: 5px;
 
 }
 
-.img-outer {
-    width: 78px;
-    height: 78px;
-    min-width: 78px;
-    min-height: 78px;
-    max-width: 78px;
-    max-height: 78px;
-    object-fit: cover;
-
-    img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
+.grid-3:first-child {
+    margin-top: 10px;
 }
 
-.card {
-    max-width: 295px;
-    background: #FAFAFA;
-    border: 1px solid #D7D7D7;
-    box-shadow: 4px 8px 16px rgba(22, 22, 22, 0.1);
-    border-radius: 10px;
-    padding: 25px;
-    display: flex;
-    align-items: center;
-    line-height: 29px;
-    margin: 20px;
-
-
+.grid-3:last-child {
+    border-bottom: 1px solid #d7d4d4;
 }
-

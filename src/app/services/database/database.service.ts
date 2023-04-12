@@ -346,6 +346,14 @@ export class DatabaseService {
     return getDocs(collection(this.fs, urls.bookings))
   }
 
+  getRideRentalBookings() {
+    return getDocs(query(collection(this.fs, urls.bookings),where('type', '==', 'rental'),where('type', '==', 'cab')));
+  }
+
+  getGuideBookings() {
+    return getDocs(query(collection(this.fs, urls.bookings),where('type', '==', 'guide')));
+  }
+
   updateBooking(BOOKING_ID: any, data: any) {
     const bookingUrl = urls.booking.replace('{BOOKING_ID}', BOOKING_ID);
     return setDoc(doc(this.fs, bookingUrl), data);
