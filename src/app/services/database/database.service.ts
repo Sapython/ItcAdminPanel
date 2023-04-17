@@ -569,8 +569,12 @@ export class DatabaseService {
     return getDoc(doc(this.fs, 'service/tours'));
   }
 
-  addSpot(spotData: Spot) {
-    return addDoc(collection(this.fs, 'spots'), spotData);
+  deleteTour(tourData:any){
+    return deleteDoc(doc(this.fs,'service/tours/tours/'+tourData.id));
+  }
+
+  addSpot(spotData:Spot){
+    return addDoc(collection(this.fs,'spots'),spotData);
   }
 
   getSpots() {

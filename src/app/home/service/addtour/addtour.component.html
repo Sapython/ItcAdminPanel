@@ -48,24 +48,34 @@
     <div class="timeSlot">
       <h4>Holiday Management</h4>
       <div class="selectDate">
-        <mat-form-field appearance="outline">
-          <input
-            [matDatepickerFilter]="myFilter"
-            matInput
-            (dateChange)="addHoliday($event)"
-            placeholder="New Holiday Date"
-            [matDatepicker]="picker"
-          />
-          <mat-datepicker-toggle
-            matIconSuffix
-            [for]="picker"
-          ></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
+        <mat-form-field appearance="fill">
+          <mat-label>Enter a date range</mat-label>
+          <mat-date-range-input [formGroup]="holidayForm" [dateFilter]="myFilter" [rangePicker]="picker">
+            <input matStartDate formControlName="start" placeholder="Start date">
+            <input matEndDate formControlName="end" placeholder="End date">
+          </mat-date-range-input>
+          <mat-hint>MM/DD/YYYY - MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-date-range-picker #picker></mat-date-range-picker>
+          <mat-error *ngIf="holidayForm.controls['start'].hasError('matStartDateInvalid')">Invalid start date</mat-error>
+          <mat-error *ngIf="holidayForm.controls['end'].hasError('matEndDateInvalid')">Invalid end date</mat-error>
         </mat-form-field>
       </div>
       <div class="holidays">
-        <span *ngFor="let date of holidays">
-          <strong>{{ date | date }}</strong>
+        <mat-form-field appearance="outline" *ngFor="let date of holidays">
+          <mat-label>Enter a date range</mat-label>
+          <mat-date-range-input [formGroup]="date" [rangePicker]="picker">
+            <input matStartDate formControlName="start" placeholder="Start date">
+            <input matEndDate formControlName="end" placeholder="End date">
+          </mat-date-range-input>
+          <mat-hint>MM/DD/YYYY - MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-date-range-picker #picker></mat-date-range-picker>
+          <span matIconPrefix (click)="deleteHoliday(date)"><mat-icon>close</mat-icon></span>
+          <mat-error *ngIf="holidayForm.controls['start'].hasError('matStartDateInvalid')">Invalid start date</mat-error>
+          <mat-error *ngIf="holidayForm.controls['end'].hasError('matEndDateInvalid')">Invalid end date</mat-error>
+        </mat-form-field>
+        <!-- <span>
           <button
             type="button"
             mat-icon-button
@@ -74,7 +84,7 @@
           >
             <mat-icon>close</mat-icon>
           </button>
-        </span>
+        </span> -->
       </div>
     </div>
   </div>
@@ -152,7 +162,7 @@
   </div>
   <h2>Itinerary</h2>
   <div class="itineary" *ngFor="let day of days; let i = index">
-    <h3>Day {{ i }}</h3>
+    <h3>Day {{ i+1 }} <button type="button" mat-stroked-button color="primary" (click)="addActivity(day)"><mat-icon>add</mat-icon></button></h3>
     <mat-form-field appearance="outline">
       <mat-label>Location Name</mat-label>
       <mat-select
@@ -166,46 +176,49 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <div class="three-row">
+    <ng-container *ngFor="let activity of day.activites">
+      <div class="three-row">
+        <mat-form-field appearance="outline">
+          <mat-label>Start Time</mat-label>
+          <input
+            matInput
+            type="time"
+            placeholder="Start Time"
+            [(ngModel)]="activity.startTime"
+            [ngModelOptions]="{ standalone: true }"
+          />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>End Time</mat-label>
+          <input
+            matInput
+            type="time"
+            placeholder="End Time"
+            [(ngModel)]="activity.endTime"
+            [ngModelOptions]="{ standalone: true }"
+          />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Activity</mat-label>
+          <input
+            matInput
+            type="text"
+            placeholder="Activity"
+            [(ngModel)]="activity.activity"
+            [ngModelOptions]="{ standalone: true }"
+          />
+        </mat-form-field>
+      </div>
       <mat-form-field appearance="outline">
-        <mat-label>Start Time</mat-label>
-        <input
+        <mat-label>Description</mat-label>
+        <textarea
           matInput
-          type="time"
-          placeholder="Start Time"
-          [(ngModel)]="day.startTime"
+          [(ngModel)]="activity.description"
           [ngModelOptions]="{ standalone: true }"
-        />
+        ></textarea>
       </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>End Time</mat-label>
-        <input
-          matInput
-          type="time"
-          placeholder="End Time"
-          [(ngModel)]="day.endTime"
-          [ngModelOptions]="{ standalone: true }"
-        />
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>Activity</mat-label>
-        <input
-          matInput
-          type="text"
-          placeholder="Activity"
-          [(ngModel)]="day.activity"
-          [ngModelOptions]="{ standalone: true }"
-        />
-      </mat-form-field>
-    </div>
-    <mat-form-field appearance="outline">
-      <mat-label>Description</mat-label>
-      <textarea
-        matInput
-        [(ngModel)]="day.description"
-        [ngModelOptions]="{ standalone: true }"
-      ></textarea>
-    </mat-form-field>
+      <hr>
+    </ng-container>
   </div>
   <h2>Featured</h2>
   <form class="w-100">

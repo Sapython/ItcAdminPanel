@@ -130,3 +130,45 @@ export interface VehicleCommissionPackages {
   value:number;
   enabled:boolean;
 }
+export interface TourDay {
+  day: number;
+  locationName?: MapLocation;
+  activites:{
+    startTime: string;
+    endTime: string;
+    activity: string;
+    description: string;
+  }[]
+}
+
+export interface TourData {
+  id?:string;
+  tourName: string;
+  tourPrice:number;
+  aboutTour:string;
+  pickupLocation:MapLocation;
+  dropOffLocation:MapLocation;
+  description: string;
+  noOfDays: number;
+  noOfNights: number;
+  tourAgent: Agent;
+  holidays: {start:Date,end:Date}[];
+  days: TourDay[];
+  images: string[];
+  enabled: boolean;
+  features: string[];
+}
+
+export interface Agent {
+  image:string;
+  name:string;
+  phone:string;
+  preferredLocationForWork:string;
+  email:string;
+  languages:string;
+  workExperience:string;
+  dateOfBirth:string;
+  education:string;
+  tourGuideLicenseNumber:string;
+  tourGuideSkills:string;
+}

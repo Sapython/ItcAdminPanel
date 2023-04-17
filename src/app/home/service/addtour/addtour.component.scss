@@ -2,17 +2,18 @@
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    span{
-        display: flex;
-        align-items:center;
-        font-size: 13px;
-        border: 2px solid #404b69;
-        padding: 0px 10px;
-        border-radius: 10px;
-        strong{
-            margin:0px;
-        }
-    }
+    padding-block: 20px;
+    // span{
+    //     display: flex;
+    //     align-items:center;
+    //     font-size: 13px;
+    //     border: 2px solid #404b69;
+    //     padding: 0px 10px;
+    //     border-radius: 10px;
+    //     strong{
+    //         margin:0px;
+    //     }
+    // }
 }
 textarea{
     height: 100%;

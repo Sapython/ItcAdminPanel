@@ -5,6 +5,7 @@ import { DataProvider } from 'src/app/providers/data.provider';
 import { AlertsAndNotificationsService } from 'src/app/services/alerts-and-notification/alerts-and-notifications.service';
 import { VehicleCommissionPackages } from 'src/structures/service.structure';
 import { home } from '../../model/home.model';
+import { TourData } from 'src/structures/booking.structure';
 
 @Component({
   selector: 'app-tour',
@@ -40,6 +41,17 @@ export class TourComponent {
       if (res.exists()){
         this.commissions = res.data()['commissionPackages'];
       }
+    })
+  }
+  deleteTour(tour:TourData){
+    this.dataProvider.pageSetting.blur = true;
+    console.log("tour.id",tour.id);
+    this.databaseService.deleteTour(tour.id).then((res)=>{
+      this.alertify.presentToast('Tour deleted successfully')
+    }).catch((e)=>{
+      this.alertify.presentToast('Error deleting tour')
+    }).finally(()=>{
+      this.dataProvider.pageSetting.blur = false;
     })
   }
   addVehicleCommissionPackage() {
