@@ -1,499 +1,383 @@
+<!-- <app-ride-rental></app-ride-rental> -->
 <div class="grid-container scroll-cont">
   <div class="grid-item">
     <div class="tablename">
-      <P>Pending </P><button><p>40</p></button>
+      <P>Pending </P><button>
+        <p>40</p>
+      </button>
     </div>
     <div class="grid-table">
       <table>
         <tr>
           <th>Booking ID</th>
-          <th>Customer</th>
-          <th>Service</th>
-          <th>Start Location</th>
+          <th>Type</th>
+          <th>Location</th>
+          <th>Username</th>
           <th>Start Time</th>
           <th>Trip Fair</th>
           <th>Actions</th>
         </tr>
-        <tr>
-          <td>#ITC25</td>
-          <td><i class="fa-solid fa-phone"></i> Ankit Vaja</td>
-          <td ><button class="red-button">Rental</button></td>
-          <td> <button class="orange-button">Rampur</button></td>
-          <td>09 Jan 23 <br />10:50 am</td>
-          <td><button class="green-button">₹1502</button></td>
-          <td>
-            <button (click)="tourPendingSucc()" class="scs-btn"><i class="fa-solid fa-check"></i></button>
-            <button (click)="onCancel()" class="can-btn"><i class="fa-solid fa-xmark"></i></button>
-            <button (click)="onPendingInfo()" class="info-btn"><i class="fa-solid fa-circle-info"></i></button>
-          </td>
-        </tr>
-        <tr>
-          <td>#ITC25</td>
-          <td><i class="fa-solid fa-phone"></i> Ankit Vaja</td>
-          <td ><button class="red-button">Rental</button></td>
-          <td> <button class="orange-button">Rampur</button></td>
-          <td>09 Jan 23 <br />10:50 am</td>
-          <td><button class="green-button">₹1502</button></td>
-          <td>
-            <button (click)="tourPendingSucc()" class="scs-btn"><i class="fa-solid fa-check"></i></button>
-            <button (click)="onCancel()" class="can-btn"><i class="fa-solid fa-xmark"></i></button>
-            <button (click)="onPendingInfo()" class="info-btn"><i class="fa-solid fa-circle-info"></i></button>
-          </td>
-        </tr>
-        <tr>
-          <td>#ITC25</td>
-          <td><i class="fa-solid fa-phone"></i> Ankit Vaja</td>
-          <td ><button class="darkblue-button">Ride</button></td>
-          <td> <button class="skyblue-button">Delhi</button></td>
-          <td>09 Jan 23 <br />10:50 am</td>
-          <td><button class="green-button">₹1502</button></td>
-          <td>
-            <button (click)="tourPendingSucc()" class="scs-btn"><i class="fa-solid fa-check"></i></button>
-            <button (click)="onCancel()" class="can-btn"><i class="fa-solid fa-xmark"></i></button>
-            <button (click)="onPendingInfo()" class="info-btn"><i class="fa-solid fa-circle-info"></i></button>
-          </td>
-        </tr>
+        <ng-container *ngFor="let booking of bookingList">
+          <tr *ngIf="booking?.status != 'Completed'; else notAvailable">
+            <td>#{{booking?.id | slice:0:5 }}</td>
+            <td><button class="red-button">{{booking?.type}}</button></td>
+            <td> <button class="orange-button">{{booking?.pickupLocation.name}}</button></td>
+            <td><i class="fa-solid fa-phone"></i> {{booking?.user.displayName}}</td>
+            <td>{{booking?.pickupStartDate.toDate() | date:'M/d/yy'}}<br />{{booking?.pickupStartDate.toDate() |
+              date:'h:mm a'}}</td>
+            <td><button class="green-button">₹1502</button></td>
+            <td>
+              <button class="scs-btn" (click)="bookingOutstaion(booking)"><i class="fa-solid fa-check"></i></button>
+              <button class="can-btn" (click)="onCancel()"><i class="fa-solid fa-xmark"></i></button>
+              <button class="info-btn" (click)="bookingOutstaion(booking)"><i class="ri-information-line"></i></button>
+            </td>
+          </tr>
+          <ng-template #notAvailable>
+            <tr>
+              <td colspan="7">No Bookings Available</td>
+            </tr>
+          </ng-template>
+        </ng-container>
       </table>
     </div>
   </div>
   <div class="grid-item">
     <div class="tablename">
-      <P>Assigned </P><button><p>20</p></button>
+      <P>Assigned </P><button>
+        <p>20</p>
+      </button>
     </div>
+    
     <div class="grid-table">
+      <input type="number" #counter [value]="1">
       <table>
         <tr>
           <th>Booking ID</th>
-          <th>Customer</th>
-          <th>Tour Name</th>
-          <th>Tour Date</th>
+          <th>Type</th>
+          <th>Location</th>
+          <th>Username</th>
+          <th>Start Time</th>
           <th>Trip Fair</th>
-          <th>Agent</th>
+          <th>Driver</th>
           <th>Actions</th>
         </tr>
-        <tr>
-          <td>#ITC25</td>
-          <td><i class="fa-solid fa-phone"></i> Ankit Vaja</td>
-          <td> <button class="orange-button">Thar Desert</button></td>
-          <td>12 Jan 23 <br />12:00 Pm</td>
+
+        <tr *ngFor="let booking of bookingList"
+          (load)="(booking?.driver?.name) ? counter.value = (counter.value + 1) : {} ;" [hidden]="!booking?.driver?.name ">
+          <td>#{{booking?.id | slice:0:5 }}</td>
+          <td><button class="red-button">{{booking?.type}}</button></td>
+          <td> <button class="orange-button">{{booking?.pickupLocation.name}}</button></td>
+          <td><i class="fa-solid fa-phone"></i> {{booking?.user.displayName}}</td>
+          <td>{{booking?.pickupStartDate.toDate() | date:'M/d/yy'}}<br />{{booking?.pickupStartDate.toDate() |
+            date:'h:mm a'}}</td>
           <td><button class="green-button">₹1502</button></td>
-          <td>Abhijeet</td>
+
+          <td>{{booking?.driver?.name}}</td>
+          <td>{{booking?.guide?.name}}</td>
+
           <td>
-            <button mat-button [matMenuTriggerFor]="menu"><i style="font-size: 30px;" class="ri-arrow-drop-down-line"></i></button>
+            <button mat-button [matMenuTriggerFor]="menu"><i style="font-size: 30px;"
+                class="ri-arrow-drop-down-line"></i></button>
             <mat-menu #menu="matMenu">
-              <button mat-dialog-close (click)="onComplete()" mat-menu-item>Complete</button>
-              <button mat-dialog-close (click)="onCancel()" mat-menu-item>Cancel</button>
-              <button mat-dialog-close (click)="onReassignMenu()" mat-menu-item>Reassign</button>
+              <button mat-dialog-close (click)="action('completed')" mat-menu-item>Complete</button>
+              <button mat-dialog-close (click)="action('cancelled')" mat-menu-item>Cancel</button>
+              <button mat-dialog-close (click)="bookingOutstaion(booking)" mat-menu-item>Reassign</button>
               <button mat-dialog-close (click)="onInfoMenu()" mat-menu-item>More Info</button>
-            </mat-menu>          </td>
+            </mat-menu>
+          </td>
         </tr>
-        <tr>
-          <td>#ITC25</td>
-          <td><i class="fa-solid fa-phone"></i> Ankit Vaja</td>
-          <td> <button class="orange-button">Thar Desert</button></td>
-          <td>12 Jan 23 <br />12:00 Pm</td>
-          <td><button class="green-button">₹1502</button></td>
-          <td>Abhijeet</td>
-          <td>
-            <button mat-button [matMenuTriggerFor]="menu"><i style="font-size: 30px;" class="ri-arrow-drop-down-line"></i></button>
-            <mat-menu #menu="matMenu">
-              <button mat-dialog-close (click)="onComplete()" mat-menu-item>Complete</button>
-              <button mat-dialog-close (click)="onCancel()" mat-menu-item>Cancel</button>
-              <button mat-dialog-close (click)="onReassignMenu()" mat-menu-item>Reassign</button>
-              <button mat-dialog-close (click)="onInfoMenu()" mat-menu-item>More Info</button>
-            </mat-menu>          </td>
+
+
+        <tr [hidden]="counter.value != '0' ">
+          <td colspan="7">{{counter.value}}</td>
+          <td colspan="7">No Bookings Available</td>
         </tr>
-        <tr>
-          <td>#ITC25</td>
-          <td><i class="fa-solid fa-phone"></i> Ankit Vaja</td>
-          <td> <button class="orange-button">Thar Desert</button></td>
-          <td>12 Jan 23 <br />12:00 Pm</td>
-          <td><button class="green-button">₹1502</button></td>
-          <td>Abhijeet</td>
-          <td>
-            <button mat-button [matMenuTriggerFor]="menu"><i style="font-size: 30px;" class="ri-arrow-drop-down-line"></i></button>
-            <mat-menu #menu="matMenu">
-              <button mat-dialog-close (click)="onComplete()" mat-menu-item>Complete</button>
-              <button mat-dialog-close (click)="onCancel()" mat-menu-item>Cancel</button>
-              <button mat-dialog-close (click)="onReassignMenu()" mat-menu-item>Reassign</button>
-              <button mat-dialog-close (click)="onInfoMenu()" mat-menu-item>More Info</button>
-            </mat-menu>          </td>
-        </tr>
+
       </table>
     </div>
   </div>
   <div class="grid-item">
     <div class="tablename">
-      <P>Completed </P><button><p>10</p></button>
+      <P>Completed</P><button>
+        <p>10</p>
+      </button>
     </div>
     <div class="grid-table">
       <table>
         <tr>
           <th>Booking ID</th>
-          <th>Customer</th>
-          <th>Tour Name</th>
-          <th>Tour Date</th>
+          <th>Type</th>
+          <th>Location</th>
+          <th>Username</th>
+          <th>Start Time</th>
           <th>Trip Fair</th>
-          <th>Agent</th>
+          <th>Driver</th>
           <th>Actions</th>
         </tr>
-        <tr>
-          <td>#ITC25</td>
-          <td><i class="fa-solid fa-phone"></i> Ankit Vaja</td>
-          <td> <button class="orange-button">Thar Desert</button></td>
-          <td>12 Jan 23 <br />12:00 Pm</td>
-          <td><button class="green-button">₹1502</button></td>
-          <td>Abhijeet</td>
-          <td>
-            <button (click)="tourCompletedInfo()" class="info-btn"><i class="fa-solid fa-circle-info"></i></button>
-          </td>
-        </tr>
-        <tr>
-          <td>#ITC25</td>
-          <td><i class="fa-solid fa-phone"></i> Ankit Vaja</td>
-          <td> <button class="orange-button">Thar Desert</button></td>
-          <td>12 Jan 23 <br />12:00 Pm</td>
-          <td><button class="green-button">₹1502</button></td>
-          <td>Abhijeet</td>
-          <td>
-            <button class="info-btn"><i class="fa-solid fa-circle-info"></i></button>
-          </td>
-        </tr>
-        <tr>
-          <td>#ITC25</td>
-          <td><i class="fa-solid fa-phone"></i> Ankit Vaja</td>
-          <td> <button class="orange-button">Thar Desert</button></td>
-          <td>12 Jan 23 <br />12:00 Pm</td>
-          <td><button class="green-button">₹1502</button></td>
-          <td>Abhijeet</td>
-          <td>
-            <button class="info-btn"><i class="fa-solid fa-circle-info"></i></button>
-          </td>
-        </tr>
+        <ng-container *ngFor="let booking of bookingList">
+          <tr *ngIf="booking?.status == 'Completed'; else notAvailable">
+            <td>#{{booking?.id | slice:0:5 }}</td>
+            <td><button class="red-button">{{booking?.type}}</button></td>
+            <td> <button class="orange-button">{{booking?.pickupLocation.name}}</button></td>
+            <td><i class="fa-solid fa-phone"></i> {{booking?.user.displayName}}</td>
+            <td>{{booking?.pickupStartDate.toDate() | date:'M/d/yy'}}<br />{{booking?.pickupStartDate.toDate() |
+              date:'h:mm a'}}</td>
+            <td><button class="green-button">₹1502</button></td>
+            <td>{{booking?.driver?.name}}</td>
+            <td>{{booking?.guide?.name}}</td>
+            <td>
+              <button mat-button [matMenuTriggerFor]="menu"><i style="font-size: 30px;"
+                  class="ri-arrow-drop-down-line"></i></button>
+              <mat-menu #menu="matMenu">
+                <button mat-dialog-close (click)="action('completed')" mat-menu-item>Complete</button>
+                <button mat-dialog-close (click)="action('cancelled')" mat-menu-item>Cancel</button>
+                <button mat-dialog-close (click)="bookingOutstaion(booking)" mat-menu-item>Reassign</button>
+                <button mat-dialog-close (click)="onInfoMenu()" mat-menu-item>More Info</button>
+              </mat-menu>
+            </td>
+          </tr>
+          <ng-template #notAvailable>
+            <tr>
+              <td colspan="7">No Bookings Available</td>
+            </tr>
+          </ng-template>
+        </ng-container>
       </table>
     </div>
   </div>
   <div class="grid-item">
     <div class="tablename">
-      <P>Cancelled </P><button><p>20</p></button>
+      <P>Cancelled </P><button>
+        <p>05</p>
+      </button>
     </div>
     <div class="grid-table">
       <table>
         <tr>
           <th>Booking ID</th>
-          <th>Customer</th>
-          <th>Tour Name</th>
-          <th>Tour Date</th>
+          <th>Type</th>
+          <th>Location</th>
+          <th>Username</th>
+          <th>Start Time</th>
           <th>Trip Fair</th>
-          <th>Agent</th>
+          <th>Driver</th>
+          <th>Actions</th>
         </tr>
-        <tr>
-          <td>#ITC25</td>
-          <td><i class="fa-solid fa-phone"></i> Ankit Vaja</td>
-          <td> <button class="orange-button">Thar Desert</button></td>
-          <td>12 Jan 23 <br />12:00 Pm</td>
-          <td><button class="green-button">₹1502</button></td>
-          <td>Abhijeet</td>
-
-        </tr>
-        <tr>
-          <td>#ITC25</td>
-          <td><i class="fa-solid fa-phone"></i> Ankit Vaja</td>
-          <td> <button class="orange-button">Thar Desert</button></td>
-          <td>12 Jan 23 <br />12:00 Pm</td>
-          <td><button class="green-button">₹1502</button></td>
-          <td>Abhijeet</td>
-
-        </tr>
-        <tr>
-          <td>#ITC25</td>
-          <td><i class="fa-solid fa-phone"></i> Ankit Vaja</td>
-          <td> <button class="orange-button">Thar Desert</button></td>
-          <td>12 Jan 23 <br />12:00 Pm</td>
-          <td><button class="green-button">₹1502</button></td>
-          <td>Abhijeet</td>
-
-        </tr>
+        <ng-container *ngFor="let booking of bookingList">
+          <tr *ngIf="booking?.status == 'cancelled'; else notAvailable">
+            <td>#{{booking?.id | slice:0:5 }}</td>
+            <td><button class="red-button">{{booking?.type}}</button></td>
+            <td> <button class="orange-button">{{booking?.pickupLocation.name}}</button></td>
+            <td><i class="fa-solid fa-phone"></i> {{booking?.user.displayName}}</td>
+            <td>{{booking?.pickupStartDate.toDate() | date:'M/d/yy'}}<br />{{booking?.pickupStartDate.toDate() |
+              date:'h:mm a'}}</td>
+            <td><button class="green-button">₹1502</button></td>
+            <td>{{booking?.driver?.name}}</td>
+            <td>{{booking?.guide?.name}}</td>
+            <td>
+              <button mat-button [matMenuTriggerFor]="menu"><i style="font-size: 30px;"
+                  class="ri-arrow-drop-down-line"></i></button>
+              <mat-menu #menu="matMenu">
+                <button mat-dialog-close (click)="action('completed')" mat-menu-item>Complete</button>
+                <button mat-dialog-close (click)="action('cancelled')" mat-menu-item>Cancel</button>
+                <button mat-dialog-close (click)="bookingOutstaion(booking)" mat-menu-item>Reassign</button>
+                <button mat-dialog-close (click)="onInfoMenu()" mat-menu-item>More Info</button>
+              </mat-menu>
+            </td>
+          </tr>
+          <ng-template #notAvailable>
+            <tr>
+              <td colspan="7">No Bookings Available</td>
+            </tr>
+          </ng-template>
+        </ng-container>
       </table>
     </div>
   </div>
 </div>
 <div class="grid-item scroll-cont">
   <div class="tablename">
-    <P>Tour wise Booking </P><button><p>10</p></button>
-  </div>
-  <div class="grid-container-two">
-    <div class="grid-item-two">
-      <div class="table-hd">
-        <div class="table-td">Thar Desert Tour</div>
-        <div class="table-td price">Price ₹10,502</div>
-      </div>
-      <table>
-        <tr>
-          <th>Customer</th>
-          <th>Tour Date</th>
-          <th>No. of Person</th>
-          <th>Action</th>
-        </tr>
-      <tr>
-        <td><i class="fa-solid fa-phone"></i>Arun Arora</td>
-        <td>12 Jan 2023 12:00 Pm</td>
-        <td>05</td>
-        <td>
-          <button (click)="onCancel()" class="can-btn"><i class="fa-solid fa-xmark"></i></button>
-          <button (click)="onTourwiseInfo()" class="info-btn"><i class="fa-solid fa-circle-info"></i></button>
-        </td>
-      </tr>
-      <tr>
-        <td><i class="fa-solid fa-phone"></i>Arun Arora</td>
-        <td>12 Jan 2023 12:00 Pm</td>
-        <td>04</td>
-        <td>
-          <button (click)="onCancel()" class="can-btn"><i class="fa-solid fa-xmark"></i></button>
-          <button (click)="onTourwiseInfo()" class="info-btn"><i class="fa-solid fa-circle-info"></i></button>
-        </td>
-      </tr>
-      <tr>
-        <td><i class="fa-solid fa-phone"></i>Arun Arora</td>
-        <td>12 Jan 2023 12:00 Pm</td>
-        <td>02</td>
-        <td>
-          <button (click)="onCancel()" class="can-btn"><i class="fa-solid fa-xmark"></i></button>
-          <button (click)="onTourwiseInfo()" class="info-btn"><i class="fa-solid fa-circle-info"></i></button>
-        </td>
-      </tr>
-      <tr>
-        <td><i class="fa-solid fa-phone"></i>Arun Arora</td>
-        <td>12 Jan 2023 12:00 Pm</td>
-        <td>02</td>
-        <td>
-          <button (click)="onCancel()" class="can-btn"><i class="fa-solid fa-xmark"></i></button>
-          <button (click)="onTourwiseInfo()" class="info-btn"><i class="fa-solid fa-circle-info"></i></button>
-        </td>
-      </tr>
-      <tr>
-        <td><i class="fa-solid fa-phone"></i>Arun Arora</td>
-        <td>12 Jan 2023 12:00 Pm</td>
-        <td>05</td>
-        <td>
-          <button (click)="onCancel()" class="can-btn"><i class="fa-solid fa-xmark"></i></button>
-          <button (click)="onTourwiseInfo()" class="info-btn"><i class="fa-solid fa-circle-info"></i></button>
-        </td>
-      </tr>
-      </table>
-    </div>
-    <div class="grid-item-two">
-      <div class="table-hd">
-        <div class="table-td">Delhi To Agra</div>
-        <div class="table-td price">Price ₹10,502</div>
-      </div>
-      <table>
-        <tr>
-          <th>Customer</th>
-          <th>Tour Date</th>
-          <th>No. of Person</th>
-          <th>Action</th>
-        </tr>
-      <tr>
-        <td><i class="fa-solid fa-phone"></i>Arun Arora</td>
-        <td>12 Jan 2023 12:00 Pm</td>
-        <td>05</td>
-        <td>
-          <button (click)="onCancel()" class="can-btn"><i class="fa-solid fa-xmark"></i></button>
-          <button (click)="onTourwiseInfo()" class="info-btn"><i class="fa-solid fa-circle-info"></i></button>
-        </td>
-      </tr>
-      <tr>
-        <td><i class="fa-solid fa-phone"></i>Arun Arora</td>
-        <td>12 Jan 2023 12:00 Pm</td>
-        <td>04</td>
-        <td>
-          <button (click)="onCancel()" class="can-btn"><i class="fa-solid fa-xmark"></i></button>
-          <button (click)="onTourwiseInfo()" class="info-btn"><i class="fa-solid fa-circle-info"></i></button>
-        </td>
-      </tr>
-      <tr>
-        <td><i class="fa-solid fa-phone"></i>Arun Arora</td>
-        <td>12 Jan 2023 12:00 Pm</td>
-        <td>02</td>
-        <td>
-          <button (click)="onCancel()" class="can-btn"><i class="fa-solid fa-xmark"></i></button>
-          <button (click)="onTourwiseInfo()" class="info-btn"><i class="fa-solid fa-circle-info"></i></button>
-        </td>
-      </tr>
-      <tr>
-        <td><i class="fa-solid fa-phone"></i>Arun Arora</td>
-        <td>12 Jan 2023 12:00 Pm</td>
-        <td>02</td>
-        <td>
-          <button (click)="onCancel()" class="can-btn"><i class="fa-solid fa-xmark"></i></button>
-          <button (click)="onTourwiseInfo()" class="info-btn"><i class="fa-solid fa-circle-info"></i></button>
-        </td>
-      </tr>
-      <tr>
-        <td><i class="fa-solid fa-phone"></i>Arun Arora</td>
-        <td>12 Jan 2023 12:00 Pm</td>
-        <td>05</td>
-        <td>
-          <button (click)="onCancel()" class="can-btn"><i class="fa-solid fa-xmark"></i></button>
-          <button (click)="onTourwiseInfo()" class="info-btn"><i class="fa-solid fa-circle-info"></i></button>
-        </td>
-      </tr>
-      </table>
-    </div>
-    <div class="grid-item-two">
-      <div class="table-hd">
-        <div class="table-td">Delhi Safari</div>
-        <div class="table-td price">Price ₹10,502</div>
-      </div>
-      <table>
-        <tr>
-          <th>Customer</th>
-          <th>Tour Date</th>
-          <th>No. of Person</th>
-          <th>Action</th>
-        </tr>
-      <tr>
-        <td><i class="fa-solid fa-phone"></i>Arun Arora</td>
-        <td>12 Jan 2023 12:00 Pm</td>
-        <td>05</td>
-        <td>
-          <button (click)="onCancel()" class="can-btn"><i class="fa-solid fa-xmark"></i></button>
-          <button (click)="onTourwiseInfo()" class="info-btn"><i class="fa-solid fa-circle-info"></i></button>
-        </td>
-      </tr>
-      <tr>
-        <td><i class="fa-solid fa-phone"></i>Arun Arora</td>
-        <td>12 Jan 2023 12:00 Pm</td>
-        <td>04</td>
-        <td>
-          <button (click)="onCancel()" class="can-btn"><i class="fa-solid fa-xmark"></i></button>
-          <button (click)="onTourwiseInfo()" class="info-btn"><i class="fa-solid fa-circle-info"></i></button>
-        </td>
-      </tr>
-      <tr>
-        <td><i class="fa-solid fa-phone"></i>Arun Arora</td>
-        <td>12 Jan 2023 12:00 Pm</td>
-        <td>02</td>
-        <td>
-          <button (click)="onCancel()" class="can-btn"><i class="fa-solid fa-xmark"></i></button>
-          <button (click)="onTourwiseInfo()" class="info-btn"><i class="fa-solid fa-circle-info"></i></button>
-        </td>
-      </tr>
-      <tr>
-        <td><i class="fa-solid fa-phone"></i>Arun Arora</td>
-        <td>12 Jan 2023 12:00 Pm</td>
-        <td>02</td>
-        <td>
-          <button (click)="onCancel()" class="can-btn"><i class="fa-solid fa-xmark"></i></button>
-          <button (click)="onTourwiseInfo()" class="info-btn"><i class="fa-solid fa-circle-info"></i></button>
-        </td>
-      </tr>
-      <tr>
-        <td><i class="fa-solid fa-phone"></i>Arun Arora</td>
-        <td>12 Jan 2023 12:00 Pm</td>
-        <td>05</td>
-        <td>
-          <button (click)="onCancel()" class="can-btn"><i class="fa-solid fa-xmark"></i></button>
-          <button (click)="onTourwiseInfo()" class="info-btn"><i class="fa-solid fa-circle-info"></i></button>
-        </td>
-      </tr>
-      </table>
-    </div>
-  </div>
-</div>
-<div class="grid-item scroll-cont">
-  <div class="tablename">
-    <P>Customer Active On Tour</P><button><p>10</p></button>
+    <P>Assigned Driver </P><button>
+      <p>10</p>
+    </button>
   </div>
   <div class="grid-table">
     <table>
       <tr>
         <th>Booking ID</th>
-        <th>Customer</th>
-        <th>Tour Name</th>
+        <th>Type</th>
+        <th>Location</th>
+        <th>Username</th>
         <th>Start Time</th>
-        <th>End Time</th>
-        <th>Special Request</th>
+        <th>Trip Fair</th>
+        <th>Driver</th>
+        <th>Guide</th>
+      </tr>
+      <ng-container *ngFor="let booking of bookingList">
+        <tr *ngIf="booking?.driver?.name; else notAvailable">
+          <td>#{{booking?.id | slice:0:5 }}</td>
+          <td><button class="red-button">{{booking?.type}}</button></td>
+          <td> <button class="orange-button">{{booking?.pickupLocation.name}}</button></td>
+          <td><i class="fa-solid fa-phone"></i> {{booking?.user.displayName}}</td>
+          <td>{{booking?.pickupStartDate.toDate() | date:'M/d/yy'}}<br />{{booking?.pickupStartDate.toDate() |
+            date:'h:mm a'}}</td>
+          <td><button class="green-button">₹1502</button></td>
+          <td>{{booking?.driver?.name}}</td>
+          <td>{{booking?.guide?.name}}</td>
+          <td>
+            <button mat-button [matMenuTriggerFor]="menu"><i style="font-size: 30px;"
+                class="ri-arrow-drop-down-line"></i></button>
+            <mat-menu #menu="matMenu">
+              <button mat-dialog-close (click)="action('complete')" mat-menu-item>Complete</button>
+              <button mat-dialog-close (click)="action('cancelled')" mat-menu-item>Cancel</button>
+              <button mat-dialog-close (click)="bookingOutstaion(booking)" mat-menu-item>Reassign</button>
+            </mat-menu>
+          </td>
+        </tr>
+        <ng-template #notAvailable>
+          <tr>
+            <td colspan="7">No Bookings Available</td>
+          </tr>
+        </ng-template>
+      </ng-container>
+    </table>
+  </div>
+</div>
+<div class="grid-item scroll-cont">
+  <div class="tablename">
+    <P>Destination of assigned driver </P><button>
+      <p>10</p>
+    </button>
+  </div>
+  <div class="grid-table">
+    <table>
+      <tr>
+        <th>Booking ID</th>
+        <th>Destination</th>
+        <th>Driver</th>
+        <th>Customer</th>
+        <th>Vehicle Number</th>
+        <th>Start Location</th>
+        <th>Starting Time</th>
         <th>Trip Fair</th>
       </tr>
       <tr>
-        <td>#ITC252</td>
+        <td>#ITC25</td>
+        <td><button class="orange-button">Main street, New Delhi</button> </td>
+        <td><i class="fa-solid fa-phone"></i> Ravi Sharma</td>
         <td><i class="fa-solid fa-phone"></i> Manish Reddy</td>
-        <td><button class="orange-button">Thar Desert</button> </td>
-        <td >09 March 2019, 10:50 am</td>
-        <td >12 March 2019, 10:50 am</td>
-        <td>-</td>
+        <td>GJ 12 GB 1231</td>
+        <td>Main street, <br />New Delhi</td>
+        <td>09 March 2019, 10:50 am</td>
         <td><button class="green-button">₹1502</button></td>
       </tr>
       <tr>
-        <td>#ITC252</td>
+        <td>#ITC25</td>
+        <td><button class="blue-button">Main street, New Delhi</button> </td>
+        <td><i class="fa-solid fa-phone"></i> Ravi Sharma</td>
         <td><i class="fa-solid fa-phone"></i> Manish Reddy</td>
-        <td><button class="orange-button">Thar Desert</button> </td>
-        <td >09 March 2019, 10:50 am</td>
-        <td >12 March 2019, 10:50 am</td>
-        <td>I have limited mobility and<br>would need assistance</td>
+        <td>GJ 12 GB 1231</td>
+        <td>Main street, <br />New Delhi</td>
+        <td>09 March 2019, 10:50 am</td>
         <td><button class="green-button">₹1502</button></td>
       </tr>
+
     </table>
   </div>
 </div>
 <div class="grid-item scroll-cont">
   <div class="tablename">
-    <P>SOS & Query From Active Tour</P><button><p>10</p></button>
+    <P>Attendance of Drivers </P><button>
+      <p>40</p>
+    </button>
+  </div>
+  <div class="attend">
+    <div>
+      <button class="outline-btn-green">25 <br> Present</button>
+    </div>
+    <div>
+      <button class="outline-btn-orng">15 <br> Absent</button>
+    </div>
+  </div>
+  <div class="search">
+    <input type="text" placeholder="Search Driver ....">
+    <!-- <i class="fa-solid fa-magnifying-glass"></i> -->
   </div>
   <div class="grid-table">
     <table>
       <tr>
-        <th>Booking ID</th>
-        <th>Customer Name</th>
-        <th>Agent Name</th>
-        <th>Tour Name</th>
-        <th>Emergency Time</th>
-        <th>Emergency Type</th>
-        <th>Action</th>
+        <th>Driver Name</th>
+        <th>Phone Number</th>
+        <th>Email</th>
+        <th>Vehicle</th>
+        <th>Total Ride</th>
+        <th>Vehicle Number</th>
+        <th>Rating</th>
+        <th>Status</th>
       </tr>
       <tr>
-        <td>#ITC252</td>
-        <td><i class="fa-solid fa-phone"></i> Ankit Vaja</td>
-        <td><i class="fa-solid fa-phone"></i> Ankit Vaja</td>
-        <td>Kumarakom Kovalam with Taj</td>
-        <td >12 March 2019, 10:50 am</td>
-        <td >Accident</td>
+        <td>#ITC25</td>
+        <td>+91 9856568520</td>
+        <td>Example@gmail.com</td>
+        <td> <button class="blue-button">Sedan</button> </td>
+        <td>124</td>
+        <td>GJ 12 GB 1231</td>
+        <td><button class="orange-button">4.2</button></td>
         <td>
-          <button (click)="onCancel()" class="dismiss">Dismiss</button>
-          <button (click)="onRespond()" class="respond" >Respond</button>
-      </td>
+          <select class="selection">
+            <option selected>Mark As Present</option>
+            <option>Mark As Absent</option>
+          </select>
+        </td>
       </tr>
       <tr>
-        <td>#ITC252</td>
-        <td><i class="fa-solid fa-phone"></i> Ankit Vaja</td>
-        <td><i class="fa-solid fa-phone"></i> Ankit Vaja</td>
-        <td>Lahaul Spiti Chandrataal</td>
-        <td >12 March 2019, 10:50 am</td>
-        <td >Accident</td>
+        <td>#ITC25</td>
+        <td>+91 9856568520</td>
+        <td>Example@gmail.com</td>
+        <td> <button class="blue-button">SUV</button> </td>
+        <td>124</td>
+        <td>GJ 12 GB 1231</td>
+        <td><button class="orange-button">4.2</button></td>
         <td>
-        <button (click)="onCancel()" class="dismiss">Dismiss</button>
-        <button (click)="onRespond()" class="respond" >Respond</button>
-      </td>
+          <select class="selection">
+            <option selected>Mark As Present</option>
+            <option>Mark As Absent</option>
+          </select>
+        </td>
       </tr>
       <tr>
-        <td>#ITC252</td>
-        <td><i class="fa-solid fa-phone"></i> Ankit Vaja</td>
-        <td><i class="fa-solid fa-phone"></i> Ankit Vaja</td>
-        <td>Gujrat to Guwahati Road Trip</td>
-        <td >12 March 2019, 10:50 am</td>
-        <td >Accident</td>
+        <td>#ITC25</td>
+        <td>+91 9856568520</td>
+        <td>Example@gmail.com</td>
+        <td> <button class="blue-button">Sedan</button> </td>
+        <td>124</td>
+        <td>GJ 12 GB 1231</td>
+        <td><button class="orange-button">4.2</button></td>
         <td>
-        <button  (click)="onCancel()" class=" dismiss">Dismiss</button>
-        <button (click)="onRespond()" class=" respond" >Respond</button>
-      </td>
+          <select class="selection">
+            <option selected>Mark As Present</option>
+            <option>Mark As Absent</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>#ITC25</td>
+        <td>+91 9856568520</td>
+        <td>Example@gmail.com</td>
+        <td> <button class="blue-button">SUV</button> </td>
+        <td>124</td>
+        <td>GJ 12 GB 1231</td>
+        <td><button class="orange-button">4.2</button></td>
+        <td>
+          <select class="selection">
+            <option selected>Mark As Present</option>
+            <option>Mark As Absent</option>
+          </select>
+        </td>
       </tr>
     </table>
   </div>
 </div>
-<mat-paginator class="scroll-cont" [length]="100"
-              [pageSize]="10"
-              [pageSizeOptions]="[5, 10, 25, 100]"
-              aria-label="Select page">
+<mat-paginator class="scroll-cont" [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"
+  aria-label="Select page">
 </mat-paginator>

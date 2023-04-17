@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 import { RecentbookingassignguideComponent } from '../../dashboard/dialogs/recentbookingassignguide/recentbookingassignguide.component';
 import { AssignDriverDialogComponent } from '../dialogs/assign-driver-dialog/assign-driver-dialog.component';
 import { DatabaseService } from 'src/app/services/database/database.service';
+import { DataProvider } from 'src/app/providers/data.provider';
 
 @Component({
   selector: 'app-guide',
@@ -15,10 +16,12 @@ import { DatabaseService } from 'src/app/services/database/database.service';
 })
 export class GuideComponent implements OnInit {
   panelOpenState:boolean=false;
+  guides:any[]=[]
   // Head
-  constructor(private dialog:MatDialog, private database:DatabaseService){}
-  onSucc(){
+  constructor(private dialog:MatDialog, private database:DatabaseService, private dataProvider:DataProvider){}
+  onSucc(data:any){
     this.dialog.open(RecentbookingassignguideComponent)
+    this.dataProvider.booking = data;
 
   }
   onCancel(){
@@ -33,8 +36,9 @@ export class GuideComponent implements OnInit {
   onComplete(){
     this.dialog.open(OutstaionCompleteInfoComponent)
   }
-  onReassignMenu(){
-      this.dialog.open(AssignDriverDialogComponent)
+  onReassignMenu(data:any){
+    this.dialog.open(RecentbookingassignguideComponent)
+    this.dataProvider.booking = data;
   }
   onInfoMenu(){
     this.dialog.open(BookingDetailsOfOutstationComponent)
@@ -44,6 +48,7 @@ export class GuideComponent implements OnInit {
 
   ngOnInit(){
     this.guideBooking();
+    this.getGuides();
   }
 
   guideBooking(){
@@ -57,5 +62,23 @@ export class GuideComponent implements OnInit {
       console.log("this.guideBookingList",this.guideBookingList);
     })
   }
+
+  
+
+  getGuides(){
+    this.database.getGuides().then((res)=>{
+      res.forEach((element:any)=>{
+        this.guides.push({
+          ...element.data(),
+          id:element.id
+        })
+      })
+    })
+  }
+
+
+
+
+
 
 }

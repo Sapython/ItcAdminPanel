@@ -16,18 +16,26 @@
             <th>Trip Fair</th>
             <th>Actions</th>
           </tr>
-          <tr *ngFor="let guide of guideBookingList">
-            <td>#{{guide?.id | slice:0:5 }}</td>
-            <td><i class="fa-solid fa-phone"></i> {{guide.user.displayName}}</td>
-            <td> <button class="orange-button">{{guide.pickupLocation.name}}</button></td>
-            <td>{{guide.pickupStartDate.toDate() | date:'M/d/yy'}}<br />{{guide.pickupStartDate.toDate() | date:'h:mm a'}}</td>
-            <td><button class="green-button">₹1502</button></td>
-            <td>
-              <button class="scs-btn" (click)="onSucc()"><i class="fa-solid fa-check"></i></button>
-              <button class="can-btn" (click)="onCancel()"><i class="fa-solid fa-xmark"></i></button>
-              <button class="info-btn" (click)="onInfo()"><i class="ri-information-line"></i></button>
-            </td>
-          </tr>
+          <ng-container *ngFor="let guide of guideBookingList">
+            <tr *ngIf="guide.status != 'Completed'; else notAvailable">
+              <td>#{{guide?.id | slice:0:5 }}</td>
+              <td><i class="fa-solid fa-phone"></i> {{guide.user.displayName}}</td>
+              <td> <button class="orange-button">{{guide.pickupLocation.name}}</button></td>
+              <td>{{guide.pickupStartDate.toDate() | date:'M/d/yy'}}<br />{{guide.pickupStartDate.toDate() | date:'h:mm a'}}</td>
+              <td><button class="green-button">₹1502</button></td>
+              <td>
+                <button class="scs-btn" (click)="onSucc(guide)"><i class="fa-solid fa-check"></i></button>
+                <button class="can-btn" (click)="onCancel()"><i class="fa-solid fa-xmark"></i></button>
+                <button class="info-btn" (click)="onInfo()"><i class="ri-information-line"></i></button>
+              </td>
+            </tr>
+            <ng-template #notAvailable>
+              <tr>
+                <td colspan="7">No Pending Bookings</td>
+              </tr>
+            </ng-template>
+          </ng-container>
+          
           
         </table>
       </div>
@@ -47,23 +55,31 @@
             <th>Driver</th>
             <th>Actions</th>
           </tr>
-          <tr *ngFor="let guide of guideBookingList">
-            <td>#{{guide?.id | slice:0:5 }}</td>
-            <td><i class="fa-solid fa-phone"></i> {{guide.user.displayName}}</td>
-            <td> <button class="orange-button">{{guide.pickupLocation.name}}</button></td>
-            <td>{{guide.pickupStartDate.toDate() | date:'M/d/yy'}}<br />{{guide.pickupStartDate.toDate() | date:'h:mm a'}}</td>
-            <td><button class="green-button">₹1502</button></td>
-            <td>Abhijeet</td>
-            <td>
-              <button mat-button [matMenuTriggerFor]="menu"><i style="font-size: 30px;" class="ri-arrow-drop-down-line"></i></button>
-              <mat-menu #menu="matMenu">
-                <button mat-dialog-close (click)="onComplete()" mat-menu-item>Complete</button>
-                <button mat-dialog-close (click)="onCancel()" mat-menu-item>Cancel</button>
-                <button mat-dialog-close (click)="onReassignMenu()" mat-menu-item>Reassign</button>
-                <button mat-dialog-close (click)="onInfoMenu()" mat-menu-item>More Info</button>
-              </mat-menu>              
-            </td>
-          </tr>
+          <ng-container *ngFor="let guide of guideBookingList">
+            <tr  *ngIf="guide.guide.name; else notAvailable">
+              <td>#{{guide?.id | slice:0:5 }}</td>
+              <td><i class="fa-solid fa-phone"></i> {{guide.user.displayName}}</td>
+              <td> <button class="orange-button">{{guide.pickupLocation.name}}</button></td>
+              <td>{{guide.pickupStartDate.toDate() | date:'M/d/yy'}}<br />{{guide.pickupStartDate.toDate() | date:'h:mm a'}}</td>
+              <td><button class="green-button">₹1502</button></td>
+              <td>{{guide.guide.name}}</td>
+              <td>
+                <button mat-button [matMenuTriggerFor]="menu"><i style="font-size: 30px;" class="ri-arrow-drop-down-line"></i></button>
+                <mat-menu #menu="matMenu">
+                  <button mat-dialog-close (click)="onComplete()" mat-menu-item>Complete</button>
+                  <button mat-dialog-close (click)="onCancel()" mat-menu-item>Cancel</button>
+                  <button mat-dialog-close (click)="onReassignMenu(guide)" mat-menu-item>Reassign</button>
+                  <button mat-dialog-close (click)="onInfoMenu()" mat-menu-item>More Info</button>
+                </mat-menu>              
+              </td>
+            </tr>
+            <ng-template #notAvailable>
+              <tr>
+                <td colspan="7">No Completed Bookings</td>
+              </tr>
+            </ng-template>
+          </ng-container>
+          
           
         </table>
       </div>
@@ -84,17 +100,25 @@
             <th>Driver</th>
             <th>Actions</th>
           </tr>
-          <tr *ngFor="let guide of guideBookingList">
-            <td>#{{guide?.id | slice:0:5 }}</td>
-            <td><i class="fa-solid fa-phone"></i> {{guide.user.displayName}}</td>
-            <td> <button class="orange-button">{{guide.pickupLocation.name}}</button></td>
-            <td>{{guide.pickupStartDate.toDate() | date:'M/d/yy'}}<br />{{guide.pickupStartDate.toDate() | date:'h:mm a'}}</td>
-            <td><button class="green-button">₹1502</button></td>
-            <td>Abhijeet</td>
-            <td>
-              <button (click)="completedBookingInfo()" class="info-btn"><i class="ri-information-line"></i></button>
-            </td>
-          </tr>
+          <ng-container *ngFor="let guide of guideBookingList">
+            <tr *ngIf="guide.status == 'Completed'; else notAvailable">
+              <td>#{{guide?.id | slice:0:5 }}</td>
+              <td><i class="fa-solid fa-phone"></i> {{guide.user.displayName}}</td>
+              <td> <button class="orange-button">{{guide.pickupLocation.name}}</button></td>
+              <td>{{guide.pickupStartDate.toDate() | date:'M/d/yy'}}<br />{{guide.pickupStartDate.toDate() | date:'h:mm a'}}</td>
+              <td><button class="green-button">₹1502</button></td>
+              <td>Abhijeet</td>
+              <td>
+                <button (click)="completedBookingInfo()" class="info-btn"><i class="ri-information-line"></i></button>
+              </td>
+            </tr>
+            <ng-template #notAvailable>
+              <tr>
+                <td colspan="7">No Completed Bookings</td>
+              </tr>
+            </ng-template>
+          </ng-container>
+          
           
         </table>
       </div>
@@ -114,15 +138,22 @@
             <th>Trip Fair</th>
             <th>Driver</th>
           </tr>
-          <tr *ngFor="let guide of guideBookingList">
+          <ng-container *ngFor="let guide of guideBookingList">
+            <tr *ngIf="guide.status == 'cancelled'; else notAvailable">
             <td>#{{guide?.id | slice:0:5 }}</td>
             <td><i class="fa-solid fa-phone"></i> {{guide.user.displayName}}</td>
             <td> <button class="orange-button">{{guide.pickupLocation.name}}</button></td>
             <td>{{guide.pickupStartDate.toDate() | date:'M/d/yy'}}<br />{{guide.pickupStartDate.toDate() | date:'h:mm a'}}</td>
             <td><button class="green-button">₹1502</button></td>
-            <td>Abhijeet</td>
+            <td>{{guide.guide.name}}</td>
 
           </tr>
+          <ng-template #notAvailable>
+            <tr>
+              <td colspan="7">No Completed Bookings</td>
+            </tr>
+          </ng-template>
+        </ng-container>
           
         </table>
       </div>
@@ -130,51 +161,34 @@
   </div>
   <div class="grid-item">
     <div class="tablename">
-      <P>Assigned Driver </P><button><p>10</p></button>
+      <P>Assigned Guide </P><button><p>10</p></button>
     </div>
     <div class="grid-table">
       <table>
         <tr>
           <th>Booking ID</th>
-          <th>Driver Name</th>
+          <th>Guide Name</th>
           <th>Customer Name</th>
           <th>Start Time</th>
           <th>Start Location</th>
-          <th>Destination</th>
-          <th>Vehicle Number</th>
           <th>Trip Fair</th>
         </tr>
-        <tr>
-          <td>#ITC25</td>
-          <td><i class="fa-solid fa-phone"></i> Ravi Sharma</td>
-          <td><i class="fa-solid fa-phone"></i> Ankit Vaja</td>
-          <td >09 March 2019, 10:50 am</td>
-          <td >Main street, <br />New Delhi</td>
-          <td >Main street, <br />New Delhi</td>
-          <td><button class="orange-button">GJ 12 GB 1231</button></td>
-          <td><button class="green-button">₹1502</button></td>
-        </tr>
-        <tr>
-          <td>#ITC25</td>
-          <td><i class="fa-solid fa-phone"></i> Ravi Sharma</td>
-          <td><i class="fa-solid fa-phone"></i> Ankit Vaja</td>
-          <td >09 March 2019, 10:50 am</td>
-          <td >Main street, <br />New Delhi</td>
-          <td >Main street, <br />New Delhi</td>
-          <td><button class="orange-button">GJ 12 GB 1231</button></td>
-          <td><button class="green-button">₹1502</button></td>
-        </tr>
-        <tr>
-          <td>#ITC25</td>
-          <td><i class="fa-solid fa-phone"></i> Ravi Sharma</td>
-          <td><i class="fa-solid fa-phone"></i> Ankit Vaja</td>
-          <td >09 March 2019, 10:50 am</td>
-          <td >Main street, <br />New Delhi</td>
-          <td >Main street, <br />New Delhi</td>
-          <td><button class="orange-button">GJ 12 GB 1231</button></td>
+        <ng-container *ngFor="let guide of guideBookingList">
+          <tr *ngIf="guide.guide.name; else notAvailable">
+          <td>#{{guide?.id | slice:0:5 }}</td>
+          <td><i class="fa-solid fa-phone"></i> {{guide.guide.name}}</td>
+          <td><i class="fa-solid fa-phone"></i> {{guide.user.displayName}}</td>
+          <td >{{guide.pickupStartDate.toDate() | date:'M/d/yy'}}, {{guide.pickupStartDate.toDate() | date:'h:mm a'}}</td>
+          <td >{{guide.pickupLocation.name}}</td>
           <td><button class="green-button">₹1502</button></td>
         </tr>
 
+        <ng-template #notAvailable>
+          <tr>
+            <td colspan="7">No Bookings Available</td>
+          </tr>
+        </ng-template>
+      </ng-container>
 
 
       </table>

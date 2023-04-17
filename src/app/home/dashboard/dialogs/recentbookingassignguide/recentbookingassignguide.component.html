@@ -4,10 +4,25 @@
     <div mat-dialog-close><i class="ri-close-circle-line"></i></div>
   </div>
   <p>Booking Id: #ITC4520</p>
-  <div class="search-bar">
-    <input type="text" placeholder="Search...">
-    <i class="ri-search-line icon"></i>
-  </div>
+  <form class="example-form">
+    <mat-form-field class="example-full-width w-100" appearance="fill">
+      <mat-label>Select guide</mat-label>
+      <input type="text"
+             placeholder="Search..."
+             aria-label="Search..."
+             matInput
+             [formControl]="myControl"
+             [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of guides" [value]="option" >
+          {{option.name}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    
+  </form>
+  
+  
   <div class="btns">
     <button mat-dialog-close (click)="onCancel()" class="outline-btn-red">Cancel</button>
     <button mat-dialog-close  (click)="onAssign()" class="solid-darkblue-button">Assign</button>

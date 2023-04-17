@@ -30,5 +30,6 @@ export class DataProvider{
     public dataThree:any;
     public dataFour:any;
     public siteData:any = {};
+    booking:any;
    
 }

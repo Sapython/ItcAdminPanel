@@ -1,4 +1,4 @@
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -18,6 +18,8 @@ import { OutstationcompletedComponent } from './dialogs/outstationcompleted/outs
 import { TourassigninfoComponent } from './dialogs/tourassigninfo/tourassigninfo.component';
 import { AddnewpackageComponent } from './dialogs/addnewpackage/addnewpackage.component';
 import { AddnewcommissionComponent } from './dialogs/addnewcommission/addnewcommission.component';
+import { MaterialModule } from 'src/app/services/material/material.module';
+import {MatAutocompleteModule} from '@angular/material/autocomplete'; 
 
 @NgModule({
   declarations: [
@@ -40,7 +42,11 @@ import { AddnewcommissionComponent } from './dialogs/addnewcommission/addnewcomm
     MatIconModule,
     MatExpansionModule,
     MatDialogModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MaterialModule,
+    MatAutocompleteModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class DashboardModule { }

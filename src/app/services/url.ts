@@ -16,5 +16,7 @@ export const urls = {
     reason:'/sitedata/reasons/reasons/{REASON_ID}',
     blogs:'/blogs',
     blog:'/blogs/{BLOG_ID}',
+    guides:'/tour-agents/',
+    guide:'/tour-agents/{GUIDE_ID}',
 
 }
