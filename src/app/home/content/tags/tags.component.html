@@ -1,0 +1,41 @@
+<section>
+    <div class="heading">
+        <h3>Tags Manager</h3>
+        <button mat-stroked-button (click)="addTag()">Add New Tag</button>
+    </div>
+    <table class="uk-table uk-table-divider uk-table-striped uk-table-hover uk-table-middle">
+        <thead>
+            <tr>
+                <th>Tag Name</th>
+                <th>Color</th>
+                <th>Connections</th>
+                <th>Updated Date</th>
+                <th>Created Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let tag of tags">
+                <td>
+                    {{tag.name}}
+                </td>
+                <td>
+                    <span class="uk-label" [ngStyle]="{'background-color': tag.color}">{{tag.color}}</span>
+                </td>
+                <td>
+                    {{tag.connections}}
+                </td>
+                <td>
+                    {{tag.updatedDate}}
+                </td>
+                <td>
+                    {{tag.createdDate}}
+                </td>
+                <td>
+                    <a class="uk-button uk-button-default uk-button-small" [routerLink]="['/tags', tag.id]">Edit</a>
+                    <a class="uk-button uk-button-default uk-button-small" (click)="deleteTag(tag.id)">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>

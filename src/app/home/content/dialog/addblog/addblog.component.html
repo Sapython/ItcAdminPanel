@@ -1,26 +1,33 @@
 <div class="dialog-container">
   <div class="heading">
-    <h2>{{title}}</h2>
+    <h2>{{ title }}</h2>
     <div mat-dialog-close><i class="ri-close-circle-line"></i></div>
   </div>
   <div class="addpackageform">
-    <form [formGroup]="blogForm" (ngSubmit)="addBlog()" class="d-flex flex-column align-items-center w-100 py-3">
-        <input type="file" placeholder="Upload Images">
-        <mat-form-field class="example-full-width  w-100">
-          <mat-label>Enter blog Title</mat-label>
-          <input matInput placeholder="Blog Title" formControlName="title">
-        </mat-form-field>
-      
-        <mat-form-field class="example-full-width  w-100">
-          <mat-label>Blog Description</mat-label>
-          <textarea matInput placeholder="Blog Description" formControlName="description" ></textarea>
-        </mat-form-field>
-      
+    <form
+      [formGroup]="blogForm"
+      (ngSubmit)="addBlog()"
+      class="d-flex flex-column align-items-center w-100 py-3"
+    >
+      <input type="file" (click)="this.file = $event" placeholder="Upload Images" />
+      <mat-form-field class="example-full-width w-100" appearance="outline">
+        <mat-label>Enter blog Title</mat-label>
+        <input matInput placeholder="Blog Title" formControlName="title" />
+      </mat-form-field>
+      <mat-form-field class="example-full-width w-100" appearance="outline">
+        <mat-label>Enter excerpt</mat-label>
+        <textarea matInput placeholder="Blog Title" formControlName="excerpt" ></textarea>
+      </mat-form-field>
+      <h2>Body Editor</h2>
+      <div id="blogEditor"></div>
       <div class="btns">
-        <button mat-dialog-close (click)="onCancel()" type="button" class="outline-btn-red">Cancel</button>
-        <button mat-dialog-close  type="submit" class="solid-darkblue-button">Assign</button>
+        <button mat-dialog-close (click)="onCancel()" type="button" class="outline-btn-red">
+          Cancel
+        </button>
+        <button type="submit" class="solid-darkblue-button">
+          Assign
+        </button>
       </div>
     </form>
   </div>
-
 </div>

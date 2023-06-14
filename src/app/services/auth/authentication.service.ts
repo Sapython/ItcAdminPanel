@@ -279,6 +279,7 @@ export class AuthenticationService {
                  if(data.access.access != 'admin'){
                   this.dataProvider.loggedIn = false;
                  }
+                console.log(data);
                 this.dataProvider.userData = data;
                 this.dataProvider.gettingUserData = false;
               }

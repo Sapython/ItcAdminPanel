@@ -1,6 +1,7 @@
 .dialog-container {
   padding: 15px 30px;
-  width: 600px;
+  min-width: 800px;
+  max-width: 90vw;
 
 .addpackageform{
   // display: flex;
@@ -77,3 +78,12 @@
   }
 }
 
+#blogEditor{
+  border: 2px dashed #ccc;
+  border-radius: 20px;
+  box-shadow: 1px 3px 20px rgba(82, 82, 82, 0.2);
+  width: 100%;
+  padding: 15px;
+  height: 300px;
+  overflow-y: scroll;
+}

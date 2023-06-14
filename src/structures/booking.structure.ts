@@ -1,4 +1,5 @@
 import { Timestamp } from "@angular/fire/firestore";
+import { OutputData } from "@editorjs/editorjs";
 
 export interface booking {
     pickupLocation: MapLocation;
@@ -171,4 +172,19 @@ export interface Agent {
   education:string;
   tourGuideLicenseNumber:string;
   tourGuideSkills:string;
+}
+
+export interface Blog {
+  id?:string;
+  title: string;
+  excerpt: string;
+  description: OutputData;
+  created: Timestamp;
+  photoURL: string;
+  author: {
+    displayName: string;
+    email: string;
+    phone: string;
+    photoURL: string;
+  }
 }

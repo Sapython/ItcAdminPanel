@@ -28,7 +28,8 @@ export class BlogComponent implements OnInit {
   }
 
   addBlog(){
-    this.dialog.open(AddblogComponent)
+    let dialog = this.dialog.open(AddblogComponent)
+    dialog.disableClose = true;
   }
  
 

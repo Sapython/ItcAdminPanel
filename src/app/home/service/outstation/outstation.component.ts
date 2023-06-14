@@ -46,7 +46,7 @@ export class OutstationComponent {
   }
 
   getLocations(){
-    this.databaseService.getLocations().then((res)=>{
+    this.databaseService.getOutstationLocations().then((res)=>{
       this.locations = res.docs.map((doc)=>{return {...doc.data(),id:doc.id} as MapLocation})
     })
   }
@@ -83,7 +83,7 @@ export class OutstationComponent {
       console.log(data);
       if(data){
         if (data.name && data.lat && data.lng){
-          this.databaseService.addLocation(data).then((res)=>{
+          this.databaseService.addOutstationLocation(data).then((res)=>{
             this.alertify.presentToast('Location added successfully');
             this.getLocations();
           }).catch((e)=>{
@@ -102,7 +102,7 @@ export class OutstationComponent {
       console.log(data);
       if(data){
         if (data.name && data.lat && data.lng){
-          this.databaseService.updateLocation(data).then((res)=>{
+          this.databaseService.updateOutstationLocation(data).then((res)=>{
             this.alertify.presentToast('Location added successfully')
             this.getLocations();
           }).catch((e)=>{
@@ -117,7 +117,7 @@ export class OutstationComponent {
 
   deleteLocation(location:MapLocation){
     if (confirm('Are you sure you want to delete this location?')){
-      this.databaseService.deleteLocation(location).then((res)=>{
+      this.databaseService.deleteOutstationLocation(location).then((res)=>{
         this.alertify.presentToast('Location deleted successfully');
         this.getLocations();
       }).catch((e)=>{

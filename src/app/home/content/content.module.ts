@@ -20,6 +20,8 @@ import { ComponentModule } from 'src/components/component.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from 'src/app/services/material/material.module';
 import { AddSpotComponent } from './dialog/add-spot/add-spot.component';
+import { TagsComponent } from './tags/tags.component';
+import { AddComponent } from './tags/add/add.component';
 
 
 @NgModule({
@@ -33,7 +35,9 @@ import { AddSpotComponent } from './dialog/add-spot/add-spot.component';
     DeleteBannerComponent,
     AddBannerComponent,
     EditBannerComponent,
-    AddSpotComponent
+    AddSpotComponent,
+    TagsComponent,
+    AddComponent
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,16 @@
+<section>
+    <form [formGroup]="tagForm">
+        <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input type="text" formControlName="name" matInput>
+        </mat-form-field>
+        <div class="colorPicker">
+            <label for="colorPicker">Pick Any Color</label>
+            <input type="color" name="colorPicker" formControlName="color">
+        </div>
+        <div class="actions">
+            <button mat-flat-button [disabled]="!tagForm.valid" [mat-dialog-close]="tagForm.value" color="primary">Submit</button>
+            <button mat-stroked-button mat-dialog-close type="button" color="primary">Cancel</button>
+        </div>
+    </form>
+</section>

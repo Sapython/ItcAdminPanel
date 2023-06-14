@@ -1,0 +1,19 @@
+section{
+    form{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+        .colorPicker{
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        .actions{
+            display: flex;
+            gap: 20px;
+            justify-content: flex-end;
+            align-items: center;
+        }
+    }
+}

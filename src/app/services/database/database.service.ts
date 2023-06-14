@@ -426,7 +426,7 @@ export class DatabaseService {
 
   // Blogs
   addBlog(data: any) {
-    addDoc(collection(this.fs, urls.blogs), data)
+    return addDoc(collection(this.fs, urls.blogs), data)
   }
 
 
@@ -473,12 +473,28 @@ export class DatabaseService {
     return getDocs(query(collection(this.fs, 'locations')));
   }
 
+  getOutstationLocations() {
+    return getDocs(query(collection(this.fs, 'locations_Outstation')));
+  }
+
+  addOutstationLocation(locationData: MapLocation) {
+    return addDoc(collection(this.fs, 'locations_Outstation'), locationData);
+  }
+
   addLocation(locationData: MapLocation) {
     return addDoc(collection(this.fs, 'locations'), locationData);
   }
 
+  updateOutstationLocation(locationData: MapLocation) {
+    return updateDoc(doc(this.fs, 'locations_Outstation/' + locationData.id), { ...locationData });
+  }
+
   updateLocation(locationData: MapLocation) {
     return updateDoc(doc(this.fs, 'locations/' + locationData.id), { ...locationData });
+  }
+
+  deleteOutstationLocation(location: MapLocation) {
+    return deleteDoc(doc(this.fs, 'locations_Outstation/' + location.id));
   }
 
   deleteLocation(location: MapLocation) {
@@ -607,7 +623,19 @@ export class DatabaseService {
     return getDoc(doc(this.fs, guideUrl));
   }
 
+  addTag(data:{name:string,color:string}){
+    return addDoc(collection(this.fs,'tags'),data);
+  }
+  getTags(){
+    return getDocs(query(collection(this.fs,'tags')));
+  }
+  deleteTag(tagId:string){
+    return deleteDoc(doc(this.fs,'tags/'+tagId));
+  }
 
+  updateTag(tagId:string,data:{name:string,color:string}){
+    return updateDoc(doc(this.fs,'tags/'+tagId),data);
+  }
 
 }
 
